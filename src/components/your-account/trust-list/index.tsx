@@ -28,9 +28,9 @@ export const TrustList: React.FC = ({ ...restprops }) => {
   const { walletTrustTokens: walletPrices } = usePrices()
   const { isTablet } = useResponsive()
 
-  const calcPrice = (amount: any) => walletPrices &&
+  const toUSD = (amount: BigNumber) => walletPrices &&
     numeral(
-      new BigNumber(amount ?? 0)
+      amount
         .multipliedBy(
           walletPrices[walletTrustTokens[0]?.contract_address]
             ?.price_usd,
@@ -88,6 +88,9 @@ export const TrustList: React.FC = ({ ...restprops }) => {
             const releasedAmount = new BigNumber(trust.releasedAmount)
             const unreleasedAmount = totalAmount.minus(releasedAmount)
             const days = timeInterval.dividedBy(ONE_DAY_SECONDS)
+            const totalAmountETH = totalAmount.dividedBy(1e18)
+            const releasedAmountETH = releasedAmount.dividedBy(1e18)
+            const unreleasedAmountETH = unreleasedAmount.dividedBy(1e18)
             return {
               key: trust.id,
               asset: trust.name,
@@ -114,13 +117,16 @@ export const TrustList: React.FC = ({ ...restprops }) => {
               numpayouts: totalAmount
                 .dividedBy(amountPerTimeInterval)
                 .toFixed(0),
-              totalAmount: totalAmount.dividedBy(1e18).toFixed(2),
-              releasedAmount: releasedAmount.dividedBy(1e18).toFixed(2),
-              unreleasedAmount: unreleasedAmount.dividedBy(1e18).toFixed(2),
+              totalAmount: totalAmountETH.toFixed(2),
+              releasedAmount: releasedAmountETH.toFixed(2),
+              unreleasedAmount: unreleasedAmountETH.toFixed(2),
+              totalAmountUSD: toUSD(totalAmountETH),
+              releasedAmountUSD: toUSD(releasedAmountETH),
+              unreleasedAmountUSD: toUSD(unreleasedAmountETH),
             }
           })
         : [],
-    [t, trustList],
+    [t, trustList, walletPrices, walletTrustTokens],
   )
 
   const columns = React.useMemo(
@@ -220,23 +226,14 @@ export const TrustList: React.FC = ({ ...restprops }) => {
             <Flex flexDirection='column' alignItems='flex-end'>
               <Text fontWeight={fontWeight.medium}>{data.totalAmount}</Text>
               <Text as='p' fontSize='md' color={colors.grey[200]}>
-                ≈ ${calcPrice(data.totalAmount)}
-                {/* {walletPrices &&
-                  numeral(
-                    new BigNumber(data.totalAmount ?? 0)
-                      .multipliedBy(
-                        walletPrices[walletTrustTokens[0]?.contract_address]
-                          ?.price_usd,
-                      )
-                      .toFixed(2),
-                  ).format(NUMBER_FORMAT[2])} */}
+                ≈ ${data.totalAmountUSD}
               </Text>
             </Flex>
           )
         },
       },
     ],
-    [colors.grey, fontWeight.medium, t, walletPrices, walletTrustTokens],
+    [colors.grey, fontWeight.medium, t],
   )
 
   return (
@@ -249,7 +246,7 @@ export const TrustList: React.FC = ({ ...restprops }) => {
       <Box overflowX='auto' mb={[spacer['xxl'], spacer['xxl'], 0]}>
         <Table
           columns={columns}
-          subRowComponent={(data: any) => <SubRow data={data} calcPrice={calcPrice} />}
+          subRowComponent={(data: any) => <SubRow data={data} />}
           dataSource={data}
           loading={isLoading}
           minWidth={650}
@@ -266,10 +263,9 @@ export const TrustList: React.FC = ({ ...restprops }) => {
 }
 
 interface SubRowProps {
-  data: any,
-  calcPrice: any,
+  data: any
 }
-const SubRow: React.FC<SubRowProps> = ({ data, calcPrice }) => {
+const SubRow: React.FC<SubRowProps> = ({ data }) => {
   const { t } = useTranslation('yourAccount')
   const { colors, fontWeight } = useTheme()
   const router = useRouter()
@@ -295,7 +291,7 @@ const SubRow: React.FC<SubRowProps> = ({ data, calcPrice }) => {
           <Spacer size='lg' />
           <Text fontWeight={fontWeight.semiBold}>{data.releasedAmount} ETH</Text>
           <Text color={colors.grey[200]} mt={1} fontSize='md'>
-            ≈ ${calcPrice(data.releasedAmount)}
+            ≈ ${data.releasedAmountUSD}
           </Text>
         </Flex>
         <Flex
@@ -327,7 +323,7 @@ const SubRow: React.FC<SubRowProps> = ({ data, calcPrice }) => {
           <Spacer size='lg' />
           <Text fontWeight={fontWeight.semiBold}>{data.unreleasedAmount} ETH</Text>
           <Text color={colors.grey[200]} mt={1} fontSize='md'>
-            ≈ ${calcPrice(data.unreleasedAmount)}
+            ≈ ${data.unreleasedAmountUSD}
           </Text>
         </Flex>
       </Flex>
