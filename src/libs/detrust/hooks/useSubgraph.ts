@@ -1,5 +1,20 @@
 import { gql, useQuery } from '@apollo/client';
+//import BigNumber from 'bignumber.js'
 import { useActiveWeb3React } from '../../wallet';
+
+// const CLIENT_OPTIONS = {
+//   context: {
+//     clientName: 'detrust'
+//   }
+// }
+
+// function convertStringToBN(trusts: any) {
+//   for (let trust of trusts) {
+//     trust.amountPerTimeInterval = new BigNumber(trust.amountPerTimeInterval)
+//     trust.releasedAmount = new BigNumber(trust.releasedAmount)
+//     trust.totalAmount = new BigNumber(trust.totalAmount)
+//   }
+// }
 
 /**
  * Get all trusts of the current account as a settlor
@@ -22,12 +37,18 @@ export function useGetTrustListAsSettlor() {
           releasedAmount
           revocable
         }
-      }    
+      }
     `
+    // CLIENT_OPTIONS
   )
 
+  //console.log(data)
+  const trusts = data ? data.trusts : []
+  //convertStringToBN(trusts)
+  //console.log(trusts)
+
   return {
-    data,
+    data: trusts,
     isLoading: loading,
     error,
   }
@@ -54,12 +75,17 @@ export function useGetTrustListAsBeneficiary() {
           releasedAmount
           revocable
         }
-      }    
+      }
     `
+    // CLIENT_OPTIONS
   )
 
+  const trusts = data ? data.trusts : []
+  //convertStringToBN(trusts)
+  //console.log(trusts)
+
   return {
-    data,
+    data: trusts,
     isLoading: loading,
     error,
   }

@@ -6,11 +6,12 @@ import { useTranslation } from 'react-i18next'
 import { shortenAddress } from '../../../libs/wallet/utils'
 import Table from '../../../theme/ui/layout/table/index'
 import { TableColumnProps } from '../../../theme/ui/layout/table/interfaces'
-import { useGetTrustListAsSettlor } from '../../../libs/detrust/hooks/useContractGet'
+//import { useGetTrustListAsSettlor } from '../../../libs/detrust/hooks/useContractGet'
+import { useGetTrustListAsSettlor } from '../../../libs/detrust/hooks/useSubgraph'
 import moment from 'moment'
 import { useDetrust } from '../../../libs/detrust'
 import BigNumber from 'bignumber.js'
-import { ETH_ADDRESS, NUMBER_FORMAT, ONE_DAY_SECONDS } from '../../../constants'
+import { /* ETH_ADDRESS, */NUMBER_FORMAT, ONE_DAY_SECONDS } from '../../../constants'
 import { TokenIcon, TokenName } from '../../'
 import { useResponsive, useTheme } from '../../../hooks'
 import { Spacer, Button } from '../../../theme/ui'
@@ -21,28 +22,82 @@ export const TrustList: React.FC = ({ ...restprops }) => {
   const { colors, fontWeight, spacer } = useTheme()
   const { account } = useActiveWeb3React()
   const { t } = useTranslation('yourAccount')
+  //const { data: trustList, isLoading } = useGetTrustListAsSettlor()
   const { data: trustList, isLoading } = useGetTrustListAsSettlor()
   const { walletTrustTokens } = useDetrust()
   const { walletTrustTokens: walletPrices } = usePrices()
   const { isTablet } = useResponsive()
 
+  const calcPrice = (amount: any) => walletPrices &&
+    numeral(
+      new BigNumber(amount ?? 0)
+        .multipliedBy(
+          walletPrices[walletTrustTokens[0]?.contract_address]
+            ?.price_usd,
+        )
+        .toFixed(2),
+    ).format(NUMBER_FORMAT[2])
+
+  // const data = React.useMemo(
+  //   () =>
+  //     trustList
+  //       ? trustList?.map((trust: any) => {
+  //           const timeInterval: BigNumber = trust.timeInterval
+  //           const days = timeInterval.dividedBy(ONE_DAY_SECONDS)
+  //           return {
+  //             key: trust.id,
+  //             asset: trust.name,
+  //             blockchain: ETH_ADDRESS,
+  //             available: '12.05',
+  //             unlockdate: {
+  //               firstLine: moment
+  //                 .unix(trust.nextReleaseTime.toString())
+  //                 .format('YYYY-MM-DD'),
+  //               secondLine: moment
+  //                 .unix(trust.nextReleaseTime.toString())
+  //                 .format('h.mm a'),
+  //             },
+  //             unlockperiod: timeInterval.isGreaterThanOrEqualTo(ONE_DAY_SECONDS)
+  //               ? {
+  //                   number: days.toFixed(0),
+  //                   timePeriod: days.isEqualTo(1)
+  //                     ? t('option.label.day')
+  //                     : t('option.label.days'),
+  //                 }
+  //               : {
+  //                   number: timeInterval.toFixed(0),
+  //                   timePeriod: t('option.label.seconds'),
+  //                 },
+  //             numpayouts: trust.totalAmount
+  //               .dividedBy(trust.amountPerTimeInterval)
+  //               .toFixed(0),
+  //             totalAmount: trust.totalAmount.toFixed(2),
+  //           }
+  //         })
+  //       : [],
+  //   [t, trustList],
+  // )
+
   const data = React.useMemo(
     () =>
       trustList
         ? trustList?.map((trust: any) => {
-            const timeInterval: BigNumber = trust.timeInterval
+            const timeInterval = new BigNumber(trust.timeInterval)
+            const totalAmount = new BigNumber(trust.totalAmount)
+            const amountPerTimeInterval = new BigNumber(trust.amountPerTimeInterval)
+            const releasedAmount = new BigNumber(trust.releasedAmount)
+            const unreleasedAmount = totalAmount.minus(releasedAmount)
             const days = timeInterval.dividedBy(ONE_DAY_SECONDS)
             return {
               key: trust.id,
               asset: trust.name,
-              blockchain: ETH_ADDRESS,
-              available: '12.05',
+              //available: '12.05',
               unlockdate: {
                 firstLine: moment
-                  .unix(trust.nextReleaseTime.toString())
+                  .unix(trust.nextReleaseTime)
                   .format('YYYY-MM-DD'),
                 secondLine: moment
-                  .unix(trust.nextReleaseTime.toString())
+                  .unix(trust.nextReleaseTime)
                   .format('h.mm a'),
               },
               unlockperiod: timeInterval.isGreaterThanOrEqualTo(ONE_DAY_SECONDS)
@@ -56,10 +111,12 @@ export const TrustList: React.FC = ({ ...restprops }) => {
                     number: timeInterval.toFixed(0),
                     timePeriod: t('option.label.seconds'),
                   },
-              numpayouts: trust.totalAmount
-                .dividedBy(trust.amountPerTimeInterval)
+              numpayouts: totalAmount
+                .dividedBy(amountPerTimeInterval)
                 .toFixed(0),
-              totalAmount: trust.totalAmount.toFixed(2),
+              totalAmount: totalAmount.dividedBy(1e18).toFixed(2),
+              releasedAmount: releasedAmount.dividedBy(1e18).toFixed(2),
+              unreleasedAmount: unreleasedAmount.dividedBy(1e18).toFixed(2),
             }
           })
         : [],
@@ -163,8 +220,8 @@ export const TrustList: React.FC = ({ ...restprops }) => {
             <Flex flexDirection='column' alignItems='flex-end'>
               <Text fontWeight={fontWeight.medium}>{data.totalAmount}</Text>
               <Text as='p' fontSize='md' color={colors.grey[200]}>
-                ≈ $
-                {walletPrices &&
+                ≈ ${calcPrice(data.totalAmount)}
+                {/* {walletPrices &&
                   numeral(
                     new BigNumber(data.totalAmount ?? 0)
                       .multipliedBy(
@@ -172,7 +229,7 @@ export const TrustList: React.FC = ({ ...restprops }) => {
                           ?.price_usd,
                       )
                       .toFixed(2),
-                  ).format(NUMBER_FORMAT[2])}
+                  ).format(NUMBER_FORMAT[2])} */}
               </Text>
             </Flex>
           )
@@ -192,7 +249,7 @@ export const TrustList: React.FC = ({ ...restprops }) => {
       <Box overflowX='auto' mb={[spacer['xxl'], spacer['xxl'], 0]}>
         <Table
           columns={columns}
-          subRowComponent={(data: any) => <SubRow data={data} />}
+          subRowComponent={(data: any) => <SubRow data={data} calcPrice={calcPrice} />}
           dataSource={data}
           loading={isLoading}
           minWidth={650}
@@ -209,20 +266,21 @@ export const TrustList: React.FC = ({ ...restprops }) => {
 }
 
 interface SubRowProps {
-  data: any
+  data: any,
+  calcPrice: any,
 }
-const SubRow: React.FC<SubRowProps> = ({ data }) => {
+const SubRow: React.FC<SubRowProps> = ({ data, calcPrice }) => {
   const { t } = useTranslation('yourAccount')
   const { colors, fontWeight } = useTheme()
   const router = useRouter()
   return (
     <Flex variant='list-details'>
       <Flex sx={{ position: 'relative' }} flex={0.7}>
-        <Flex variant='overlay'>
+        {/* <Flex variant='overlay'>
           <Box as='span' bg={colors.white} p={10}>
             Work in progress.
           </Box>
-        </Flex>
+        </Flex> */}
         <Flex
           flexDirection='column'
           justifyContent='center'
@@ -235,9 +293,9 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
             {t('content.trust-list.claimed')}
           </Text>
           <Spacer size='lg' />
-          <Text fontWeight={fontWeight.semiBold}>0.00 ETH</Text>
+          <Text fontWeight={fontWeight.semiBold}>{data.releasedAmount} ETH</Text>
           <Text color={colors.grey[200]} mt={1} fontSize='md'>
-            ≈ $0.00
+            ≈ ${calcPrice(data.releasedAmount)}
           </Text>
         </Flex>
         <Flex
@@ -267,9 +325,9 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
             {t('content.trust-list.unclaimed')}
           </Text>
           <Spacer size='lg' />
-          <Text fontWeight={fontWeight.semiBold}>0.00 ETH</Text>
+          <Text fontWeight={fontWeight.semiBold}>{data.unreleasedAmount} ETH</Text>
           <Text color={colors.grey[200]} mt={1} fontSize='md'>
-            ≈ $0.00
+            ≈ ${calcPrice(data.unreleasedAmount)}
           </Text>
         </Flex>
       </Flex>

@@ -20,6 +20,8 @@ import { DetrustContextProvider } from '../libs/detrust'
 import { QueryClientProvider, QueryClient } from 'react-query'
 import { I18nextProvider } from 'react-i18next'
 import { useRouter } from 'next/router'
+import { initializeApollo } from '../libs/apollo-client'
+import { ApolloProvider, ApolloClient } from '@apollo/client'
 
 //if (typeof window === 'undefined') return context
 if (typeof window !== 'undefined' && 'ethereum' in window) {
@@ -35,6 +37,8 @@ const queryClient = new QueryClient({
     },
   },
 })
+
+const apolloClient = initializeApollo()
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const theme = useDefaultTheme()
@@ -64,19 +68,21 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
                 <DetrustContextProvider>
                   <Web3ReactManager>
                     <QueryClientProvider client={queryClient}>
-                      <ThemeProvider theme={theme}>
-                        <ResponsiveContextProvider>
-                          <DrawerProvider>
-                            <ModalsProvider>
-                              <PricesContextProvider>
-                                <Reset />
-                                <GlobalStyle {...theme} />
-                                <Component {...pageProps} />
-                              </PricesContextProvider>
-                            </ModalsProvider>
-                          </DrawerProvider>
-                        </ResponsiveContextProvider>
-                      </ThemeProvider>
+                      <ApolloProvider client={apolloClient}>
+                        <ThemeProvider theme={theme}>
+                          <ResponsiveContextProvider>
+                            <DrawerProvider>
+                              <ModalsProvider>
+                                <PricesContextProvider>
+                                  <Reset />
+                                  <GlobalStyle {...theme} />
+                                  <Component {...pageProps} />
+                                </PricesContextProvider>
+                              </ModalsProvider>
+                            </DrawerProvider>
+                          </ResponsiveContextProvider>
+                        </ThemeProvider>
+                      </ApolloProvider>
                     </QueryClientProvider>
                   </Web3ReactManager>
                 </DetrustContextProvider>
