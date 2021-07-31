@@ -34,6 +34,7 @@ export function useGetTrustListAsSettlor() {
           timeInterval
           amountPerTimeInterval
           totalAmount
+          cumAmount
           releasedAmount
           revocable
         }
@@ -72,6 +73,7 @@ export function useGetTrustListAsBeneficiary() {
           timeInterval
           amountPerTimeInterval
           totalAmount
+          cumAmount
           releasedAmount
           revocable
         }
