@@ -2,7 +2,7 @@ import { SelectOption } from '../theme/ui/forms/input/interfaces'
 import { IMenu, ISidebarMenu } from './interfaces'
 
 export const defaultLanguage = 'en'
-export const API_URL = 'https://api.studio.thegraph.com/query/2808/detrust-subgraph/v0.0.1'
+export const API_URL = 'https://api.studio.thegraph.com/query/2808/detrust-subgraph/v0.0.2'
 // export const API_URL =
 //   process.env.NODE_ENV === 'development'
 //     ? 'https://api-dev.detrust.finance/graphql' :
