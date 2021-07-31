@@ -93,29 +93,36 @@ export const AssetList: React.FC = ({ ...restprops }) => {
     () =>
       assetList
         ? assetList?.map((trust: any, index: number) => {
-            const now = new BigNumber(moment.now()).dividedBy(1000)
+            const now = new BigNumber(moment.now()).idiv(1000)
             const timeInterval = new BigNumber(trust.timeInterval)
             const totalAmount = new BigNumber(trust.totalAmount)
             const amountPerTimeInterval = new BigNumber(trust.amountPerTimeInterval)
             const releasedAmount = new BigNumber(trust.releasedAmount)
-            const unreleasedAmount = totalAmount.minus(releasedAmount)
+            const cumAmount = new BigNumber(trust.cumAmount)
+            const unreleasedAmount = cumAmount.minus(releasedAmount)
             const nextReleaseTime = new BigNumber(trust.nextReleaseTime)
             const totalAmountETH = totalAmount.dividedBy(1e18)
             const releasedAmountETH = releasedAmount.dividedBy(1e18)
             const unreleasedAmountETH = unreleasedAmount.dividedBy(1e18)
             const days = timeInterval.dividedBy(ONE_DAY_SECONDS)
             const claimEnabled = now.isGreaterThanOrEqualTo(nextReleaseTime)
-            const availableAmount = claimEnabled ? now
-              .minus(nextReleaseTime)
-              .dividedBy(timeInterval)
-              .multipliedBy(amountPerTimeInterval) : new BigNumber(0)
+            const availableAmount = BigNumber.min(
+              claimEnabled ? now
+                .minus(nextReleaseTime)
+                .idiv(timeInterval)
+                .plus(1)
+                .multipliedBy(amountPerTimeInterval) : new BigNumber(0),
+              totalAmount
+            )
             const availableAmountETH = availableAmount.dividedBy(1e18)
+            const lockedAmount = totalAmount.minus(availableAmount)
+            const lockedAmountETH = lockedAmount.dividedBy(1e18)
             return {
               key: `beneficiary-trust-list-index-${index}`,
               id: trust.id,
               asset: trust.name,
               blockchain: ETH_ADDRESS,
-              beneficiary: trust.beneficiary,
+              beneficiary: account,
               unlockdate: {
                 firstLine: moment
                   .unix(trust.nextReleaseTime)
@@ -146,6 +153,8 @@ export const AssetList: React.FC = ({ ...restprops }) => {
               unreleasedAmountUSD: toUSD(unreleasedAmountETH),
               available: availableAmountETH.toFixed(2),
               availableUSD: toUSD(availableAmountETH),
+              lockedAmount: lockedAmountETH.toFixed(2),
+              lockedAmountUSD: toUSD(lockedAmountETH),
               claimEnabled,
             }
           })
@@ -351,9 +360,9 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
             {t('content.asset-list.locked')}
           </Text>
           <Spacer size='lg' />
-          <Text fontWeight={fontWeight.semiBold}>0.00 ETH</Text>
+          <Text fontWeight={fontWeight.semiBold}>{data.lockedAmount} ETH</Text>
           <Text color={colors.grey[200]} mt={1} fontSize='md'>
-            ≈ $0.00
+            ≈ ${data.lockedAmountUSD}
           </Text>
         </Flex>
         <Flex
@@ -394,10 +403,13 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           width={120}
           py={10}
           sx={{ textTransform: 'uppercase' }}
-          onClick={() =>
-            router.push(
-              `/your-account/beneficiary/claim/${data.id}/${data.beneficiary}`,
-            )
+          onClick={() => {
+              //console.log(data.id)
+              //console.log(data.beneficiary)
+              router.push(
+                `/your-account/beneficiary/claim/${data.id}/${data.beneficiary}`,
+              )
+            }
           }
         >
           {t('button.label.claim-now')}
