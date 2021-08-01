@@ -11,7 +11,7 @@ import { useGetTrustListAsSettlor } from '../../../libs/detrust/hooks/useSubgrap
 import moment from 'moment'
 import { useDetrust } from '../../../libs/detrust'
 import BigNumber from 'bignumber.js'
-import { /* ETH_ADDRESS, */NUMBER_FORMAT, ONE_DAY_SECONDS } from '../../../constants'
+import { ETH_ADDRESS, NUMBER_FORMAT, ONE_DAY_SECONDS } from '../../../constants'
 import { TokenIcon, TokenName } from '../../'
 import { useResponsive, useTheme } from '../../../hooks'
 import { Spacer, Button } from '../../../theme/ui'
@@ -22,7 +22,6 @@ export const TrustList: React.FC = ({ ...restprops }) => {
   const { colors, fontWeight, spacer } = useTheme()
   const { account } = useActiveWeb3React()
   const { t } = useTranslation('yourAccount')
-  //const { data: trustList, isLoading } = useGetTrustListAsSettlor()
   const { data: trustList, isLoading } = useGetTrustListAsSettlor()
   const { walletTrustTokens } = useDetrust()
   const { walletTrustTokens: walletPrices } = usePrices()
@@ -110,6 +109,7 @@ export const TrustList: React.FC = ({ ...restprops }) => {
             return {
               key: trust.id,
               asset: trust.name,
+              type: ETH_ADDRESS, // token contract address
               unlockdate: {
                 firstLine: moment
                   .unix(trust.nextReleaseTime)
@@ -151,7 +151,7 @@ export const TrustList: React.FC = ({ ...restprops }) => {
   const columns = React.useMemo(
     (): TableColumnProps[] => [
       {
-        key: 'icon',
+        key: 'asset',
         dataIndex: 'asset',
         title: t('label.trust-list.asset-name'),
         width: '200px',
@@ -160,12 +160,12 @@ export const TrustList: React.FC = ({ ...restprops }) => {
           return (
             <Flex flexDirection='row' alignItems='center'>
               <Box pr={12}>
-                <TokenIcon className='list-icon' address={data.blockchain} />
+                <TokenIcon className='list-icon' address={data.type} />
               </Box>
               <Box>
                 <Text fontWeight={fontWeight.medium}>{data.asset}</Text>
                 <TokenName
-                  address={data.blockchain}
+                  address={data.type}
                   as='p'
                   fontSize='md'
                   color={colors.grey[200]}

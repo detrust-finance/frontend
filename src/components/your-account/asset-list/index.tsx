@@ -122,7 +122,7 @@ export const AssetList: React.FC = ({ ...restprops }) => {
               key: `beneficiary-trust-list-index-${index}`,
               id: trust.id,
               asset: trust.name,
-              blockchain: ETH_ADDRESS,
+              type: ETH_ADDRESS, // token contract address
               beneficiary: account,
               unlockdate: {
                 firstLine: moment
@@ -177,12 +177,12 @@ export const AssetList: React.FC = ({ ...restprops }) => {
             <Flex flexDirection='row' width={rem('160px')}>
               <Box pr={12}>
                 {/*<Image src={data.asset.tradeAsset === 'ETH' ? IconETH : IconBTC} sx={{ width: rem('32px'), height: rem('32px'), marginRight: rem('8px') }} />*/}
-                <TokenIcon className='list-icon' address={data.blockchain} />
+                <TokenIcon className='list-icon' address={data.type} />
               </Box>
               <Box>
                 <Text fontWeight={fontWeight.medium}>{data.asset}</Text>
                 <TokenName
-                  address={data.blockchain}
+                  address={data.type}
                   as='p'
                   fontSize='md'
                   color={colors.grey[200]}
