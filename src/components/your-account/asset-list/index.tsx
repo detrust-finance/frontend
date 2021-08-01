@@ -95,27 +95,28 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         ? assetList?.map((trust: any, index: number) => {
             const now = new BigNumber(moment.now()).idiv(1000)
             const timeInterval = new BigNumber(trust.timeInterval)
-            const totalAmount = new BigNumber(trust.totalAmount)
+            //const totalAmount = new BigNumber(trust.totalAmount)
             const amountPerTimeInterval = new BigNumber(trust.amountPerTimeInterval)
             const releasedAmount = new BigNumber(trust.releasedAmount)
-            const cumAmount = new BigNumber(trust.cumAmount)
-            const unreleasedAmount = cumAmount.minus(releasedAmount)
+            //const cumAmount = new BigNumber(trust.cumAmount)
+            //const unreleasedAmount = cumAmount.minus(releasedAmount)
+            const unreleasedAmount= new BigNumber(trust.totalAmount)
             const nextReleaseTime = new BigNumber(trust.nextReleaseTime)
-            const totalAmountETH = totalAmount.dividedBy(1e18)
+            //const totalAmountETH = unreleasedAmount.dividedBy(1e18)
             const releasedAmountETH = releasedAmount.dividedBy(1e18)
             const unreleasedAmountETH = unreleasedAmount.dividedBy(1e18)
             const days = timeInterval.dividedBy(ONE_DAY_SECONDS)
             const claimEnabled = now.isGreaterThanOrEqualTo(nextReleaseTime)
-            const availableAmount = BigNumber.min(
+            const claimableAmount = BigNumber.min(
               claimEnabled ? now
                 .minus(nextReleaseTime)
                 .idiv(timeInterval)
                 .plus(1)
                 .multipliedBy(amountPerTimeInterval) : new BigNumber(0),
-              totalAmount
+                unreleasedAmount
             )
-            const availableAmountETH = availableAmount.dividedBy(1e18)
-            const lockedAmount = totalAmount.minus(availableAmount)
+            const claimableAmountETH = claimableAmount.dividedBy(1e18)
+            const lockedAmount = unreleasedAmount.minus(claimableAmount)
             const lockedAmountETH = lockedAmount.dividedBy(1e18)
             return {
               key: `beneficiary-trust-list-index-${index}`,
@@ -142,17 +143,17 @@ export const AssetList: React.FC = ({ ...restprops }) => {
                     number: timeInterval.toFixed(0),
                     timePeriod: t('option.label.seconds'),
                   },
-              numpayouts: totalAmount
+              numpayouts: unreleasedAmount
                 .dividedBy(amountPerTimeInterval)
                 .toFixed(0),
-              totalAmount: totalAmountETH.toFixed(2),
+              //totalAmount: totalAmountETH.toFixed(2),
               releasedAmount: releasedAmountETH.toFixed(2),
               unreleasedAmount: unreleasedAmountETH.toFixed(2),
-              totalAmountUSD: toUSD(totalAmountETH),
+              //totalAmountUSD: toUSD(totalAmountETH),
               releasedAmountUSD: toUSD(releasedAmountETH),
               unreleasedAmountUSD: toUSD(unreleasedAmountETH),
-              available: availableAmountETH.toFixed(2),
-              availableUSD: toUSD(availableAmountETH),
+              claimable: claimableAmountETH.toFixed(2),
+              claimableUSD: toUSD(claimableAmountETH),
               lockedAmount: lockedAmountETH.toFixed(2),
               lockedAmountUSD: toUSD(lockedAmountETH),
               claimEnabled,
@@ -251,37 +252,39 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         },
       },
       {
-        key: 'available',
-        dataIndex: 'available',
-        title: t('label.asset-list.available'),
+        key: 'claimable',
+        dataIndex: 'claimable',
+        title: t('label.asset-list.claimable'),
         width: '120px',
         align: 'center',
         hideSort: true,
         Render(data) {
           return (
             <Flex flexDirection='column' alignItems='center'>
-              <Text fontWeight={fontWeight.medium}>{data.available}</Text>
+              <Text fontWeight={fontWeight.medium}>{data.claimable}</Text>
               <Text as='p' fontSize='md' color={colors.grey[200]}>
-                ≈ ${data.availableUSD}
+                ≈ ${data.claimableUSD}
               </Text>
             </Flex>
           )
         },
       },
-
       {
-        key: 'totalAmount',
-        dataIndex: 'totalAmount',
-        title: t('label.asset-list.total-amount'),
+        // key: 'totalAmount',
+        // dataIndex: 'totalAmount',
+        // title: t('label.asset-list.total-amount'),
+        key: 'unclaimed',
+        dataIndex: 'unclaimed',
+        title: t('label.asset-list.unclaimed'),
         width: '120px',
         align: 'right',
         hideSort: true,
         Render(data) {
           return (
             <Flex flexDirection='column' alignItems='flex-end'>
-              <Text fontWeight={fontWeight.medium}>{data.totalAmount}</Text>
+              <Text fontWeight={fontWeight.medium}>{data.unreleasedAmount}</Text>
               <Text as='p' fontSize='md' color={colors.grey[200]}>
-                ≈ ${data.totalAmountUSD}
+                ≈ ${data.unreleasedAmountUSD}
               </Text>
             </Flex>
           )
@@ -365,7 +368,7 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
             ≈ ${data.lockedAmountUSD}
           </Text>
         </Flex>
-        <Flex
+        {/* <Flex
           flexDirection='column'
           justifyContent='center'
           alignItems='center'
@@ -380,7 +383,7 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           <Text color={colors.grey[200]} mt={1} fontSize='md'>
             ≈ ${data.unreleasedAmountUSD}
           </Text>
-        </Flex>
+        </Flex> */}
       </Flex>
 
       <Flex
