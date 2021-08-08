@@ -283,11 +283,13 @@ const StepTwo: React.FC<FullData> = ({ setForm, formData, navigation }) => {
                             message: tc('error.field-is-required'),
                           },
                           min: {
-                            value: 1,
+                            //value: 1,
+                            value: .00001,
                             message: tc('error.field-min-days'),
                           },
                           pattern: {
-                            value: /^[0-9]*$/,
+                            //value: /^[0-9]*$/,
+                            value: /^\d*\.?\d*$/,
                             message: tc('error.field-must-be-number'),
                           },
                         }}
@@ -469,11 +471,13 @@ const StepTwo: React.FC<FullData> = ({ setForm, formData, navigation }) => {
                               message: tc('error.field-is-required'),
                             },
                             min: {
-                              value: 1,
+                              //value: 1,
+                              value: .00001,
                               message: tc('error.field-min-days'),
                             },
                             pattern: {
-                              value: /^[0-9]*$/,
+                              //value: /^[0-9]*$/,
+                              value: /^\d*\.?\d*$/,
                               message: tc('error.field-must-be-number'),
                             },
                           }}
