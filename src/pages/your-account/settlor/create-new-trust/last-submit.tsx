@@ -65,7 +65,8 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
           name,
           beneficiary,
           startReleaseTime,
-          timeInterval * 86400,
+          //timeInterval * 86400,
+          Math.floor(timeInterval * 86400),
           amountPerTimeInterval,
         )
         // user rejected tx or didn't go thru
@@ -106,7 +107,8 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
           name,
           beneficiary,
           startReleaseTime,
-          timeInterval * 86400,
+          //timeInterval * 86400,
+          Math.floor(timeInterval * 86400),
           amountPerTimeInterval,
         )
         // user rejected tx or didn't go thru
