@@ -1,6 +1,6 @@
 import React from 'react'
 import { NextPage } from 'next'
-import Link from 'next/link'
+// import Link from 'next/link'
 // Components
 import { Box, Flex, Button } from 'rebass/styled-components'
 import { Login, YourAccountLayout, AssetList } from '../../../components'
@@ -34,7 +34,8 @@ const Beneficiary: NextPage = () => {
           <Spacer size='xxl' />
         </Box>
 
-        <Flex flexDirection='column' mb='auto'>
+        <AssetList />
+        {/* <Flex flexDirection='column' mb='auto'>
           <AssetList />
         </Flex>
 
@@ -50,7 +51,7 @@ const Beneficiary: NextPage = () => {
               {t('button.label.claim-assets')}
             </Button>
           </Link>
-        </Flex>
+        </Flex> */}
       </Flex>
     </YourAccountLayout>
   )
