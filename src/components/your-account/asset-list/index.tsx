@@ -19,8 +19,10 @@ import { useResponsive, useTheme } from '../../../hooks'
 import { useDetrust } from '../../../libs/detrust'
 import { Spacer, Button } from '../../../theme/ui'
 import usePrices from '../../../hooks/usePrices'
+import _ from 'lodash'
 
 export const AssetList: React.FC = ({ ...restprops }) => {
+  const router = useRouter()
   const { colors, fontWeight, spacer } = useTheme()
   const { account } = useActiveWeb3React()
   const { t } = useTranslation('yourAccount')
@@ -295,28 +297,50 @@ export const AssetList: React.FC = ({ ...restprops }) => {
   )
 
   return (
-    <Box variant='list' {...restprops}>
-      <Flex variant='list-title'>
-        <Box sx={{ textTransform: 'uppercase' }}>{t('asset-list.title')}</Box>
-        <Box fontSize='md'>{shortenAddress(account!, 8)}</Box>
+    <>
+      <Flex flexDirection='column' mb='auto'>
+        <Box variant='list' {...restprops}>
+          <Flex variant='list-title'>
+            <Box sx={{ textTransform: 'uppercase' }}>{t('asset-list.title')}</Box>
+            <Box fontSize='md'>{shortenAddress(account!, 8)}</Box>
+          </Flex>
+
+          <Box overflowX='auto' mb={[spacer['xxl'], spacer['xxl'], 0]}>
+            <Table
+              columns={columns}
+              subRowComponent={(data: any) => <SubRow data={data} />}
+              dataSource={data}
+              loading={isLoading}
+              minWidth={650}
+              tableHeaderStyle={{
+                minWidth: 650,
+              }}
+              scrollbarsStyle={{
+                height: isTablet ? 290 : 'auto',
+              }}
+            />
+          </Box>
+        </Box>
       </Flex>
 
-      <Box overflowX='auto' mb={[spacer['xxl'], spacer['xxl'], 0]}>
-        <Table
-          columns={columns}
-          subRowComponent={(data: any) => <SubRow data={data} />}
-          dataSource={data}
-          loading={isLoading}
-          minWidth={650}
-          tableHeaderStyle={{
-            minWidth: 650,
-          }}
-          scrollbarsStyle={{
-            height: isTablet ? 290 : 'auto',
-          }}
-        />
-      </Box>
-    </Box>
+      <Flex flexDirection='row' justifyContent='center'>
+        {/* <Link href={`/your-account/beneficiary/claim`} passHref> */}
+          <Button
+            variant='primary'
+            py={13}
+            px={41}
+            sx={{ textTransform: 'uppercase' }}
+            width={260}
+            disabled={!_.some(data, { claimEnabled: true })}
+            onClick={() => {
+              router.push('/your-account/beneficiary/claim')
+            }}
+          >
+            {t('button.label.claim-assets')}
+          </Button>
+        {/* </Link> */}
+      </Flex>
+    </>
   )
 }
 
