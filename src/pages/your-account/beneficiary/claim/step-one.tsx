@@ -15,6 +15,8 @@ import { useResponsive, useTheme } from '../../../../hooks'
 import { useForm } from 'react-hook-form'
 
 const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
+  //console.log('StepOne')
+  //console.log(formData)
   const { t } = useTranslation('yourAccount')
   const { fontWeight } = useTheme()
   const { t: tc } = useTranslation('common')
@@ -76,15 +78,18 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
 
   const onSubmit = React.useCallback(
     data => {
+      //console.log('onSubmit')
+      //console.log(data)
       if (!setForm) return
-      Object.keys(data).map((key: string) => {
-        setForm({
-          target: {
-            name: key,
-            value: data[key],
-          },
-        })
-      })
+      // Object.keys(data).map((key: string) => {
+      //   setForm({
+      //     target: {
+      //       name: key,
+      //       value: data[key],
+      //     },
+      //   })
+      // })
+      setForm(data)
       navigation?.next()
     },
     [navigation, setForm],

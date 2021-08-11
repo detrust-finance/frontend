@@ -115,10 +115,12 @@ const Submit: React.FC<FullData> = ({ formData }) => {
 
   useEffect(() => {
     if (formData?.releaseToAddress) {
-      if (formData?.trustId === '') {
-        handleReleaseAll()
-      } else {
+      if (formData?.trustId) {
         handleRelease()
+        //console.log('handleRelease()')
+      } else {
+        handleReleaseAll()
+        //console.log('handleReleaseAll()')
       }
     }
   }, [
@@ -132,10 +134,10 @@ const Submit: React.FC<FullData> = ({ formData }) => {
     setIsError(false)
     setErrorMsg('')
     setIsLoading(true)
-    if (formData?.trustId === '') {
-      handleReleaseAll()
-    } else {
+    if (formData?.trustId) {
       handleRelease()
+    } else {
+      handleReleaseAll()
     }
   }, [formData?.trustId, handleRelease, handleReleaseAll])
 

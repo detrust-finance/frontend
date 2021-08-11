@@ -7,7 +7,11 @@ const ClaimFund: React.FC = () => {
   const { params } = router.query
 
   if (!params) return null
-  return <Claim contractId={params[0]} releaseToAddress={params[1]} />
+  let fundName = params[2]
+  if (fundName) {
+    fundName = decodeURIComponent(fundName)
+  }
+  return <Claim trustId={params[0]} releaseToAddress={params[1]} fundName={fundName} />
 }
 
 export default ClaimFund

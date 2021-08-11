@@ -107,7 +107,8 @@ export const TrustList: React.FC = ({ ...restprops }) => {
             const lockedAmount = unreleasedAmount.minus(claimableAmount)
             const lockedAmountETH = lockedAmount.dividedBy(1e18)
             return {
-              key: trust.id,
+              //key: trust.id,
+              key: parseInt(trust.id, 16).toString(),
               asset: trust.name,
               type: ETH_ADDRESS, // token contract address
               unlockdate: {

@@ -122,7 +122,9 @@ export const AssetList: React.FC = ({ ...restprops }) => {
             const lockedAmountETH = lockedAmount.dividedBy(1e18)
             return {
               key: `beneficiary-trust-list-index-${index}`,
-              id: trust.id,
+              //id: trust.id,
+              //id: parseInt(trust.id, 16).toString(),
+              id: parseInt(trust.id, 16),
               asset: trust.name,
               type: ETH_ADDRESS, // token contract address
               beneficiary: account,
@@ -434,7 +436,7 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
               //console.log(data.id)
               //console.log(data.beneficiary)
               router.push(
-                `/your-account/beneficiary/claim/${data.id}/${data.beneficiary}`,
+                `/your-account/beneficiary/claim/${data.id}/${data.beneficiary}/${encodeURIComponent(data.asset)}`,
               )
             }
           }
