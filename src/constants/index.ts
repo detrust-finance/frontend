@@ -81,7 +81,7 @@ export const sidebarMenu: ISidebarMenu[] = [
     path: [
       '/your-account/settlor',
       '/your-account/settlor/create-new-trust',
-      '/your-account/settlor/top-up-fund/[contractId]',
+      '/your-account/settlor/top-up-fund/[trustId]',
     ],
     className: 'dark',
   },
