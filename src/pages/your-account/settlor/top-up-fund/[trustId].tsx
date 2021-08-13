@@ -4,9 +4,9 @@ import TopUpFund from '.'
 
 const TopUpFundById: React.FC = () => {
   const router = useRouter()
-  const { contractId } = router.query
+  const { trustId } = router.query
 
-  return <TopUpFund contractId={contractId} />
+  return <TopUpFund trustId={trustId} />
 }
 
 export default TopUpFundById

@@ -11,7 +11,7 @@ import { useActiveWeb3React } from '../../../../libs/wallet'
 const steps = [{ id: 'step-one' }, { id: 'step-two' }, { id: 'submit' }]
 
 interface MultiStepFormProps {
-  contractId?: any
+  trustId?: any
 }
 
 const state = {
@@ -27,7 +27,7 @@ const state = {
   totalDepositAmount: '',
 }
 
-const MultiStepForm: React.FC<MultiStepFormProps> = ({ contractId }) => {
+const MultiStepForm: React.FC<MultiStepFormProps> = ({ trustId }) => {
   const { account } = useActiveWeb3React()
   const [formData, setForm] = useForm<IFormData>(state)
   const { step, navigation } = useStep({ initialStep: 0, steps })
@@ -36,7 +36,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ contractId }) => {
 
   const getContractData = React.useCallback(() => {
     if (!trustList) return
-    const findTrust = trustList.find((a: any) => a.id === contractId)
+    const findTrust = trustList.find((a: any) => a.id === trustId)
     if (findTrust) {
       setForm({
         target: {
@@ -64,7 +64,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ contractId }) => {
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [contractId, trustList])
+  }, [trustId, trustList])
 
   React.useEffect(() => {
     if (isLoading) return
