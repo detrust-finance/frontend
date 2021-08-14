@@ -22,13 +22,13 @@ import {
   IWizardHeader,
   WizardButtons,
   WizardHeader,
-  YourAccountLayout,
+  DashboardLayout,
 } from '../../../../components'
 import { useTheme } from '../../../../hooks'
 
 const Submit: React.FC<FullData> = ({ formData }) => {
   const { account, chainId } = useActiveWeb3React()
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   const { addTransaction } = useWallet()
   const [isLoading, setIsLoading] = React.useState(true)
   const [isError, setIsError] = React.useState(false)
@@ -161,7 +161,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
     (): IWizardButton[] => [
       {
         title: t('button.label.cancel'),
-        href: '/your-account/beneficiary',
+        href: '/dashboard/beneficiary',
       },
       {
         title: t('button.label.try-again'),
@@ -173,7 +173,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
 
   if (isLoading)
     return (
-      <YourAccountLayout layoutBackgroundImage='/images/bg-beneficial.svg'>
+      <DashboardLayout layoutBackgroundImage='/images/bg-beneficial.svg'>
         <Flex
           flexDirection='column'
           justifyContent='space-between'
@@ -218,18 +218,18 @@ const Submit: React.FC<FullData> = ({ formData }) => {
             py={13}
             px={41}
             sx={{ textTransform: 'uppercase' }}
-            onClick={() => router.push(`/your-account/beneficiary`)}
+            onClick={() => router.push(`/dashboard/beneficiary`)}
             disabled={!isConfirmed}
           >
             {t('button.claim.back-to-main')}
           </Button>
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
 
   if (isError)
     return (
-      <YourAccountLayout>
+      <DashboardLayout>
         <Flex
           flexDirection='column'
           justifyContent='space-between'
@@ -284,12 +284,12 @@ const Submit: React.FC<FullData> = ({ formData }) => {
 
           <WizardButtons buttons={buttons} />
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
 
   if (isConfirmed) {
     return (
-      <YourAccountLayout>
+      <DashboardLayout>
         <Flex
           flexDirection='column'
           justifyContent='space-between'
@@ -351,18 +351,18 @@ const Submit: React.FC<FullData> = ({ formData }) => {
             py={13}
             px={41}
             sx={{ textTransform: 'uppercase' }}
-            onClick={() => router.push(`/your-account/beneficiary`)}
+            onClick={() => router.push(`/dashboard/beneficiary`)}
             disabled={!isConfirmed}
           >
             {t('button.claim.back-to-main')}
           </Button>
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
   }
 
   return (
-    <YourAccountLayout>
+    <DashboardLayout>
       <Flex
         flexDirection='column'
         justifyContent='space-between'
@@ -421,13 +421,13 @@ const Submit: React.FC<FullData> = ({ formData }) => {
           py={13}
           px={41}
           sx={{ textTransform: 'uppercase' }}
-          onClick={() => router.push(`/your-account/beneficiary`)}
+          onClick={() => router.push(`/dashboard/beneficiary`)}
           disabled={!isConfirmed}
         >
           {t('button.claim.back-to-main')}
         </Button>
       </Flex>
-    </YourAccountLayout>
+    </DashboardLayout>
   )
 }
 

@@ -5,7 +5,7 @@ import {
   IWizardHeader,
   WizardButtons,
   WizardHeader,
-  YourAccountLayout,
+  DashboardLayout,
 } from '../../../../components'
 import { useTranslation } from 'react-i18next'
 import { FullData } from '../../../../interfaces'
@@ -14,7 +14,7 @@ import { useResponsive, useTheme } from '../../../../hooks'
 import { shortenAddress } from '../../../../libs/wallet/utils'
 
 const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   const { fontWeight, spacer } = useTheme()
   const { isTablet, isLaptop } = useResponsive()
   const headers = React.useMemo(
@@ -64,7 +64,7 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
   )
 
   return (
-    <YourAccountLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+    <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
       <Flex
         flexDirection='column'
         justifyContent='flex-start'
@@ -140,7 +140,7 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
 
         <WizardButtons buttons={buttons} />
       </Flex>
-    </YourAccountLayout>
+    </DashboardLayout>
   )
 }
 

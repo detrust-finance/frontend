@@ -46,7 +46,7 @@ const IndexPage: NextPage = () => {
                 py={15}
                 px={45}
                 sx={{ textTransform: 'uppercase' }}
-                onClick={() => router.push(`/your-account/`)}
+                onClick={() => router.push(`/dashboard/`)}
               >
                 {t('button.index-page')}
               </Button>

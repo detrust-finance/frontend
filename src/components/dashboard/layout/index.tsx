@@ -17,11 +17,11 @@ import { Sidebar, MobileSidebar, NetworkModal } from '../..'
 // interfaces
 import { BoxProps } from 'rebass'
 
-interface YourAccountLayoutProps extends BoxProps {
+interface DashboardLayoutProps extends BoxProps {
   layoutBackgroundImage?: string
 }
 
-const YourAccountLayout: React.FC<YourAccountLayoutProps> = ({
+const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   children,
   layoutBackgroundImage,
   ...restprops
@@ -78,4 +78,4 @@ const YourAccountLayout: React.FC<YourAccountLayoutProps> = ({
   )
 }
 
-export default YourAccountLayout
+export default DashboardLayout

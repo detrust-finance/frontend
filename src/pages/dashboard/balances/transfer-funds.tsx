@@ -5,7 +5,7 @@ import { Box, Flex, Text } from 'rebass/styled-components'
 import Image from 'next/image'
 import {
   Login,
-  YourAccountLayout,
+  DashboardLayout,
   WizardButtons,
   IWizardButton,
 } from '../../../components'
@@ -32,7 +32,7 @@ import { useETHBalances } from '../../../libs/multicall'
 //import { useBalanceOf, useETHBalances, useTokenBalancesWithLoadingIndicator } from '../../../libs/multicall'
 
 const TransferFunds: NextPage = () => {
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   const { account, chainId } = useActiveWeb3React()
   const [amount, setAmount] = React.useState('')
   const [from, setFrom] = React.useState('wallet')
@@ -109,7 +109,7 @@ const TransferFunds: NextPage = () => {
     (): IWizardButton[] => [
       {
         title: t('button.label.back'),
-        href: '/your-account',
+        href: '/dashboard',
         buttonProps: {
           variant: 'grey-outline',
           width: 240,
@@ -130,7 +130,7 @@ const TransferFunds: NextPage = () => {
 
   if (isLoading)
     return (
-      <YourAccountLayout layoutBackgroundImage='/images/bg-balances.svg'>
+      <DashboardLayout layoutBackgroundImage='/images/bg-balances.svg'>
         <Flex
           flexDirection='column'
           justifyContent='flex-start'
@@ -173,19 +173,19 @@ const TransferFunds: NextPage = () => {
             py={13}
             px={41}
             sx={{ textTransform: 'uppercase' }}
-            onClick={() => router.push(`/your-account/`)}
+            onClick={() => router.push(`/dashboard/`)}
             disabled={!isConfirmed}
             width={240}
           >
             {t('button.transfer-funds.back-to-main')}
           </Button>
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
 
   if (isError)
     return (
-      <YourAccountLayout>
+      <DashboardLayout>
         <Flex
           flexDirection='column'
           justifyContent='flex-start'
@@ -237,12 +237,12 @@ const TransferFunds: NextPage = () => {
 
           <WizardButtons buttons={buttons} />
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
 
   if (isConfirmed) {
     return (
-      <YourAccountLayout>
+      <DashboardLayout>
         <Flex
           flexDirection='column'
           justifyContent='flex-start'
@@ -308,19 +308,19 @@ const TransferFunds: NextPage = () => {
             py={13}
             px={41}
             sx={{ textTransform: 'uppercase' }}
-            onClick={() => router.push(`/your-account/`)}
+            onClick={() => router.push(`/dashboard/`)}
             disabled={!isConfirmed}
           >
             {t('button.transfer-funds.back-to-main')}
           </Button>
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
   }
 
   if (isConfirming)
     return (
-      <YourAccountLayout>
+      <DashboardLayout>
         <Flex
           flexDirection='column'
           justifyContent='flex-start'
@@ -382,18 +382,18 @@ const TransferFunds: NextPage = () => {
             py={13}
             px={41}
             sx={{ textTransform: 'uppercase' }}
-            onClick={() => router.push(`/your-account/`)}
+            onClick={() => router.push(`/dashboard/`)}
             disabled={!isConfirmed}
             width={240}
           >
             {t('button.transfer-funds.back-to-main')}
           </Button>
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
 
   return (
-    <YourAccountLayout>
+    <DashboardLayout>
       <Flex
         flexDirection='column'
         justifyContent='flex-start'
@@ -598,7 +598,7 @@ const TransferFunds: NextPage = () => {
           </Button>
         </Flex>
       </Flex>
-    </YourAccountLayout>
+    </DashboardLayout>
   )
 }
 

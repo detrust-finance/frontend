@@ -1,23 +1,22 @@
 import React from 'react'
 import { NextPage } from 'next'
+// import Link from 'next/link'
 // Components
-import { Box, Flex, Button, Link } from 'rebass/styled-components'
-import { Login, YourAccountLayout, TrustList } from '../../../components'
+import { Box, Flex, Button } from 'rebass/styled-components'
+import { Login, DashboardLayout, AssetList } from '../../../components'
 import { Spacer, Title } from '../../../theme/ui'
 import { useTranslation } from 'react-i18next'
 import { useActiveWeb3React } from '../../../libs/wallet'
-// import CreateNewTrust from './create-new-trust/index'
+// import { useReleaseAll } from '../../../libs/detrust/hooks/useAddTrust'
 
-const Settlor: NextPage = () => {
-  const { t } = useTranslation('yourAccount')
+const Beneficiary: NextPage = () => {
+  const { t } = useTranslation('dashboard')
   const { account } = useActiveWeb3React()
 
-  // let showCreateNewTrust = false
   if (!account) return <Login />
-  // if (showCreateNewTrust) return <CreateNewTrust />
 
   return (
-    <YourAccountLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+    <DashboardLayout layoutBackgroundImage='/images/bg-beneficial.svg'>
       <Flex
         flexDirection='column'
         justifyContent='flex-start'
@@ -25,36 +24,37 @@ const Settlor: NextPage = () => {
       >
         <Box>
           <Title
-            title={t('content.title.settlor')}
+            title={t('content.title.beneficiary')}
             subtitle={t('content.subtitle.settlor-dashboard')}
           />
           <Spacer size='xl' />
           <Box as='p' fontSize='md'>
-            {t('content.description.settlor')}
+            {t('content.description.beneficiary')}
           </Box>
           <Spacer size='xxl' />
         </Box>
 
-        <Flex flexDirection='column' mb='auto'>
-          <TrustList />
+        <AssetList />
+        {/* <Flex flexDirection='column' mb='auto'>
+          <AssetList />
         </Flex>
 
         <Flex flexDirection='row' justifyContent='center'>
-          <Link href='/your-account/settlor/create-new-trust'>
+          <Link href={`/dashboard/beneficiary/claim`} passHref>
             <Button
               variant='primary'
               py={13}
               px={41}
               sx={{ textTransform: 'uppercase' }}
-              width={240}
+              width={260}
             >
-              {t('button.label.create-trust')}
+              {t('button.label.claim-assets')}
             </Button>
           </Link>
-        </Flex>
+        </Flex> */}
       </Flex>
-    </YourAccountLayout>
+    </DashboardLayout>
   )
 }
 
-export default Settlor
+export default Beneficiary

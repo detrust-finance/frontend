@@ -4,7 +4,7 @@ export default {
   'lang.label.en': 'English',
   'lang.label.cn': '中文',
   'nav.label.home': '首页',
-  'nav.label.your-account': '我的',
+  'nav.label.dashboard': '我的',
   'error.field-is-required': '必填项',
   'error.field-is-not-eth-address': '请输入合法的以太坊地址',
   'button.index-page': '进入',

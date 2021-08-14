@@ -17,14 +17,14 @@ import {
   IWizardHeader,
   WizardButtons,
   WizardHeader,
-  YourAccountLayout,
+  DashboardLayout,
 } from '../../../../components'
 import { useTopUp, useTopUpFromBalance } from '../../../../libs/detrust'
 import BigNumber from 'bignumber.js'
 
 const Submit: React.FC<FullData> = ({ formData, navigation }) => {
   const { chainId } = useActiveWeb3React()
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   const { addTransaction } = useWallet()
   const [isLoading, setIsLoading] = React.useState(true)
   const [isError, setIsError] = React.useState(false)
@@ -154,7 +154,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
 
   if (isLoading)
     return (
-      <YourAccountLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+      <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
         <Flex
           flexDirection='column'
           justifyContent='space-between'
@@ -199,18 +199,18 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
             py={13}
             px={41}
             sx={{ textTransform: 'uppercase' }}
-            onClick={() => router.push(`/your-account/settlor`)}
+            onClick={() => router.push(`/dashboard/settlor`)}
             disabled={!isConfirmed}
           >
             {t('button.top-up-fund.back-to-main')}
           </Button>
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
 
   if (isError)
     return (
-      <YourAccountLayout>
+      <DashboardLayout>
         <Flex
           flexDirection='column'
           justifyContent='space-between'
@@ -265,12 +265,12 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
 
           <WizardButtons buttons={buttons} />
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
 
   if (isConfirmed) {
     return (
-      <YourAccountLayout>
+      <DashboardLayout>
         <Flex
           flexDirection='column'
           justifyContent='space-between'
@@ -338,18 +338,18 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
             py={13}
             px={41}
             sx={{ textTransform: 'uppercase' }}
-            onClick={() => router.push(`/your-account/settlor`)}
+            onClick={() => router.push(`/dashboard/settlor`)}
             disabled={!isConfirmed}
           >
             {t('button.top-up-fund.back-to-main')}
           </Button>
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
   }
 
   return (
-    <YourAccountLayout>
+    <DashboardLayout>
       <Flex
         flexDirection='column'
         justifyContent='space-between'
@@ -413,13 +413,13 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
           py={13}
           px={41}
           sx={{ textTransform: 'uppercase' }}
-          onClick={() => router.push(`/your-account/settlor`)}
+          onClick={() => router.push(`/dashboard/settlor`)}
           disabled={!isConfirmed}
         >
           {t('button.top-up-fund.back-to-main')}
         </Button>
       </Flex>
-    </YourAccountLayout>
+    </DashboardLayout>
   )
 }
 

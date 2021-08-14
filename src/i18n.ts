@@ -4,8 +4,8 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 import commonEN from './locales/en/common'
 import commonCN from './locales/cn/common'
-import yourAccountEN from './locales/en/your-account'
-import yourAccountCN from './locales/cn/your-account'
+import dashboardEN from './locales/en/dashboard'
+import dashboardCN from './locales/cn/dashboard'
 import walletEN from './locales/en/wallet'
 import walletCN from './locales/cn/wallet'
 
@@ -16,12 +16,12 @@ i18n
     resources: {
       en: {
         common: commonEN,
-        yourAccount: yourAccountEN,
+        dashboard: dashboardEN,
         wallet: walletEN,
       },
       cn: {
         common: commonCN,
-        yourAccount: yourAccountCN,
+        dashboard: dashboardCN,
         wallet: walletCN,
       },
     },
@@ -29,7 +29,7 @@ i18n
       useSuspense: true,
     },
 
-    ns: ['common', 'yourAccount', 'wallet'],
+    ns: ['common', 'dashboard', 'wallet'],
     defaultNS: 'common',
     nonExplicitSupportedLngs: true,
     supportedLngs: ['en', 'cn'],

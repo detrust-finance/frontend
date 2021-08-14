@@ -1,26 +1,26 @@
 import React from 'react'
 // Components
 import { Box } from 'rebass/styled-components'
-import { YourAccountLayout } from '../'
+import { DashboardLayout } from '../'
 import { Spacer, Title } from '../../theme/ui'
 import { useTranslation } from 'react-i18next'
 
 import { Web3StatusInner } from '../../libs/wallet/components/web3-status'
 
 const Login: React.FC = () => {
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   return (
-    <YourAccountLayout layoutBackgroundImage='/images/bg-login.svg'>
+    <DashboardLayout layoutBackgroundImage='/images/bg-login.svg'>
       <Box variant='layout-content'>
-        <Title title={t('content.title.your-account')} />
+        <Title title={t('content.title.dashboard')} />
         <Spacer size='xl' />
         <Box as='p' fontSize='md'>
-          {t('content.description.your-account')}
+          {t('content.description.dashboard')}
         </Box>
         <Spacer size='xxl' />
         <Web3StatusInner text={t('content.buttons.connect-your-wallet')} />
       </Box>
-    </YourAccountLayout>
+    </DashboardLayout>
   )
 }
 

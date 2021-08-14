@@ -4,7 +4,7 @@ export default {
   'lang.label.en': 'English',
   'lang.label.cn': 'Chinese',
   'nav.label.home': 'Home',
-  'nav.label.your-account': 'My Trusts',
+  'nav.label.dashboard': 'My Trusts',
   'error.field-is-required': 'This field is required.',
   'error.field-is-not-eth-address': 'Please enter a valid ETH wallet address.',
   'button.index-page': 'Launch App',

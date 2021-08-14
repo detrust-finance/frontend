@@ -20,7 +20,7 @@ import usePrices from '../../../hooks/usePrices'
 export const WalletList: React.FC<BoxProps> = ({ ...restprops }) => {
   const { fontWeight } = useTheme()
   const { account, chainId } = useActiveWeb3React()
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   const { walletTrustTokens } = useDetrust()
   const { walletTrustTokens: walletPrices } = usePrices()
   const userEthBalance = useETHBalances(account ? [account] : [])?.[
@@ -164,7 +164,7 @@ export const WalletList: React.FC<BoxProps> = ({ ...restprops }) => {
 export const DeTrustContractList: React.FC<BoxProps> = ({ ...restprops }) => {
   const { fontWeight } = useTheme()
   const { account, chainId } = useActiveWeb3React()
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   const { contractTrustTokens } = useDetrust()
   const { contractTrustTokens: contractPrices } = usePrices()
   const { data: contractBalance } = useGetBalance()

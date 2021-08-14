@@ -6,7 +6,7 @@ import {
   WizardButtons,
   IWizardHeader,
   IWizardButton,
-  YourAccountLayout,
+  DashboardLayout,
   Balance,
 } from '../../../../components'
 import { useTranslation } from 'react-i18next'
@@ -18,7 +18,7 @@ import { IApiTrustToken } from '../../../../constants'
 import { useResponsive, useTheme } from '../../../../hooks'
 
 const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   const { walletTrustTokens } = useDetrust()
   const { fontWeight, colors } = useTheme()
   const { isTablet } = useResponsive()
@@ -48,7 +48,7 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
     (): IWizardButton[] => [
       {
         title: t('button.label.cancel'),
-        href: '/your-account/settlor',
+        href: '/dashboard/settlor',
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
@@ -75,7 +75,7 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
   )
 
   return (
-    <YourAccountLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+    <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
       <Flex
         flexDirection='column'
         justifyContent='flex-start'
@@ -208,7 +208,7 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
 
         <WizardButtons buttons={buttons} />
       </Flex>
-    </YourAccountLayout>
+    </DashboardLayout>
   )
 }
 
