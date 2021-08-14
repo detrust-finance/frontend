@@ -5,8 +5,8 @@ export default {
   'sidebar.label.lock-your-assets': 'Setup trusts',
   'sidebar.label.beneficiary': 'Beneficiary',
   'sidebar.label.claim-your-assets': 'Get assets from trusts',
-  'content.title.your-account': 'My Trusts',
-  'content.description.your-account':
+  'content.title.dashboard': 'My Trusts',
+  'content.description.dashboard':
     'Transfer tokens between your wallet and DeTrust contact.',
   'content.buttons.connect-your-wallet': 'Connect your wallet',
   'content.title.balances': 'Balances',

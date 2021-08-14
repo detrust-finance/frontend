@@ -48,8 +48,8 @@ export const menu: IMenu[] = [
     path: '/',
   },
   {
-    title: 'your-account',
-    path: '/your-account',
+    title: 'dashboard',
+    path: '/dashboard',
   },
 ]
 export const sidebarMenu: ISidebarMenu[] = [
@@ -64,7 +64,7 @@ export const sidebarMenu: ISidebarMenu[] = [
     },
     title: 'balances',
     subtitle: 'wallet-and-contract',
-    path: ['/your-account', '/your-account/balances/transfer-funds'],
+    path: ['/dashboard', '/dashboard/balances/transfer-funds'],
     className: '',
   },
   {
@@ -79,9 +79,9 @@ export const sidebarMenu: ISidebarMenu[] = [
     title: 'settlor',
     subtitle: 'lock-your-assets',
     path: [
-      '/your-account/settlor',
-      '/your-account/settlor/create-new-trust',
-      '/your-account/settlor/top-up-fund/[trustId]',
+      '/dashboard/settlor',
+      '/dashboard/settlor/create-new-trust',
+      '/dashboard/settlor/top-up-fund/[trustId]',
     ],
     className: 'dark',
   },
@@ -97,9 +97,9 @@ export const sidebarMenu: ISidebarMenu[] = [
     title: 'beneficiary',
     subtitle: 'claim-your-assets',
     path: [
-      '/your-account/beneficiary',
-      '/your-account/beneficiary/claim',
-      '/your-account/beneficiary/claim/[...params]',
+      '/dashboard/beneficiary',
+      '/dashboard/beneficiary/claim',
+      '/dashboard/beneficiary/claim/[...params]',
     ],
     className: 'darker',
   },

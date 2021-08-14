@@ -6,7 +6,7 @@ import {
   IWizardHeader,
   WizardButtons,
   WizardHeader,
-  YourAccountLayout,
+  DashboardLayout,
 } from '../../../../components'
 import { useTranslation } from 'react-i18next'
 import { FullData } from '../../../../interfaces'
@@ -17,7 +17,7 @@ import { useForm } from 'react-hook-form'
 import { ETH_ADDRESS } from '../../../../constants'
 
 const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   const { t: tc } = useTranslation('common')
   const { isTablet } = useResponsive()
 
@@ -49,7 +49,7 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
     (): IWizardButton[] => [
       {
         title: t('button.label.cancel'),
-        href: '/your-account/settlor',
+        href: '/dashboard/settlor',
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
@@ -94,7 +94,7 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <YourAccountLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+      <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
         <Flex
           flexDirection='column'
           justifyContent='flex-start'
@@ -213,7 +213,7 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
 
           <WizardButtons buttons={buttons} />
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     </form>
   )
 }

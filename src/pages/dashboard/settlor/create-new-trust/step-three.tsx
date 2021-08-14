@@ -5,7 +5,7 @@ import {
   IWizardHeader,
   WizardButtons,
   WizardHeader,
-  YourAccountLayout,
+  DashboardLayout,
 } from '../../../../components'
 import { useTranslation } from 'react-i18next'
 import { FullData } from '../../../../interfaces'
@@ -17,7 +17,7 @@ import { shortenAddress } from '../../../../libs/wallet/utils'
 // import { SelectOption } from '../../../../theme/ui/forms/input/interfaces'
 
 const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   const { t: tc } = useTranslation('common')
   const { spacer, fontWeight } = useTheme()
   const { isTablet } = useResponsive()
@@ -74,7 +74,7 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
   )
 
   return (
-    <YourAccountLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+    <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
       <Flex
         flexDirection='column'
         justifyContent='flex-start'
@@ -172,7 +172,7 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
 
         <WizardButtons buttons={buttons} />
       </Flex>
-    </YourAccountLayout>
+    </DashboardLayout>
   )
 }
 

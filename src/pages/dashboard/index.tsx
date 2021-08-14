@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Box, Flex } from 'rebass/styled-components'
 import {
   Login,
-  YourAccountLayout,
+  DashboardLayout,
   WalletList,
   DeTrustContractList,
 } from '../../components'
@@ -14,15 +14,15 @@ import { useTranslation } from 'react-i18next'
 import { useActiveWeb3React } from '../../libs/wallet'
 import { useTheme } from '../../hooks'
 
-const YourAccount: NextPage = () => {
-  const { t } = useTranslation('yourAccount')
+const Dashboard: NextPage = () => {
+  const { t } = useTranslation('dashboard')
   const { account } = useActiveWeb3React()
   const { spacer } = useTheme()
 
   if (!account) return <Login />
 
   return (
-    <YourAccountLayout layoutBackgroundImage='/images/bg-balances.svg'>
+    <DashboardLayout layoutBackgroundImage='/images/bg-balances.svg'>
       <Flex
         flexDirection='column'
         justifyContent='flex-start'
@@ -54,7 +54,7 @@ const YourAccount: NextPage = () => {
           justifyContent='center'
           mt={[spacer['xxl'], spacer['xxl'], 0, 0]}
         >
-          <Link href='/your-account/balances/transfer-funds' passHref>
+          <Link href='/dashboard/balances/transfer-funds' passHref>
             <Button
               variant='primary'
               py={13}
@@ -67,8 +67,8 @@ const YourAccount: NextPage = () => {
           </Link>
         </Flex>
       </Flex>
-    </YourAccountLayout>
+    </DashboardLayout>
   )
 }
 
-export default YourAccount
+export default Dashboard

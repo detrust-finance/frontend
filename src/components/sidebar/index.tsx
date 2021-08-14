@@ -23,7 +23,7 @@ const Sidebar: React.FC = () => {
 }
 
 const SidebarItem: React.FC<{ item: ISidebarMenu }> = ({ item }) => {
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   const router = useRouter()
   const [isActive, setActive] = React.useState<boolean>(false)
   React.useEffect(() => {

@@ -5,8 +5,8 @@ export default {
   'sidebar.label.lock-your-assets': '查看添加信托',
   'sidebar.label.beneficiary': '受益人',
   'sidebar.label.claim-your-assets': '获得信托资产',
-  'content.title.your-account': '我的信托',
-  'content.description.your-account':
+  'content.title.dashboard': '我的信托',
+  'content.description.dashboard':
     '下面是你钱包里的可用资产，你可以转移它们',
   'content.buttons.connect-your-wallet': '连接你的钱包',
   'content.title.balances': '余额',

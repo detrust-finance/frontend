@@ -6,7 +6,7 @@ import {
   IWizardHeader,
   WizardButtons,
   WizardHeader,
-  YourAccountLayout,
+  DashboardLayout,
 } from '../../../../components'
 import { useTranslation } from 'react-i18next'
 import { FullData } from '../../../../interfaces'
@@ -38,7 +38,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
   const router = useRouter()
   const { isTablet } = useResponsive()
 
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
 
   const { onAddTrust } = useAddTrust()
 
@@ -242,7 +242,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
 
   if (isLoading)
     return (
-      <YourAccountLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+      <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
         <Flex
           flexDirection='column'
           justifyContent='space-between'
@@ -287,18 +287,18 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
             py={13}
             px={41}
             sx={{ textTransform: 'uppercase' }}
-            onClick={() => router.push(`/your-account/settlor`)}
+            onClick={() => router.push(`/dashboard/settlor`)}
             disabled={!isConfirmed}
           >
             {t('button.create-new-trust.back-to-main')}
           </Button>
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
 
   if (isError)
     return (
-      <YourAccountLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+      <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
         <Flex
           flexDirection='column'
           justifyContent='space-between'
@@ -353,12 +353,12 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
 
           <WizardButtons buttons={buttons} />
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
 
   if (isConfirmed) {
     return (
-      <YourAccountLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+      <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
         <Flex
           flexDirection='column'
           justifyContent='space-between'
@@ -426,18 +426,18 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
             py={13}
             px={41}
             sx={{ textTransform: 'uppercase' }}
-            onClick={() => router.push(`/your-account/settlor`)}
+            onClick={() => router.push(`/dashboard/settlor`)}
             disabled={!isConfirmed}
           >
             {t('button.create-new-trust.back-to-main')}
           </Button>
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     )
   }
 
   return (
-    <YourAccountLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+    <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
       <Flex
         flexDirection='column'
         justifyContent='space-between'
@@ -501,13 +501,13 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
           py={13}
           px={41}
           sx={{ textTransform: 'uppercase' }}
-          onClick={() => router.push(`/your-account/settlor`)}
+          onClick={() => router.push(`/dashboard/settlor`)}
           disabled={!isConfirmed}
         >
           {t('button.create-new-trust.back-to-main')}
         </Button>
       </Flex>
-    </YourAccountLayout>
+    </DashboardLayout>
   )
 }
 

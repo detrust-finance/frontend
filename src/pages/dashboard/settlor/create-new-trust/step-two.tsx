@@ -4,7 +4,7 @@ import { Box, Flex, Text } from 'rebass/styled-components'
 import {
   IWizardButton,
   IWizardHeader,
-  YourAccountLayout,
+  DashboardLayout,
   WizardHeader,
   WizardButtons,
 } from '../../../../components'
@@ -25,7 +25,7 @@ import { useForm, Controller, UseFormSetValue } from 'react-hook-form'
 import DropDown from '../../../../components/dropw-down'
 
 const StepTwo: React.FC<FullData> = ({ setForm, formData, navigation }) => {
-  const { t } = useTranslation('yourAccount')
+  const { t } = useTranslation('dashboard')
   const { t: tc } = useTranslation('common')
   const { fontWeight, spacer } = useTheme()
   const { isTablet } = useResponsive()
@@ -129,7 +129,7 @@ const StepTwo: React.FC<FullData> = ({ setForm, formData, navigation }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <YourAccountLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+      <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
         <Flex
           flexDirection='column'
           justifyContent='flex-start'
@@ -597,7 +597,7 @@ const StepTwo: React.FC<FullData> = ({ setForm, formData, navigation }) => {
 
           <WizardButtons buttons={buttons} />
         </Flex>
-      </YourAccountLayout>
+      </DashboardLayout>
     </form>
   )
 }
