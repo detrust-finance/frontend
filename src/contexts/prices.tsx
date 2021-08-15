@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 import { ETH_ADDRESS, IApiDataResponse } from '../constants'
+import fetchPrices from '../libs/misc/update-prices'
 
 const initialState: IApiDataResponse = {
   contractTrustTokens: {
@@ -21,11 +22,12 @@ const PricesProvider: React.FC = ({ children }) => {
   const { data }: UseQueryResult<any, any> = useQuery(
     'update prices',
     async () => {
-      const request = await fetch('/api/update-prices')
-      const result: {
-        status_code: number
-        data: IApiDataResponse
-      } = await request.json()
+      // const request = await fetch('/api/update-prices')
+      // const result: {
+      //   status_code: number
+      //   data: IApiDataResponse
+      // } = await request.json()
+      const result = await fetchPrices()
 
       return result.data
     },
