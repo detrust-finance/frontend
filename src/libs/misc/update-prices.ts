@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from 'next'
 import {
   IApiTrustToken,
   walletTrustTokens,
@@ -7,7 +6,7 @@ import {
   IRemoteData,
   IApiDataResponse,
 } from '../../constants'
-import { sleep, getCoingeckoCoinDataUrl } from '../../libs/detrust/utils'
+import { sleep, getCoingeckoCoinDataUrl } from '../detrust/utils'
 
 const getRemoteData = async (
   tokens: IApiTrustToken[],
@@ -41,7 +40,7 @@ const getRemoteData = async (
   return data
 }
 
-const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
+const fetchPrices = async () => {
   try {
     const walletTokens = await getRemoteData(walletTrustTokens)
     const contractTokens = await getRemoteData(contractTrustTokens)
@@ -51,13 +50,13 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
       contractTrustTokens: contractTokens,
     }
 
-    res.status(200).json({
+    return {
       status_code: 200,
       data: data,
-    })
+    }
   } catch (err) {
-    res.status(500).json({ status_code: 500, message: err.message })
+    return { status_code: 500, message: err.message }
   }
 }
 
-export default handler
+export default fetchPrices
