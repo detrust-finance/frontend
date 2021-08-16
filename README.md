@@ -11,6 +11,8 @@ To get started, just clone the repository and run `yarn install && yarn dev`:
 ```
 git clone git@github.com:detrust-finance/frontend.git
 
+cd frontend
+
 yarn install
 
 yarn dev
