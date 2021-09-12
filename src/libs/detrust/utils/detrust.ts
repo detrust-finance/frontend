@@ -46,8 +46,6 @@ export const addTrust = async (
   amountPerTimeInterval: string,
   revocable: boolean,
 ) => {
-  console.log(revocable)
-
   const estimatedGas = await detrustContract.estimateGas
     .addTrust(
       name,
