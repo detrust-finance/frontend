@@ -26,6 +26,7 @@ export const useAddTrust = () => {
       startReleaseTime,
       timeInterval,
       amountPerTimeInterval,
+      revocable
     ) => {
       try {
         const tx = await addTrust(
@@ -36,7 +37,7 @@ export const useAddTrust = () => {
           startReleaseTime,
           timeInterval,
           amountPerTimeInterval,
-          true,
+          revocable,
         )
         return tx
       } catch (e) {
@@ -61,6 +62,7 @@ export const useAddTrustFromBalance = () => {
       startReleaseTime,
       timeInterval,
       amountPerTimeInterval,
+      revocable
     ) => {
       try {
         const tx = await addTrustFromBalance(
@@ -71,7 +73,7 @@ export const useAddTrustFromBalance = () => {
           startReleaseTime,
           timeInterval,
           amountPerTimeInterval,
-          true,
+          revocable,
         )
         return tx
       } catch (e) {

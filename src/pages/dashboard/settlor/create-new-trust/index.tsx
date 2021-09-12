@@ -23,6 +23,7 @@ export interface IFormData {
   releaseInterval: string | number
   releaseStartTime: Date | string
   totalDepositAmount: string | number
+  revocable: boolean
 }
 
 const MultiStepForm: React.FC = () => {
@@ -36,6 +37,7 @@ const MultiStepForm: React.FC = () => {
     releaseInterval: '',
     releaseStartTime: '',
     totalDepositAmount: '',
+    revocable: false,
   })
   const { step, navigation } = useStep({ initialStep: 0, steps })
   const { id }: any = step

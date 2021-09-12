@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Flex } from 'rebass/styled-components'
-import { Label, Radio } from '@rebass/forms'
+import { Label, Radio, Checkbox } from '@rebass/forms'
 import {
   WizardHeader,
   WizardButtons,
@@ -201,6 +201,35 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
                       </Label>
                     ),
                 )}
+              </Flex>
+            </Flex>
+          </Box>
+
+          <Spacer size='xxxl' />
+
+          {/* set revocable or not */}
+          <Box variant='outlined-box'>
+            <Flex flexDirection='column' alignItems='center'>
+              <Box as='p' fontWeight={fontWeight.medium}>
+                {t('create-new-trust.is-trust-revocable-or-not')}
+              </Box>
+
+              <Spacer size='xl' />
+
+              <Flex flexDirection='row'>
+                <Label htmlFor='revocable' width='auto'>
+                  <Flex alignItems='center' mr={15}>
+                    <Checkbox
+                      color={colors.red[100]}
+                      id='revocable'
+                      name='revocable'
+                      value='revocable'
+                      checked={formData.revocable}
+                      onChange={setForm}
+                    />
+                    {t('create-new-trust.label.revocable')}
+                  </Flex>
+                </Label>
               </Flex>
             </Flex>
           </Box>
