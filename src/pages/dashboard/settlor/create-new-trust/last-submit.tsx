@@ -58,6 +58,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
       startReleaseTime: any,
       timeInterval: any,
       amountPerTimeInterval: any,
+      revocable: any,
     ) => {
       try {
         const tx = await onAddTrust(
@@ -68,6 +69,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
           //timeInterval * 86400,
           Math.floor(timeInterval * 86400),
           amountPerTimeInterval,
+          revocable,
         )
         // user rejected tx or didn't go thru
         if (!tx || tx.message) {
@@ -100,6 +102,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
       startReleaseTime: any,
       timeInterval: any,
       amountPerTimeInterval: any,
+      revocable: any,
     ) => {
       try {
         const tx = await onAddTrustFromBalance(
@@ -110,6 +113,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
           //timeInterval * 86400,
           Math.floor(timeInterval * 86400),
           amountPerTimeInterval,
+          revocable,
         )
         // user rejected tx or didn't go thru
         if (!tx || tx.message) {
@@ -138,6 +142,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
       moment(formData?.releaseStartTime).format('X'),
       formData?.releaseInterval,
       new BigNumber(formData?.releaseAmount).multipliedBy(1e18).toFixed(0),
+      formData?.revocable,
     )
   }, [
     formData?.beneficiaryAddress,
@@ -146,6 +151,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
     formData?.releaseInterval,
     formData?.releaseStartTime,
     formData?.totalDepositAmount,
+    formData?.revocable,
     handleAddTrust,
   ])
 
@@ -157,6 +163,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
       moment(formData?.releaseStartTime).format('X'),
       formData?.releaseInterval,
       new BigNumber(formData?.releaseAmount).multipliedBy(1e18).toFixed(0),
+      formData?.revocable,
     )
   }, [
     formData?.beneficiaryAddress,
@@ -165,6 +172,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
     formData?.releaseInterval,
     formData?.releaseStartTime,
     formData?.totalDepositAmount,
+    formData?.revocable,
     handleAddTrustFromBalance,
   ])
 

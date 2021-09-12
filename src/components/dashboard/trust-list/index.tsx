@@ -143,6 +143,7 @@ export const TrustList: React.FC = ({ ...restprops }) => {
               claimableUSD: toUSD(claimableAmountETH),
               lockedAmount: lockedAmountETH.toFixed(2),
               lockedAmountUSD: toUSD(lockedAmountETH),
+              revocable: trust.revocable,
             }
           })
         : [],
@@ -350,6 +351,19 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           <Text color={colors.grey[200]} mt={1} fontSize='md'>
             ≈ ${data.lockedAmountUSD}
           </Text>
+        </Flex>
+        <Flex
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
+          flex={1}
+          py={10}
+        >
+          <Text fontWeight={fontWeight.semiBold}>
+            {t('create-new-trust.label.revocable')}
+          </Text>
+          <Spacer size='lg' />
+          <Text fontWeight={fontWeight.semiBold}>{data.revocable ? "true" : "false"}</Text>
         </Flex>
         {/* <Flex
           flexDirection='column'

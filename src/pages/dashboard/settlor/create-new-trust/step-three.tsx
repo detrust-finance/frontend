@@ -167,6 +167,16 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
                 {`${formData?.releaseAmount}`} {formData?.asset}
               </Text>
             </Flex>
+            <Spacer size='xxl' />
+            <Flex justifyContent='space-between'>
+              <Text fontWeight={fontWeight.medium}>
+                {t('create-new-trust.label.revocable')}
+              </Text>
+              <Box variant='dots' />
+              <Text>
+                {formData?.revocable ? 'true' : 'false'}
+              </Text>
+            </Flex>
           </Box>
         </Box>
 
