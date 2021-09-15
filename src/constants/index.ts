@@ -49,24 +49,25 @@ export const menu: IMenu[] = [
   },
   {
     title: 'dashboard',
-    path: '/dashboard',
+    //path: '/dashboard',
+    path: '/dashboard/settlor',
   },
 ]
 export const sidebarMenu: ISidebarMenu[] = [
-  {
-    icon: {
-      path: {
-        mouseenter: '/images/icon-wallet.svg',
-        mouseleave: '/images/icon-wallet-hover.svg',
-      },
-      width: 24,
-      height: 24,
-    },
-    title: 'balances',
-    subtitle: 'wallet-and-contract',
-    path: ['/dashboard', '/dashboard/balances/transfer-funds'],
-    className: '',
-  },
+  // {
+  //   icon: {
+  //     path: {
+  //       mouseenter: '/images/icon-wallet.svg',
+  //       mouseleave: '/images/icon-wallet-hover.svg',
+  //     },
+  //     width: 24,
+  //     height: 24,
+  //   },
+  //   title: 'balances',
+  //   subtitle: 'wallet-and-contract',
+  //   path: ['/dashboard', '/dashboard/balances/transfer-funds'],
+  //   className: '',
+  // },
   {
     icon: {
       path: {
