@@ -149,7 +149,7 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
             </Flex>
           </Box>
           <Spacer size='xxxl' /> */}
-          <Box variant='outlined-box'>
+          {/* <Box variant='outlined-box'>
             <Flex flexDirection='column' alignItems='center'>
               <Box as='p' fontWeight={fontWeight.medium}>
                 {t('create-new-trust.fund-deposit-asset')}
@@ -203,9 +203,9 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
                 )}
               </Flex>
             </Flex>
-          </Box>
+          </Box> */}
 
-          <Spacer size='xxxl' />
+          {/* <Spacer size='xxxl' /> */}
 
           {/* set revocable or not */}
           <Box variant='outlined-box'>
