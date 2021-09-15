@@ -118,14 +118,14 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
                   : shortenAddress(formData?.beneficiaryAddress)
               }`}</Text>
             </Flex>
-            <Spacer size='xxl' />
+            {/* <Spacer size='xxl' />
             <Flex justifyContent='space-between'>
               <Text fontWeight={fontWeight.medium}>
                 {t('create-new-trust.label.fund-source')}
               </Text>
               <Box variant='dots' />
               <Text>{`${formData?.fundSource}`}</Text>
-            </Flex>
+            </Flex> */}
             <Spacer size='xxl' />
             <Flex justifyContent='space-between'>
               <Text fontWeight={fontWeight.medium}>

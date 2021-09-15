@@ -119,14 +119,14 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
                   : shortenAddress(formData?.settlorAddress)
               }`}</Text>
             </Flex>
-            <Spacer size='xxl' />
+            {/* <Spacer size='xxl' />
             <Flex justifyContent='space-between'>
               <Text fontWeight={fontWeight.medium}>
                 {t('top-up-fund.label.fund-source')}
               </Text>
               <Box variant='dots' />
               <Text>{`${formData?.fundSource}`}</Text>
-            </Flex>
+            </Flex> */}
             <Spacer size='xxl' />
             <Flex justifyContent='space-between'>
               <Text fontWeight={fontWeight.medium}>
