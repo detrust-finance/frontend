@@ -167,7 +167,7 @@ const useDefaultTheme = () => {
       'sidebar-nav-item': {
         cursor: 'pointer',
         width: [180, 180, 180, 200],
-        height: 200,
+        height: 300,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
