@@ -1,0 +1,62 @@
+:root { 
+  --blue-bell: #929ecc;
+  --bunting: #1e1d4c;
+  --bunting-2: #181e4b;
+  --cod-gray: #080808;
+  --dolphin: #5e6282;
+  --jelly-bean: #df6951;
+  --mamba: #84829a;
+  --manatee: #939ea4;
+  --mercury: #e5e5e5;
+  --persimmon: #ff7152;
+  --purple-heart: #6246e5;
+  --tangaroa: #14183e;
+  --tiara: #cdd1d4;
+  --white: #ffffff;
+  --white-lilac: #f9f7fe;
+  --x212832: #212832;
+ 
+  --font-size-l: 18px;
+  --font-size-m: 16px;
+  --font-size-s: 14px;
+  --font-size-xl: 20px;
+  --font-size-xxl: 22px;
+  --font-size-xxxl: 24px;
+  --font-size-xxxxl: 50px;
+ 
+  --font-family-helvetica-regular: "Helvetica-Regular", Helvetica;
+  --font-family-poppins: "Poppins", Helvetica;
+  --font-family-roboto: "Roboto", Helvetica;
+  --font-family-volkhov: "Volkhov", Helvetica;
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+@import url("https://fonts.googleapis.com/css?family=Volkhov:700|Poppins:400,700,500,600|Roboto:400,500");
+
+.hide-button {
+  border: none;
+  background:none;
+}
+
+.container-center-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.container-center-horizontal a {
+  display: contents;
+  text-decoration: none;
+}
+
+.container-center-horizontal > * {
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+* {
+  box-sizing: border-box;
+}

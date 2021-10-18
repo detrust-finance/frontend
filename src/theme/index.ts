@@ -5,13 +5,13 @@ import { DarkTheme, LightTheme } from './colors'
 
 const useDefaultTheme = () => {
   const breakpoints: string[] = React.useMemo(
-    () => ['0px', '600px', '1200px', '1900px'],
+    () => ['375px', '834px', '1440px', '1900px'],
     [],
   )
   const darkMode = React.useMemo(() => false, [])
   const fonts = {
-    body: "'Montserrat', sans-serif",
-    header: "'Montserrat', sans-serif",
+    // body: "'Poppins', sans-serif",
+    // header: "'Poppins', sans-serif",
   }
   const fontWeight = {
     light: 300,
@@ -108,8 +108,8 @@ const useDefaultTheme = () => {
     spacer: space,
     variants: {
       body: {
-        width: '100%',
-        height: 'calc(100vh - 60px)',
+        // width: '100%',
+        // height: 'calc(100vh - 60px)',
       },
       'nav-item': {
         color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
@@ -499,14 +499,14 @@ export const GlobalStyle = createGlobalStyle<any>`
     font-family: ${({ fonts }) => fonts.body};
     color: ${({ colors, darkMode }) =>
       darkMode ? colors.white : colors.black};
-    background: ${({ colors, darkMode }) =>
-      darkMode ? colors.grey[100] : colors.grey[100]};
+    /*background: ${({ colors, darkMode }) =>
+      darkMode ? colors.grey[100] : colors.grey[100]};*/
   }
 
   body {
     font-family: ${({ fonts }) => fonts.body};
     padding: 0;
-    padding-top: 60px;
+    /* padding-top: 60px; */
     /* padding-bottom: 60px; */
     margin: 0;
   }
