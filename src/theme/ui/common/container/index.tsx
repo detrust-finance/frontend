@@ -6,11 +6,11 @@ const Container: React.FC<FlexProps> = ({ children, ...restprops }) => {
     <Flex
       sx={{
         width: '100%',
-        height: [
-          'calc(100vh - 120px)',
-          'calc(100vh - 120px)',
-          'calc(100vh - 60px)',
-        ],
+        // height: [
+        //   'calc(100vh - 120px)',
+        //   'calc(100vh - 120px)',
+        //   'calc(100vh - 60px)',
+        // ],
         justifyContent: 'center',
         alignItems: 'center',
       }}

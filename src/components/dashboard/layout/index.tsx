@@ -60,7 +60,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       }
     >
       <Container flexDirection='column'>
-        {isTablet && (
+        {/* {isTablet && (
           <>
             <Section justifyContent='flex-end'>
               <Image src='/images/logo.svg' width={180} height={30} />
@@ -71,9 +71,15 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         <Section>
           {isTablet && <Sidebar />}
           {children}
+        </Section> */}
+        <Section>
+          <Sidebar />
+        </Section>
+        <Section>
+          {children}
         </Section>
       </Container>
-      {!isTablet && <MobileSidebar />}
+      {/* {!isTablet && <MobileSidebar />} */}
     </Layout>
   )
 }

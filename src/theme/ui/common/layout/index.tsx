@@ -47,6 +47,7 @@ const Layout = ({
       <Header />
       <Box
         width={['100%', '100%', '100%', null]}
+        mt={144}
         mx='auto'
         px={[10, 10, 20, 0]}
         {...restprops}

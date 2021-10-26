@@ -154,8 +154,9 @@ const useDefaultTheme = () => {
         },
       },
       'sidebar-nav': {
-        width: [180, 180, 180, 200],
-        flexDirection: 'column',
+        //width: [180, 180, 180, 200],
+        width: '100%',
+        flexDirection: 'row',
       },
       'sidebar-nav-mobile': {
         width: '100%',
@@ -166,8 +167,9 @@ const useDefaultTheme = () => {
       },
       'sidebar-nav-item': {
         cursor: 'pointer',
-        width: [180, 180, 180, 200],
-        height: 200,
+        //width: [180, 180, 180, 200],
+        width: '50%',
+        height: 61,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
