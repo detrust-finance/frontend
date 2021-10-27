@@ -85,6 +85,7 @@ export const sidebarMenu: ISidebarMenu[] = [
       '/dashboard/settlor/top-up-fund/[trustId]',
     ],
     className: 'dark',
+    left: 0,
   },
   {
     icon: {
@@ -103,6 +104,7 @@ export const sidebarMenu: ISidebarMenu[] = [
       '/dashboard/beneficiary/claim/[...params]',
     ],
     className: 'darker',
+    left: '50%',
   },
 ]
 

@@ -26,7 +26,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   layoutBackgroundImage,
   ...restprops
 }) => {
-  const { isTablet } = useResponsive()
+  //const { isTablet } = useResponsive()
   const { t } = useTranslation('common')
   const { chainEnabled } = useWallet()
   const { account } = useActiveWeb3React()
@@ -72,9 +72,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           {isTablet && <Sidebar />}
           {children}
         </Section> */}
-        <Section>
-          <Sidebar />
-        </Section>
+        <Sidebar />
         <Section>
           {children}
         </Section>

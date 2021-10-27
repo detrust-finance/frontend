@@ -1,6 +1,6 @@
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
-import { rem, lighten, rgba } from 'polished'
+import { rem, lighten, rgba, toColorString } from 'polished'
 import { DarkTheme, LightTheme } from './colors'
 
 const useDefaultTheme = () => {
@@ -174,36 +174,36 @@ const useDefaultTheme = () => {
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: fontSizes['lg'],
-        color: darkMode ? DarkTheme.white : LightTheme.white,
-        bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
-        '.menucaption': {
-          color: darkMode ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.4)',
-          fontSize: fontSizes['md'],
-        },
-        '.caption': {
-          color: darkMode ? DarkTheme.grey[300] : LightTheme.grey[300],
-          fontSize: fontSizes['md'],
-        },
-        '&:hover .caption': {
-          color: darkMode ? DarkTheme.white : LightTheme.white,
-        },
-        '&.dark': {
-          bg: darkMode ? DarkTheme.blue[300] : LightTheme.blue[300],
-        },
-        '&.darker': {
-          bg: darkMode ? DarkTheme.blue[400] : LightTheme.blue[400],
-        },
-        '&:hover': {
-          bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
-          color: darkMode ? DarkTheme.white : LightTheme.white,
-        },
-        '&.active': {
-          bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
-          color: darkMode ? DarkTheme.white : LightTheme.white,
-          '.caption': {
-            color: darkMode ? DarkTheme.white : LightTheme.white,
-          },
-        },
+        //color: darkMode ? DarkTheme.white : LightTheme.white,
+        bg: darkMode ? DarkTheme.white : LightTheme.white,
+        // '.menucaption': {
+        //   color: darkMode ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.4)',
+        //   fontSize: fontSizes['md'],
+        // },
+        // '.caption': {
+        //   color: darkMode ? DarkTheme.grey[300] : LightTheme.grey[300],
+        //   fontSize: fontSizes['md'],
+        // },
+        // '&:hover .caption': {
+        //   color: darkMode ? DarkTheme.white : LightTheme.white,
+        // },
+        // '&.dark': {
+        //   bg: darkMode ? DarkTheme.blue[300] : LightTheme.blue[300],
+        // },
+        // '&.darker': {
+        //   bg: darkMode ? DarkTheme.blue[400] : LightTheme.blue[400],
+        // },
+        // '&:hover': {
+        //   bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
+        //   color: darkMode ? DarkTheme.white : LightTheme.white,
+        // },
+        // '&.active': {
+        //   bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
+        //   color: darkMode ? DarkTheme.white : LightTheme.white,
+        //   '.caption': {
+        //     color: darkMode ? DarkTheme.white : LightTheme.white,
+        //   },
+        // },
       },
       'sidebar-nav-item-mobile': {
         cursor: 'pointer',

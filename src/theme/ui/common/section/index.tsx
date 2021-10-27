@@ -6,7 +6,7 @@ const Section: React.FC<FlexProps> = ({ children, ...restprops }) => {
     <Flex
       sx={{
         width: '100%',
-        maxWidth: ['100%', 1000, null, null],
+        //maxWidth: ['100%', 1000, null, null],
       }}
       {...restprops}
     >
