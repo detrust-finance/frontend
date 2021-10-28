@@ -67,8 +67,8 @@ export const Web3StatusInner: React.FC<Web3StatusInnerProps> = ({
   return (
     <Button
       variant={buttonVariant ? buttonVariant : 'primary'}
-      py={13}
-      px={41}
+      py={18}
+      px={18}
       sx={{ textTransform: 'uppercase' }}
       onClick={toggleWalletModal}
     >

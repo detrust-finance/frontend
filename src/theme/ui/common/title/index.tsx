@@ -14,7 +14,8 @@ const Title: React.FC<TitleProps> = ({ title, subtitle, ...restprops }) => {
       <Box
         as='h1'
         sx={{
-          color: darkMode ? colors.blue[100] : colors.blue[100],
+          //color: darkMode ? colors.blue[100] : colors.blue[100],
+          color: colors.jaffa,
           fontSize: [fontSizes.xxl, fontSizes.xxl, fontSizes.xxxl],
           fontWeight: 800,
           textTransform: 'uppercase',

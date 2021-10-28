@@ -3,7 +3,7 @@ import { Flex, Box, Text } from 'rebass/styled-components'
 import SimpleBar from 'simplebar-react'
 import _ from 'lodash'
 // Components
-import { Spacer } from '../../'
+//import { Spacer } from '../../'
 import { ChevronDown, ChevronUp } from 'react-feather'
 // iterfaces
 import { TableProps, TableColumnProps } from './interfaces'
