@@ -1,17 +1,17 @@
 import React from 'react'
 import _ from 'lodash'
-import classnames from 'classnames'
+//import classnames from 'classnames'
 // Hooks
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 //  Components
 import Link from 'next/link'
-import Image from 'next/image'
+//import Image from 'next/image'
 import { Flex, Text, Box } from 'rebass/styled-components'
-import { Spacer } from '../../theme/ui'
+//import { Spacer } from '../../theme/ui'
 // Constants
 import { sidebarMenu, ISidebarMenu } from '../../constants'
-import { toColorString } from 'polished'
+//import { toColorString } from 'polished'
 import { useTheme } from '../../hooks'
 
 const Sidebar: React.FC = () => {
@@ -57,7 +57,7 @@ const Sidebar: React.FC = () => {
 
 const SidebarItem: React.FC<{ item: ISidebarMenu }> = ({ item }) => {
   const { t } = useTranslation('dashboard')
-  const router = useRouter()
+  //const router = useRouter()
   // const [isActive, setActive] = React.useState<boolean>(false)
   // React.useEffect(() => {
   //   if (_.isArray(item.path)) {
