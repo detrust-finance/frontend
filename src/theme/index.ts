@@ -255,11 +255,15 @@ const useDefaultTheme = () => {
         flexDirection: 'row',
         fontWeight: fontWeight.regular,
         width: '100%',
-        bg: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        //bg: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        background: 'linear-gradient(0deg, rgba(33, 40, 50, 0.05), rgba(33, 40, 50, 0.05)), #FFFFFF',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxSizing: 'border-box',
         color: darkMode ? DarkTheme.black : LightTheme.black,
         fontSize: fontSizes.md,
         p: 10,
         py: 16,
+        height: 42,
         justifyContent: 'space-between',
       },
       'table-sub.text': {
@@ -269,11 +273,16 @@ const useDefaultTheme = () => {
       },
       'table-row': {
         ...tableRow,
-        borderBottomWidth: 1,
-        borderBottomStyle: 'solid',
-        borderBottomColor: darkMode
-          ? DarkTheme.grey[100]
-          : LightTheme.grey[100],
+        // borderBottomWidth: 1,
+        // borderBottomStyle: 'solid',
+        // borderBottomColor: darkMode
+        //   ? DarkTheme.grey[100]
+        //   : LightTheme.grey[100],
+        background: '#FFF',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxSizing: 'border-box',
+        boxShadow: '0px 20px 80px rgba(0, 0, 0, 0.02)',
+        height: 80,
       },
       'layout-content': {
         flex: 1,
@@ -323,7 +332,9 @@ const useDefaultTheme = () => {
       },
       'list-title': {
         fontWeight: fontWeight.semiBold,
-        bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
+        //bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
+        background: 'linear-gradient(0deg, #63738B, #63738B), linear-gradient(180deg, #FFA666 0%, #FF7660 100%)',
+        borderRadius: '10px 10px 0px 0px',
         color: darkMode ? DarkTheme.white : LightTheme.white,
         px: 20,
         py: 13,

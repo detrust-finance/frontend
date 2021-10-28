@@ -164,7 +164,7 @@ const Table: React.FC<TableProps> = ({
               : { ...scrollbarsStyle }
           }
         >
-          <Spacer size='sm' />
+          {/* <Spacer size='sm' /> */}
           <Flex flexDirection='column' sx={{ position: 'relative' }}>
             {dataSource?.length > 0 &&
               _.orderBy(dataSource, [sortHeader], [sortDirection])?.map(
