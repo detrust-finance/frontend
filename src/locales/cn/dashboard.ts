@@ -76,7 +76,7 @@ export default {
   'button.claim.back-to-main': '回到我的信托',
   'label.trust-list.asset-name': '信托名称及资产',
   'label.trust-list.first-unlock-date': '开始领取时间',
-  'label.trust-list.unlock-interval': '领取间隔',
+  'label.trust-list.unlock-period': '领取间隔',
   'label.trust-list.num-payouts': '可领次数',
   'label.trust-list.claimable': '可领',
   'label.trust-list.unclaimed': '未领',

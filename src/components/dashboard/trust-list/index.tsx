@@ -200,7 +200,7 @@ export const TrustList: React.FC = ({ ...restprops }) => {
       {
         key: 'unlockinterval',
         dataIndex: 'unlockinterval',
-        title: t('label.trust-list.unlock-interval'),
+        title: t('label.trust-list.unlock-period'),
         width: '100px',
         align: 'center',
         hideSort: true,
