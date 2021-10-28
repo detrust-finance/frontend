@@ -67,22 +67,23 @@ const Header: React.FC = () => {
         </Box>
       </Link>
 
-      <Box>
+      {/* <Box> */}
+      <Flex
+        alignItems='center'
+        fontSize={fontSizes.lg}
+        fontWeight={fontWeight.medium}
+        // sx={{ cursor: 'pointer' }}
+      >
+        <DropDown
+          buttonComponent={<SelectLanguageButton />}
+          menuComponent={<SelectLanguageMenu />}
+          menuStyle={{
+            top: 32,
+            left: -39.5,
+          }}
+        />
         {account && (
-          <Flex
-            alignItems='center'
-            fontSize={fontSizes.lg}
-            fontWeight={fontWeight.medium}
-            // sx={{ cursor: 'pointer' }}
-          >
-            <DropDown
-              buttonComponent={<SelectLanguageButton />}
-              menuComponent={<SelectLanguageMenu />}
-              menuStyle={{
-                top: 32,
-                left: -39.5,
-              }}
-            />
+          <>
             {isTablet && shortenAddress(account, 12)}
             <Flex
               sx={{
@@ -98,13 +99,14 @@ const Header: React.FC = () => {
                 cursor: 'pointer',
               }}
               onClick={toggleWalletModal}
-              >
+            >
               <Image src='/images/user.svg' width={22} height={24} />
               {/* <User height={16} /> */}
             </Flex>
-          </Flex>
+          </>
         )}
-      </Box>
+      </Flex>
+      {/* </Box> */}
     </Flex>
   )
 }
