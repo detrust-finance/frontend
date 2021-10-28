@@ -46,7 +46,8 @@ const Settlor: NextPage = () => {
               py={13}
               px={41}
               sx={{ textTransform: 'uppercase' }}
-              width={240}
+              width={250}
+              height={52}
             >
               {t('button.label.create-trust')}
             </Button>
