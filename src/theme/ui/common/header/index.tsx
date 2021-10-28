@@ -82,29 +82,25 @@ const Header: React.FC = () => {
             left: -39.5,
           }}
         />
-        {account && (
-          <>
-            {isTablet && shortenAddress(account, 12)}
-            <Flex
-              sx={{
-                bg: colors.jaffa,
-                width: 40,
-                height: 40,
-                borderRadius: 25,
-                justifyContent: 'center',
-                alignItems: 'center',
-                color: colors.white,
-                ml: 25,
-                pr: '1px',
-                cursor: 'pointer',
-              }}
-              onClick={toggleWalletModal}
-            >
-              <Image src='/images/user.svg' width={22} height={24} />
-              {/* <User height={16} /> */}
-            </Flex>
-          </>
-        )}
+          {account && isTablet && shortenAddress(account, 12)}
+          <Flex
+            sx={{
+              bg: account ? colors.jaffa : colors.grey[200],
+              width: 40,
+              height: 40,
+              borderRadius: 25,
+              justifyContent: 'center',
+              alignItems: 'center',
+              color: colors.white,
+              ml: 25,
+              pr: '1px',
+              cursor: 'pointer',
+            }}
+            onClick={toggleWalletModal}
+          >
+            <Image src='/images/user.svg' width={22} height={24} />
+            {/* <User height={16} /> */}
+          </Flex>
       </Flex>
       {/* </Box> */}
     </Flex>
