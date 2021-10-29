@@ -1,6 +1,6 @@
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
-import { rem, lighten, rgba, toColorString } from 'polished'
+import { rem, lighten, rgba, toColorString, darken } from 'polished'
 import { DarkTheme, LightTheme } from './colors'
 
 const useDefaultTheme = () => {
@@ -473,12 +473,17 @@ const useDefaultTheme = () => {
       secondary: {
         ...buttonStyles,
         fontSize: fontSizes.md,
-        bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
-        color: darkMode ? DarkTheme.white : LightTheme.white,
+        //bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
+        bg: darkMode ? DarkTheme.white : LightTheme.white,
+        //color: darkMode ? DarkTheme.white : LightTheme.white,
+        color: '#212832',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxShadow: '0px 20px 80px rgba(0, 0, 0, 0.02)',
+        borderRadius: 8,
         '&:hover': {
           bg: darkMode
-            ? lighten(0.1, DarkTheme.blue[100])
-            : lighten(0.1, LightTheme.blue[100]),
+            ? lighten(0.1, DarkTheme.white)
+            : darken(0.1, LightTheme.white),
         },
         '&:disabled': {
           bg: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],

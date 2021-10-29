@@ -31,6 +31,7 @@ export const Option: React.FC<OptionProps> = ({
       onClick={onClick}
       className={active ? 'active' : ''}
       width='100%'
+      height='68px'
     >
       <Flex alignItems='center' justifyContent='space-between' width='100%'>
         <Flex flexDirection='column' alignItems='flex-start'>
@@ -43,13 +44,14 @@ export const Option: React.FC<OptionProps> = ({
               borderRadius: 1337,
               padding: '3px !important',
             },
+            marginRight: '20px',
           }}
         >
           <Image
             src={icon}
             alt='Icon'
-            width={24}
-            height={24}
+            width={40}
+            height={40}
             className='wallet-icon'
           />
         </Box>
