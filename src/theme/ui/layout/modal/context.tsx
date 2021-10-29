@@ -61,10 +61,11 @@ const Modals: React.FC = ({ children }) => {
         >
           <Box
             onClick={!options.hideClose ? handleDismiss : () => {}}
-            backgroundColor={colors.blue[500]}
+            //backgroundColor={colors.blue[500]}
             sx={{
               position: 'absolute',
-              backdropFilter: 'blur(2px)',
+              bg: 'rgba(250, 252, 255, 0.1)',
+              backdropFilter: 'blur(28px)',
               top: 0,
               right: 0,
               bottom: 0,
