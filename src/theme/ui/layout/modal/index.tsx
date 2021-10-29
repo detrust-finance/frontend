@@ -8,7 +8,7 @@ import styled from 'styled-components'
 
 const Modal: React.FC<ModalProps> = ({
   title,
-  width = [320, 320, 360, null],
+  width = [327, 327, 500, null],
   children,
   onDismiss,
   hideClose,
