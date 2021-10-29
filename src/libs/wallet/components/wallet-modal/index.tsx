@@ -19,6 +19,9 @@ import { useTranslation } from 'react-i18next'
 import { useWallet, useToastify } from '../../hooks'
 import { setupNetwork } from '../../utils/wallet'
 
+// Close icon 
+import { X } from 'react-feather'
+
 const WALLET_VIEWS = {
   OPTIONS: 'options',
   OPTIONS_SECONDARY: 'options_secondary',
@@ -279,7 +282,16 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
           </>
         ) : (
           <Box>
-            <Text>{t('wallet.label.connect-to-a-wallet')}</Text>
+            <Flex flexDirection='row' alignItems='center' justifyContent='space-between'>
+              <Text>{t('wallet.label.connect-to-a-wallet')}</Text>
+              <X
+                width='14px'
+                height='14px'
+                onClick={onDismiss}
+                cursor='pointer'
+                color='black'
+              />
+            </Flex>
             <Spacer size='xl' />
           </Box>
         )}
