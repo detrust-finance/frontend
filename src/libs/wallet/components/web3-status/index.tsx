@@ -58,7 +58,8 @@ export const Web3StatusInner: React.FC<Web3StatusInnerProps> = ({
   const [toggleWalletModal] = useModal(() => {
     toggle()
     return (
-      <Modal title={t('wallet.modal.title')}>
+      // <Modal title={t('wallet.modal.title')}>
+      <Modal>
         <WalletModal />
       </Modal>
     )

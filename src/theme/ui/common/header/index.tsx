@@ -26,7 +26,8 @@ const Header: React.FC = () => {
   const { isTablet } = useResponsive()
 
   const [toggleWalletModal] = useModal(
-    <Modal title={t('wallet.modal.title')}>
+    //<Modal title={t('wallet.modal.title')}>
+    <Modal>
       <WalletModal />
     </Modal>,
   )
