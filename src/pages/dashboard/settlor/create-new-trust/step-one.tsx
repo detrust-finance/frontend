@@ -594,18 +594,24 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
 
             <Spacer size='xxxl' />
 
-            <Box variant='outlined-box'>
-              <Flex flexDirection='column' alignItems='center'>
-                <Box as='p' fontWeight={fontWeight.medium}>
-                  {t('create-new-trust.is-trust-revocable-or-not')}
-                </Box>
+            <Flex flexDirection='row' justifyContent='space-between'>
+              <Box flex={1}>
+                <Flex
+                  variant='outlined-box'
+                  flexDirection='column'
+                  alignItems='center'
+                  //sx={{ borderBottomColor: 'transparent' }}
+                >
+                  <Text fontWeight={fontWeight.medium}>
+                    {t('create-new-trust.is-trust-revocable-or-not')}
+                  </Text>
+                </Flex>
 
-                <Spacer size='xl' />
-
-                <Flex flexDirection='row'>
+                <Flex flexDirection='row' variant='outlined-box2' sx={{ borderTopColor: 'transparent' }}>
                   <Label htmlFor='revocable' width='auto'>
                     <Flex alignItems='center' mr={15}>
                       <Checkbox
+                        width={12}
                         color={colors.jaffa}
                         id='revocable'
                         name='revocable'
@@ -617,8 +623,8 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
                     </Flex>
                   </Label>
                 </Flex>
-              </Flex>
-            </Box>
+              </Box>
+            </Flex>
 
             <Spacer size='xxxl' />
 

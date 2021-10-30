@@ -292,7 +292,16 @@ const useDefaultTheme = () => {
         p: [20, 20, 40],
       },
       'outlined-box': {
-        borderRadius: 2,
+        borderRadius: '10px 10px 0 0',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        justifyContent: 'center',
+        alignItems: 'center',
+        py: 20,
+      },
+      'outlined-box2': {
+        borderRadius: '0 0 10px 10px',
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],

@@ -41,7 +41,8 @@ const Input = React.forwardRef<any, InputProps>(
             borderColor: darkMode ? colors.grey[100] : colors.grey[100],
             borderWidth: 1,
             borderStyle: 'solid',
-            borderRadius: borderRadius[4],
+            //borderRadius: borderRadius[4],
+            borderRadius: '0 0 10px 10px',
             transition: 'all ease-in-out 0.2s',
             '&:focus-within': {
               borderColor: darkMode ? colors.white : colors.black,
