@@ -545,7 +545,7 @@ export const GlobalStyle = createGlobalStyle<any>`
 
   a {
     color: ${({ colors, darkMode }) =>
-      darkMode ? colors.blue[100] : colors.blue[100]};
+      darkMode ? colors.blue[100] : colors.jaffa};
   }
 
   a:hover {
