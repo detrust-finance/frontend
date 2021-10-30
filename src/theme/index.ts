@@ -394,19 +394,19 @@ const useDefaultTheme = () => {
       'wizard-header-inactive': {
         ...wizardHeaderCommon,
         color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
-        borderBottomColor: darkMode
-          ? DarkTheme.grey[200]
-          : LightTheme.grey[200],
+        // borderBottomColor: darkMode
+        //   ? DarkTheme.grey[200]
+        //   : LightTheme.grey[200],
       },
       'wizard-header-active': {
         ...wizardHeaderCommon,
         color: darkMode ? DarkTheme.black : LightTheme.black,
-        borderBottomColor: darkMode ? DarkTheme.red[100] : LightTheme.jaffa,
+        // borderBottomColor: darkMode ? DarkTheme.red[100] : LightTheme.jaffa,
       },
       'wizard-header-done': {
         ...wizardHeaderCommon,
         color: darkMode ? DarkTheme.black : LightTheme.black,
-        borderBottomColor: darkMode ? DarkTheme.green : LightTheme.green,
+        // borderBottomColor: darkMode ? DarkTheme.green : LightTheme.green,
       },
       'wizard-number-inactive': {
         ...wizardNumberCommon,
@@ -420,7 +420,7 @@ const useDefaultTheme = () => {
       },
       'wizard-number-done': {
         ...wizardNumberCommon,
-        bg: darkMode ? DarkTheme.green : LightTheme.green,
+        bg: darkMode ? DarkTheme.green : LightTheme.jaffa,
         color: darkMode ? DarkTheme.white : LightTheme.white,
       },
       dots: {
