@@ -493,11 +493,15 @@ const useDefaultTheme = () => {
       'grey-outline': {
         ...buttonStyles,
         fontSize: fontSizes.md,
+        borderRadius: 10,
         bg: darkMode ? DarkTheme.white : LightTheme.white,
-        color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
+        //color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
+        color: '#212832',
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
+        //borderColor: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
+        //borderColor: '#212832',
+        borderColor: 'rgba(33, 40, 50, 0.4)',
         '&:hover': {
           borderColor: darkMode ? DarkTheme.black : LightTheme.black,
           color: darkMode ? DarkTheme.black : LightTheme.black,
