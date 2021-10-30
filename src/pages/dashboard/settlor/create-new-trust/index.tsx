@@ -1,7 +1,6 @@
 import { useForm, useStep } from 'react-hooks-helper'
 import StepOne from './step-one'
 import StepTwo from './step-two'
-import StepThree from './step-three'
 import Submit from './last-submit'
 import { useActiveWeb3React } from '../../../../libs/wallet'
 import { Login } from '../../../../components'
@@ -10,7 +9,6 @@ import { Login } from '../../../../components'
 const steps = [
   { id: 'step-one' },
   { id: 'step-two' },
-  { id: 'step-three' },
   { id: 'submit' },
 ]
 
@@ -51,8 +49,6 @@ const MultiStepForm: React.FC = () => {
       return <StepOne {...props} />
     case 'step-two':
       return <StepTwo {...props} />
-    case 'step-three':
-      return <StepThree {...props} />
     case 'submit':
       return <Submit {...props} />
 
