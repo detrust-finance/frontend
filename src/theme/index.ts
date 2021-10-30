@@ -401,7 +401,7 @@ const useDefaultTheme = () => {
       'wizard-header-active': {
         ...wizardHeaderCommon,
         color: darkMode ? DarkTheme.black : LightTheme.black,
-        borderBottomColor: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
+        borderBottomColor: darkMode ? DarkTheme.red[100] : LightTheme.jaffa,
       },
       'wizard-header-done': {
         ...wizardHeaderCommon,
@@ -415,7 +415,7 @@ const useDefaultTheme = () => {
       },
       'wizard-number-active': {
         ...wizardNumberCommon,
-        bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
+        bg: darkMode ? DarkTheme.red[100] : LightTheme.jaffa,
         color: darkMode ? DarkTheme.white : LightTheme.white,
       },
       'wizard-number-done': {
