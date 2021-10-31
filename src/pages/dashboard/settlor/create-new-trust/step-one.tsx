@@ -78,7 +78,8 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
-              width: 240,
+              width: 250,
+              height: 52,
             }
           : {
               variant: 'grey-outline',
@@ -90,7 +91,8 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
         buttonProps: isTablet
           ? {
               type: 'submit',
-              width: 240,
+              width: 250,
+              height: 52,
             }
           : {
               type: 'submit',

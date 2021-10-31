@@ -46,11 +46,13 @@ const StepTwo: React.FC<FullData> = ({ formData, navigation }) => {
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
-              width: 240,
+              width: 250,
+              height: 52,
             }
           : {
               variant: 'grey-outline',
               flex: 1,
+              height: 52,
             },
       },
       {
@@ -58,10 +60,12 @@ const StepTwo: React.FC<FullData> = ({ formData, navigation }) => {
         onClick: navigation?.next,
         buttonProps: isTablet
           ? {
-              flex: 1,
+              width: 250,
+              height: 52,
             }
           : {
               flex: 1,
+              height: 52,
             },
       },
     ],
