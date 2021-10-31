@@ -603,7 +603,7 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
                   //sx={{ borderBottomColor: 'transparent' }}
                 >
                   <Text fontWeight={fontWeight.medium}>
-                    {t('create-new-trust.is-trust-revocable-or-not')}
+                    {t('create-new-trust.if-you-choose-an-irrevocable-trust')}
                   </Text>
                 </Flex>
 
@@ -611,7 +611,7 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
                   <Label htmlFor='revocable' width='auto'>
                     <Flex alignItems='center' mr={15}>
                       <Checkbox
-                        width={12}
+                        width={16}
                         color={colors.jaffa}
                         id='revocable'
                         name='revocable'

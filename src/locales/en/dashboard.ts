@@ -104,6 +104,7 @@ export default {
   'create-new-trust.fund-deposit': 'I want to deposit funds from',
   'create-new-trust.fund-deposit-asset': 'I want to deposit this asset:',
   'create-new-trust.is-trust-revocable-or-not': 'Is the trust revocable or not?',
+  'create-new-trust.if-you-choose-an-irrevocable-trust': 'If you choose an irrevocable trust, you will not be able to take out your money under this contract since it is locked.',
   'create-new-trust.label.wallet': 'Wallet balance',
   'create-new-trust.label.dtrust': 'DeTrust balance',
   'label.eth': 'ETH',

@@ -95,6 +95,7 @@ export default {
   'create-new-trust.fund-deposit': '我想从此钱包里充值',
   'create-new-trust.fund-deposit-asset': '我想添加此类资产',
   'create-new-trust.is-trust-revocable-or-not': '信托是否可撤销？',
+  'create-new-trust.if-you-choose-an-irrevocable-trust': '如果你选择不可撤销的信托，你将无法取出本合约下的钱，因为它被锁定了。',
   'create-new-trust.label.wallet': '钱包余额',
   'create-new-trust.label.dtrust': '信托未锁余额',
   'label.eth': '以太坊',
