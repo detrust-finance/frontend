@@ -209,11 +209,6 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         number: 2,
         status: 'done',
       },
-      {
-        title: t('create-new-trust.menu.step-three'),
-        number: 3,
-        status: 'done',
-      },
     ],
     [t],
   )
@@ -226,10 +221,12 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
-              width: 240,
+              width: 250,
+              height: 52,
             }
           : {
               flex: 1,
+              height: 52,
             },
       },
       {
@@ -238,10 +235,12 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
-              width: 240,
+              width: 250,
+              height: 52,
             }
           : {
               flex: 1,
+              height: 52,
             },
       },
     ],
@@ -274,7 +273,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
 
           <Flex
             flexDirection='column'
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -469,7 +468,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
 
         <Flex
           flexDirection='column'
-          variant='outlined-box'
+          variant='outlined-box-full'
           width='100%'
           flex={1}
           justifyContent='center'

@@ -35,7 +35,7 @@ const MultiStepForm: React.FC = () => {
     releaseInterval: '',
     releaseStartTime: '',
     totalDepositAmount: '',
-    revocable: false,
+    revocable: true,
   })
   const { step, navigation } = useStep({ initialStep: 0, steps })
   const { id }: any = step
