@@ -286,7 +286,8 @@ const useDefaultTheme = () => {
       },
       'layout-content': {
         flex: 1,
-        height: ['calc(100vh - 140px)', 'calc(100vh - 140px)', 600],
+        minHeight: ['calc(100vh - 140px)', 'calc(100vh - 140px)', 600],
+        height: 'auto',
         overflowY: 'auto',
         bg: darkMode ? DarkTheme.white : LightTheme.white,
         p: [20, 20, 40],
