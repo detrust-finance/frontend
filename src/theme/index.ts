@@ -310,6 +310,15 @@ const useDefaultTheme = () => {
         alignItems: 'center',
         py: 20,
       },
+      'outlined-box-full': {
+        borderRadius: '10px',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        justifyContent: 'center',
+        alignItems: 'center',
+        py: 20,
+      },
       'small-outlined-box': {
         borderRadius: '2',
         border: '1px solid black',
