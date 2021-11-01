@@ -283,6 +283,10 @@ const useDefaultTheme = () => {
         boxSizing: 'border-box',
         boxShadow: '0px 20px 80px rgba(0, 0, 0, 0.02)',
         height: 80,
+        '&:last-child': {
+          borderBottomLeftRadius: 10,
+          borderBottomRightRadius: 10,
+        }
       },
       'layout-content': {
         flex: 1,
@@ -404,12 +408,19 @@ const useDefaultTheme = () => {
         justifyContent: 'space-between',
         alignItems: 'center',
         p: 10,
-        borderBottomWidth: 1,
-        borderBottomStyle: 'solid',
-        borderBottomColor: darkMode
-          ? DarkTheme.grey[100]
-          : LightTheme.grey[100],
-      },
+        // borderBottomWidth: 1,
+        // borderBottomStyle: 'solid',
+        // borderBottomColor: darkMode
+        //   ? DarkTheme.grey[100]
+        //   : LightTheme.grey[100],
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxSizing: 'border-box',
+        boxShadow: '0px 20px 80px rgba(0, 0, 0, 0.02)',
+        '&:last-child': {
+            borderBottomLeftRadius: 10,
+            borderBottomRightRadius: 10,
+          }
+        },
       'wizard-header-inactive': {
         ...wizardHeaderCommon,
         color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
