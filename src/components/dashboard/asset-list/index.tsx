@@ -20,6 +20,8 @@ import { useDetrust } from '../../../libs/detrust'
 import { Spacer, Button } from '../../../theme/ui'
 import usePrices from '../../../hooks/usePrices'
 import _ from 'lodash'
+import { Archive } from 'iconoir-react'
+import { Loader } from '../../loader'
 
 export const AssetList: React.FC = ({ ...restprops }) => {
   const router = useRouter()
@@ -300,6 +302,7 @@ export const AssetList: React.FC = ({ ...restprops }) => {
 
   return (
     <>
+      {(!isLoading && data.length) ?
       <Flex flexDirection='column' mb='auto'>
         <Box variant='list' {...restprops}>
           <Flex variant='list-title'>
@@ -323,7 +326,35 @@ export const AssetList: React.FC = ({ ...restprops }) => {
             />
           </Box>
         </Box>
+      </Flex> :
+      <Flex
+        flexDirection='column'
+          width='100%'
+          flex={1}
+          justifyContent='center'
+          alignItems='center'
+          px={spacer.xl}
+      >
+        {isLoading ?
+        <Loader size={67} /> :
+        <>
+          <Flex justifyContent='center'>
+            <Archive
+              color='#212832'
+              width={67}
+              height={67}
+              strokeWidth={0.8}
+              opacity={0.4}
+            />
+          </Flex>
+          <Spacer size='xl' />
+          <Box as='p' fontSize='md'>
+            {t('asset-list.empty-data')}
+          </Box>
+        </>
+        }
       </Flex>
+      }
 
       <Flex flexDirection='row' justifyContent='center'>
         {/* <Link href={`/dashboard/beneficiary/claim`} passHref> */}
@@ -332,7 +363,8 @@ export const AssetList: React.FC = ({ ...restprops }) => {
             py={13}
             px={41}
             sx={{ textTransform: 'uppercase' }}
-            width={260}
+            width={250}
+            height={52}
             disabled={!_.some(data, { claimEnabled: true })}
             onClick={() => {
               router.push('/dashboard/beneficiary/claim')
