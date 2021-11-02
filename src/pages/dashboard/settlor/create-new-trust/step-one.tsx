@@ -79,12 +79,12 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
           ? {
               variant: 'grey-outline',
               width: 250,
-              py: 19,
+              height: 52,
             }
           : {
               variant: 'grey-outline',
               flex: 1,
-              py: 19,
+              height: 52,
             },
       },
       {

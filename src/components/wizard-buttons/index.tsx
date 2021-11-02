@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import { Flex } from 'rebass/styled-components'
-import { Spacer, Button } from '../../theme/ui'
+import { Flex, Button } from 'rebass/styled-components'
+import { Spacer } from '../../theme/ui'
 import { WizardButtonsProps, IWizardButton } from './interfaces'
 import { useTheme } from '../../hooks'
 
