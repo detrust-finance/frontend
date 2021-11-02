@@ -496,7 +496,7 @@ const useDefaultTheme = () => {
           background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), linear-gradient(180deg, #FFA666 0%, #FF7660 100%)',
         },
         '&:disabled': {
-          bg: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+          background: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
           color: darkMode ? DarkTheme.white : LightTheme.white,
         },
       },
