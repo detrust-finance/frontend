@@ -17,6 +17,8 @@ import { useResponsive, useTheme } from '../../../hooks'
 import { Spacer, Button } from '../../../theme/ui'
 import { useRouter } from 'next/router'
 import usePrices from '../../../hooks/usePrices'
+import { Archive } from 'iconoir-react'
+import { Loader } from '../../loader'
 
 export const TrustList: React.FC = ({ ...restprops }) => {
   const { colors, fontWeight, spacer } = useTheme()
@@ -278,29 +280,63 @@ export const TrustList: React.FC = ({ ...restprops }) => {
     [colors.grey, fontWeight.medium, t],
   )
 
-  return (
-    <Box variant='list' {...restprops}>
-      <Flex variant='list-title'>
-        <Box sx={{ textTransform: 'uppercase' }}>{t('trust-list.title')}</Box>
-        <Box fontSize='md'>{shortenAddress(account!, 8)}</Box>
-      </Flex>
+  if (!isLoading && data.length) {
+    return (
+      <Flex flexDirection='column' mb='auto'>
+        <Box variant='list' {...restprops}>
+          <Flex variant='list-title'>
+            <Box sx={{ textTransform: 'uppercase' }}>{t('trust-list.title')}</Box>
+            <Box fontSize='md'>{shortenAddress(account!, 8)}</Box>
+          </Flex>
 
-      <Box overflowX='auto' mb={[spacer['xxl'], spacer['xxl'], 0]}>
-        <Table
-          columns={columns}
-          subRowComponent={(data: any) => <SubRow data={data} />}
-          dataSource={data}
-          loading={isLoading}
-          minWidth={650}
-          tableHeaderStyle={{
-            minWidth: 650,
-          }}
-          scrollbarsStyle={{
-            height: isTablet ? 290 : 'auto',
-          }}
-        />
-      </Box>
-    </Box>
+          <Box overflowX='auto' mb={[spacer['xxl'], spacer['xxl'], 0]}>
+            <Table
+              columns={columns}
+              subRowComponent={(data: any) => <SubRow data={data} />}
+              dataSource={data}
+              loading={isLoading}
+              minWidth={650}
+              tableHeaderStyle={{
+                minWidth: 650,
+              }}
+              scrollbarsStyle={{
+                height: isTablet ? 290 : 'auto',
+              }}
+            />
+          </Box>
+        </Box>
+      </Flex>
+    )
+  }
+
+  return ( 
+      <Flex
+        flexDirection='column'
+          width='100%'
+          flex={1}
+          justifyContent='center'
+          alignItems='center'
+          px={spacer.xl}
+        >
+          {isLoading ?
+          <Loader size={67} /> :
+          <>
+            <Flex justifyContent='center'>
+              <Archive
+                color='#212832'
+                width={67}
+                height={67}
+                strokeWidth={0.8}
+                opacity={0.4}
+              />
+            </Flex>
+            <Spacer size='xl' />
+            <Box as='p' fontSize='md'>
+              {t('trust-list.empty-data')}
+            </Box>
+          </>
+          }
+      </Flex>
   )
 }
 

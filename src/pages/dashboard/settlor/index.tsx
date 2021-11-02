@@ -35,9 +35,7 @@ const Settlor: NextPage = () => {
           <Spacer size='xxl' />
         </Box>
 
-        <Flex flexDirection='column' mb='auto'>
-          <TrustList />
-        </Flex>
+        <TrustList />
 
         <Flex flexDirection='row' justifyContent='center'>
           <Link href='/dashboard/settlor/create-new-trust'>
