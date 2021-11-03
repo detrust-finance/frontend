@@ -17,7 +17,7 @@ import { useResponsive, useTheme } from '../../../hooks'
 import { Spacer, Button } from '../../../theme/ui'
 import { useRouter } from 'next/router'
 import usePrices from '../../../hooks/usePrices'
-import { Archive } from 'iconoir-react'
+import { Archive, EditPencil } from 'iconoir-react'
 import { Loader } from '../../loader'
 
 export const TrustList: React.FC = ({ ...restprops }) => {
@@ -388,7 +388,7 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
             ≈ ${data.lockedAmountUSD}
           </Text>
         </Flex>
-        <Flex
+        {/* <Flex
           flexDirection='column'
           justifyContent='center'
           alignItems='center'
@@ -400,7 +400,25 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           </Text>
           <Spacer size='lg' />
           <Text fontWeight={fontWeight.semiBold}>{data.revocable ? "true" : "false"}</Text>
+        </Flex> */}
+        {data.revocable &&
+        <Flex
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
+          flex={1}
+          py={10}
+        >
+          <EditPencil
+            color='#212832'
+            width={32}
+            height={32}
+            strokeWidth={1}
+          />
+          <Spacer size='lg' />
+          <Text fontWeight={fontWeight.semiBold}>Edit</Text>
         </Flex>
+        }
         {/* <Flex
           flexDirection='column'
           justifyContent='center'
