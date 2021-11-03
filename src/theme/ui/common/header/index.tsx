@@ -176,7 +176,7 @@ const SelectLanguageMenu: React.FC<SelectLanguageMenuProps> = ({
   handleClose,
 }) => {
   const { colors } = useTheme()
-  const { route, locales } = useRouter()
+  const { asPath, locales } = useRouter()
   const { t } = useTranslation('common')
 
   return (
@@ -220,7 +220,7 @@ const SelectLanguageMenu: React.FC<SelectLanguageMenuProps> = ({
             },
           }}
         >
-          <Link href={`${route}`} locale={locale}>
+          <Link href={asPath} locale={locale}>
             {t(`lang.label.${locale}`)}
           </Link>
         </Box>
