@@ -57,6 +57,13 @@ export default {
   'content.subtitle.settlor-new-trust': 'Create new Trust',
   'content.subtitle.settlor-top-up': 'Top up trust',
   'content.subtitle.settlor-top-up.add': 'Want to add more?',
+  'content.subtitle.settlor-edit': 'Edit',
+  'content.subtitle.settlor-edit.revoke': 'Revoke',
+  'content.subtitle.settlor-edit.set-irrevocable': 'Set Irrevocable',
+  'content.subtitle.settlor-edit.revoke.warning.label': 'Warning',
+  'content.subtitle.settlor-edit.revoke.warning.content': 'Once revoked, all your coin will be back to your trust wallet.',
+  'content.subtitle.settlor-edit.set-irrevocable.remainder.label': 'Reminder',
+  'content.subtitle.settlor-edit.set-irrevocable.remainder.content': 'If you choose to set irrevocable then the trust will be locked and will not be able to withdraw.',
   'content.description.settlor-steps':
     'Follow the steps in the Trust Creation Wizard to create a brand new Trust for your Beneficiaries',
   'content.description.settlor':
@@ -80,6 +87,7 @@ export default {
   'button.label.cancel': 'Cancel',
   'button.label.back': 'Back',
   'button.label.submit': 'Submit',
+  'button.label.determine': 'Determine',
   'button.transfer-funds.back-to-main': 'Back to my balances',
   'button.top-up-fund.back-to-main': 'Back to my trusts',
   'button.create-new-trust.back-to-main': 'Back to my trusts',

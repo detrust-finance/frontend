@@ -19,6 +19,7 @@ import { useRouter } from 'next/router'
 import usePrices from '../../../hooks/usePrices'
 import { Archive, EditPencil } from 'iconoir-react'
 import { Loader } from '../../loader'
+import DropDown from '../../dropw-down'
 
 export const TrustList: React.FC = ({ ...restprops }) => {
   const { colors, fontWeight, spacer } = useTheme()
@@ -409,14 +410,18 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           flex={1}
           py={10}
         >
-          <EditPencil
-            color='#212832'
-            width={32}
-            height={32}
-            strokeWidth={1}
+          <DropDown
+            buttonComponent={<TrustEditButton />}
+            menuComponent={<TrustEditMenu trustId={data.key} />}
+            menuStyle={{
+              top: 32,
+              left: -39.5,
+            }}
           />
           <Spacer size='lg' />
-          <Text fontWeight={fontWeight.semiBold}>Edit</Text>
+          <Text fontWeight={fontWeight.semiBold}>
+            {t('content.subtitle.settlor-edit')}
+          </Text>
         </Flex>
         }
         {/* <Flex
@@ -461,6 +466,93 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           {t('button.label.top-up')}
         </Button>
       </Flex>
+    </Flex>
+  )
+}
+
+const TrustEditButton = () => <EditPencil
+  color='#212832'
+  width={32}
+  height={32}
+  strokeWidth={1}
+/>
+
+interface TrustEditMenuProps {
+  handleClose?: React.EffectCallback
+  trustId: string | number
+}
+
+const TrustEditMenu: React.FC<TrustEditMenuProps> = ({
+  handleClose,
+  trustId,
+}) => {
+  const { colors } = useTheme()
+  const { t } = useTranslation('dashboard')
+
+  return (
+    <Flex
+      flexDirection='column'
+      justifyContent='space-between'
+      alignItems='center'
+      sx={{
+        width: 180,
+        height: 130,
+        bg: colors.white,
+        boxShadow: '0px 100px 80px rgba(0, 0, 0, 0.02), 0px 64.8148px 46.8519px rgba(0, 0, 0, 0.0151852), 0px 38.5185px 25.4815px rgba(0, 0, 0, 0.0121481), 0px 20px 13px rgba(0, 0, 0, 0.01), 0px 8.14815px 6.51852px rgba(0, 0, 0, 0.00785185), 0px 1.85185px 3.14815px rgba(0, 0, 0, 0.00481481)',
+        borderRadius: '8px',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        overflow: 'hidden',
+        color: '#212832',
+      }}
+    >
+      <Box
+        onClick={() => {
+          console.log(trustId)
+          handleClose?.()
+        }}
+        px={20}
+        py='10px'
+        textAlign='center'
+        sx={{
+          '&:hover': {
+            bg: colors.grey[100],
+          },
+          '& a': {
+            color: colors.black,
+            textDecoration: 'none',
+          },
+        }}
+      >
+        {t('content.subtitle.settlor-edit.revoke')}
+      </Box>
+      <Box
+        width={140}
+        height={0}
+        sx={{
+          opacity: 0.1,
+          border: '1px solid #000000',
+        }}
+      />
+      <Box
+        onClick={() => {
+          console.log(trustId)
+          handleClose?.()
+        }}
+        px={20}
+        py='10px'
+        textAlign='center'
+        sx={{
+          '&:hover': {
+            bg: colors.grey[100],
+          },
+          '& a': {
+            color: colors.black,
+            textDecoration: 'none',
+          },
+        }}
+      >
+        {t('content.subtitle.settlor-edit.set-irrevocable')}
+      </Box>
     </Flex>
   )
 }

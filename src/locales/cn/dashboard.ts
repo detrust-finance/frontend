@@ -48,6 +48,13 @@ export default {
   'content.subtitle.settlor-new-trust': '新建一个信托',
   'content.subtitle.settlor-top-up': '添加信托资产',
   'content.subtitle.settlor-top-up.add': '添加资产进此信托？',
+  'content.subtitle.settlor-edit': '编辑',
+  'content.subtitle.settlor-edit.revoke': '撤销',
+  'content.subtitle.settlor-edit.set-irrevocable': '设置为不可撤销',
+  'content.subtitle.settlor-edit.revoke.warning.label': '警告',
+  'content.subtitle.settlor-edit.revoke.warning.content': '一旦撤销，你的币将回到你的信托钱包。',
+  'content.subtitle.settlor-edit.set-irrevocable.remainder.label': '提醒',
+  'content.subtitle.settlor-edit.set-irrevocable.remainder.content': '如果选择设置为不可撤销，此信托会被锁定且无法回退。',
   'content.description.settlor-steps':
     '为你重要的人设置好信托资产，保护他们的未来',
   'content.description.settlor':
@@ -71,6 +78,7 @@ export default {
   'button.label.cancel': '取消',
   'button.label.back': '返回',
   'button.label.submit': '提交',
+  'button.label.determine': '决定',
   'button.transfer-funds.back-to-main': '回到我的余额',
   'button.top-up-fund.back-to-main': '回到我的信托',
   'button.create-new-trust.back-to-main': '回到信托列表',
