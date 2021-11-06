@@ -37,7 +37,8 @@ const useDefaultTheme = () => {
   const buttonStyles = {
     // cursor: 'default',
     borderRadius: borderRadius[0],
-    fontWeight: fontWeight.bold,
+    //fontWeight: fontWeight.bold,
+    fontWeight: 'normal',
     transition: 'all ease-in-out 0.2s',
     '&:active': {
       transform: 'scale(0.95)',
