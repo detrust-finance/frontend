@@ -13,13 +13,14 @@ import { useDetrust } from '../../../libs/detrust'
 import BigNumber from 'bignumber.js'
 import { ETH_ADDRESS, NUMBER_FORMAT, ONE_DAY_SECONDS } from '../../../constants'
 import { TokenIcon, TokenName } from '../..'
-import { useResponsive, useTheme } from '../../../hooks'
-import { Spacer, Button } from '../../../theme/ui'
+import { useResponsive, useTheme, useModal } from '../../../hooks'
+import { Spacer, Button, Modal } from '../../../theme/ui'
 import { useRouter } from 'next/router'
 import usePrices from '../../../hooks/usePrices'
 import { Archive, EditPencil } from 'iconoir-react'
 import { Loader } from '../../loader'
 import DropDown from '../../dropw-down'
+import RevokeModal from '../../revoke-modal'
 
 export const TrustList: React.FC = ({ ...restprops }) => {
   const { colors, fontWeight, spacer } = useTheme()
@@ -482,13 +483,18 @@ interface TrustEditMenuProps {
   trustId: string | number
 }
 
-const TrustEditMenu: React.FC<TrustEditMenuProps> = ({
+const TrustEditMenu = ({
   handleClose,
   trustId,
-}) => {
+}: TrustEditMenuProps) => {
   const { colors } = useTheme()
   const { t } = useTranslation('dashboard')
 
+  const [toggleRevokeModal] = useModal(
+    <Modal>
+      <RevokeModal trustId={trustId} />
+    </Modal>,
+  )
   return (
     <Flex
       flexDirection='column'
@@ -509,6 +515,7 @@ const TrustEditMenu: React.FC<TrustEditMenuProps> = ({
         onClick={() => {
           console.log(trustId)
           handleClose?.()
+          toggleRevokeModal()
         }}
         px={20}
         py='10px'

@@ -488,7 +488,8 @@ const useDefaultTheme = () => {
     buttons: {
       primary: {
         ...buttonStyles,
-        fontSize: fontSizes.md,
+        fontSize: '16px',
+        lineHeight: '24px',
         borderRadius: 10,
         background: 'linear-gradient(180deg, #FFA666 0%, #FF7660 100%)',
         color: darkMode ? DarkTheme.white : LightTheme.white,
@@ -522,7 +523,8 @@ const useDefaultTheme = () => {
       },
       'grey-outline': {
         ...buttonStyles,
-        fontSize: fontSizes.md,
+        fontSize: '16px',
+        lineHeight: '24px',
         borderRadius: 10,
         bg: darkMode ? DarkTheme.white : LightTheme.white,
         //color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
@@ -549,7 +551,7 @@ export const GlobalStyle = createGlobalStyle<any>`
   /* Global styles bellow */
 
   html {
-    font-size: 12px;
+    font-size: 16px;
     font-family: ${({ fonts }) => fonts.body};
     color: ${({ colors, darkMode }) =>
       darkMode ? colors.white : colors.black};
@@ -558,7 +560,8 @@ export const GlobalStyle = createGlobalStyle<any>`
   }
 
   body {
-    font-family: ${({ fonts }) => fonts.body};
+    // font-family: ${({ fonts }) => fonts.body};
+    font-family: Poppins;
     padding: 0;
     /* padding-top: 60px; */
     /* padding-bottom: 60px; */
