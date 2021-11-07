@@ -285,6 +285,64 @@ export const topUpFromBalance = async (
 }
 
 /**
+ * Set a trust to irrevocable by trustId
+ *
+ * @param trustId the trustId settlor want to set irrevocable
+ *
+ */
+//### `setIrrevocable(uint256 trustId)` (external)
+export const setIrrevocable = async (detrustContract: any, trustId: string) => {
+  console.log('util setIrrevocable data', trustId)
+  const estimatedGas = await detrustContract.estimateGas
+    .setIrrevocable(trustId)
+    .catch((e: any) => {
+      console.log('estimatedGas failed', e)
+      return detrustContract.estimateGas.setIrrevocable(trustId)
+    })
+
+  return detrustContract
+    .setIrrevocable(trustId, {
+      gasLimit: calculateGasMargin(estimatedGas),
+    })
+    .then((response: any) => {
+      return response
+    })
+    .catch((error: Error) => {
+      console.debug('Failed to set irrevocable', error)
+      throw error
+    })
+}
+
+/**
+ * Revoke a trust by trustId
+ *
+ * @param trustId the trustId settlor want to revoke
+ *
+ */
+//### `revoke(uint256 trustId)` (external)
+export const revoke = async (detrustContract: any, trustId: string) => {
+  console.log('util revoke data', trustId)
+  const estimatedGas = await detrustContract.estimateGas
+    .revoke(trustId)
+    .catch((e: any) => {
+      console.log('estimatedGas failed', e)
+      return detrustContract.estimateGas.revoke(trustId)
+    })
+
+  return detrustContract
+    .revoke(trustId, {
+      gasLimit: calculateGasMargin(estimatedGas),
+    })
+    .then((response: any) => {
+      return response
+    })
+    .catch((error: Error) => {
+      console.debug('Failed to revoke', error)
+      throw error
+    })
+}
+
+/**
  * Beneficiary release one trust asset by this function
  *
  * @param trustId the trustId beneficiary want to release
