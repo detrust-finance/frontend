@@ -140,6 +140,8 @@ export default {
   'revoke.last-submit.description': '请在钱包中确认交易等待交易成功',
   'button.revoke.back-to-main': '回到我的信托',
   'revoke.last-submit.tx-success': '已成功撤销信托！',  
+  'revoke.last-submit.success': '提交成功',
+  'revoke.last-submit.wait-tx': '请等待交易确认成功',
   'beneficiaries.label.available-to-claim': '可领取',
   'beneficiaries.claim.last-submit.description':
     '如果你连接的钱包地址是受益人，你可以在这里领取相关信托资产',

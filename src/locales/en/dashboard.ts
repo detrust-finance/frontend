@@ -150,6 +150,8 @@ export default {
   'revoke.last-submit.description': 'Confirm the transaction in your wallet and wait for the confirmation',
   'button.revoke.back-to-main': 'Back to my trusts',
   'revoke.last-submit.tx-success': 'Trust has been revoked successfully!',
+  'revoke.last-submit.success': 'Success!',
+  'revoke.last-submit.wait-tx': 'Please wait for your transaction to be confirmed.',
   'beneficiaries.label.available-to-claim': 'Available to claim',
   'beneficiaries.claim.last-submit.description':
     'If your connected wallet has beneficial in trust assets, you can claim the assets here.',

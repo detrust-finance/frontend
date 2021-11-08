@@ -83,6 +83,8 @@ export const sidebarMenu: ISidebarMenu[] = [
       '/dashboard/settlor',
       '/dashboard/settlor/create-new-trust',
       '/dashboard/settlor/top-up-fund/[trustId]',
+      '/dashboard/settlor/revoke/[trustId]',
+      '/dashboard/settlor/setIrrevocable/[trustId]',
     ],
     className: 'dark',
     left: 0,
