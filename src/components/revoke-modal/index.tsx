@@ -3,6 +3,7 @@ import { Spacer } from '../../theme/ui'
 import { useTranslation } from 'react-i18next'
 import { X } from 'react-feather'
 import { useTheme, useResponsive } from "../../hooks"
+import { useRouter } from "next/router"
 
 interface Props {
   onDismiss?: any
@@ -11,8 +12,9 @@ interface Props {
 
 function RevokeModal({ onDismiss, trustId }: Props) {
   const { t } = useTranslation('dashboard')
-  const { spacer } = useTheme()
+  //const { spacer } = useTheme()
   const { isTablet } = useResponsive()
+  const router = useRouter()
 
   const buttonProps = isTablet
   ? {
@@ -63,6 +65,7 @@ function RevokeModal({ onDismiss, trustId }: Props) {
           height={52}
           variant='primary'
           onClick={() => {
+            router.push(`/dashboard/settlor/revoke/${trustId}`)
             onDismiss?.()
           }}
           {...buttonProps}
