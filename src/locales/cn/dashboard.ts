@@ -133,6 +133,13 @@ export default {
   'top-up-fund.label.beneficiary-address': '受益人地址',
   'top-up-fund.label.fund-source': '资产来源',
   'content.description.top-up-fund': '请选择添加资产的来源和数量',
+  'revoke.menu.step-one': '选择要撤销的信托',
+  'revoke.menu.step-two': '确定',
+  'content.subtitle.settlor-revoke': '撤销信托',
+  'content.description.revoke': '被撤销的信托中的资产将回到委托人的钱包中。',
+  'revoke.last-submit.description': '请在钱包中确认交易等待交易成功',
+  'button.revoke.back-to-main': '回到我的信托',
+  'revoke.last-submit.tx-success': '已成功撤销信托！',  
   'beneficiaries.label.available-to-claim': '可领取',
   'beneficiaries.claim.last-submit.description':
     '如果你连接的钱包地址是受益人，你可以在这里领取相关信托资产',

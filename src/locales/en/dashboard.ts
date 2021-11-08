@@ -143,6 +143,13 @@ export default {
   'top-up-fund.label.fund-source': 'Source of funds',
   'content.description.top-up-fund':
     'Select the origin of your funds and enter the amount you want to top up the trust.',
+  'revoke.menu.step-one': 'Choose trust to revoke',
+  'revoke.menu.step-two': 'Confirm',
+  'content.subtitle.settlor-revoke': 'Revoke trust',
+  'content.description.revoke': 'The assets in the revoked trust will be back to the settlor wallet.',
+  'revoke.last-submit.description': 'Confirm the transaction in your wallet and wait for the confirmation',
+  'button.revoke.back-to-main': 'Back to my trusts',
+  'revoke.last-submit.tx-success': 'Trust has been revoked successfully!',
   'beneficiaries.label.available-to-claim': 'Available to claim',
   'beneficiaries.claim.last-submit.description':
     'If your connected wallet has beneficial in trust assets, you can claim the assets here.',
