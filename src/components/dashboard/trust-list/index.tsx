@@ -12,7 +12,7 @@ import moment from 'moment'
 import { useDetrust } from '../../../libs/detrust'
 import BigNumber from 'bignumber.js'
 import { ETH_ADDRESS, NUMBER_FORMAT, ONE_DAY_SECONDS } from '../../../constants'
-import { TokenIcon, TokenName } from '../..'
+import { TokenIcon, TokenName, RevokeModal, SetIrrevocableModal } from '../..'
 import { useResponsive, useTheme, useModal } from '../../../hooks'
 import { Spacer, Button, Modal } from '../../../theme/ui'
 import { useRouter } from 'next/router'
@@ -20,7 +20,6 @@ import usePrices from '../../../hooks/usePrices'
 import { Archive, EditPencil } from 'iconoir-react'
 import { Loader } from '../../loader'
 import DropDown from '../../dropw-down'
-import RevokeModal from '../../revoke-modal'
 
 export const TrustList: React.FC = ({ ...restprops }) => {
   const { colors, fontWeight, spacer } = useTheme()
@@ -495,6 +494,12 @@ const TrustEditMenu = ({
       <RevokeModal trustId={trustId} />
     </Modal>,
   )
+  const [toggleSetIrrevocableModal] = useModal(
+    <Modal>
+      <SetIrrevocableModal trustId={trustId} />
+    </Modal>,
+  )
+
   return (
     <Flex
       flexDirection='column'
@@ -544,6 +549,7 @@ const TrustEditMenu = ({
         onClick={() => {
           console.log(trustId)
           handleClose?.()
+          toggleSetIrrevocableModal()
         }}
         px={20}
         py='10px'

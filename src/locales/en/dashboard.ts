@@ -62,8 +62,8 @@ export default {
   'content.subtitle.settlor-edit.set-irrevocable': 'Set Irrevocable',
   'content.subtitle.settlor-edit.revoke.warning.label': 'Warning',
   'content.subtitle.settlor-edit.revoke.warning.content': 'Once revoked, all your coin will be back to your trust wallet.',
-  'content.subtitle.settlor-edit.set-irrevocable.remainder.label': 'Reminder',
-  'content.subtitle.settlor-edit.set-irrevocable.remainder.content': 'If you choose to set irrevocable then the trust will be locked and will not be able to withdraw.',
+  'content.subtitle.settlor-edit.set-irrevocable.reminder.label': 'Reminder',
+  'content.subtitle.settlor-edit.set-irrevocable.reminder.content': 'If you choose to set irrevocable then the trust will be locked and will not be able to withdraw.',
   'content.description.settlor-steps':
     'Follow the steps in the Trust Creation Wizard to create a brand new Trust for your Beneficiaries',
   'content.description.settlor':
@@ -152,6 +152,15 @@ export default {
   'revoke.last-submit.tx-success': 'Trust has been revoked successfully!',
   'revoke.last-submit.success': 'Success!',
   'revoke.last-submit.wait-tx': 'Please wait for your transaction to be confirmed.',
+  'set-irrevocable.menu.step-one': 'Choose trust',
+  'set-irrevocable.menu.step-two': 'Confirm',
+  'content.subtitle.settlor-set-irrevocable': 'Set trust irrevocable',
+  'content.description.set-irrevocable': 'If you choose to set irrevocable then the trust will be locked and will not be able to withdraw.',
+  'set-irrevocable.last-submit.description': 'Confirm the transaction in your wallet and wait for the confirmation',
+  'button.set-irrevocable.back-to-main': 'Back to my trusts',
+  'set-irrevocable.last-submit.tx-success': 'Trust has been set irrevocable successfully!',
+  'set-irrevocable.last-submit.success': 'Success!',
+  'set-irrevocable.last-submit.wait-tx': 'Please wait for your transaction to be confirmed.',
   'beneficiaries.label.available-to-claim': 'Available to claim',
   'beneficiaries.claim.last-submit.description':
     'If your connected wallet has beneficial in trust assets, you can claim the assets here.',

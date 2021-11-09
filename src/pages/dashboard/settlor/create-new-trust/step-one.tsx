@@ -618,10 +618,7 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
                         width={16}
                         color={colors.jaffa}
                         id='revocable'
-                        name='revocable'
-                        value='revocable'
-                        checked={formData.revocable}
-                        onChange={setForm}
+                        {...register('revocable')}
                       />
                       {t('create-new-trust.label.revocable')}
                     </Flex>

@@ -53,8 +53,8 @@ export default {
   'content.subtitle.settlor-edit.set-irrevocable': '设置为不可撤销',
   'content.subtitle.settlor-edit.revoke.warning.label': '警告',
   'content.subtitle.settlor-edit.revoke.warning.content': '一旦撤销，你的币将回到你的信托钱包。',
-  'content.subtitle.settlor-edit.set-irrevocable.remainder.label': '提醒',
-  'content.subtitle.settlor-edit.set-irrevocable.remainder.content': '如果选择设置为不可撤销，此信托会被锁定且无法回退。',
+  'content.subtitle.settlor-edit.set-irrevocable.reminder.label': '提醒',
+  'content.subtitle.settlor-edit.set-irrevocable.reminder.content': '如果选择设置为不可撤销，此信托会被锁定且无法回退。',
   'content.description.settlor-steps':
     '为你重要的人设置好信托资产，保护他们的未来',
   'content.description.settlor':
@@ -142,6 +142,15 @@ export default {
   'revoke.last-submit.tx-success': '已成功撤销信托！',  
   'revoke.last-submit.success': '提交成功',
   'revoke.last-submit.wait-tx': '请等待交易确认成功',
+  'set-irrevocable.menu.step-one': '选择信托',
+  'set-irrevocable.menu.step-two': '确定',
+  'content.subtitle.settlor-set-irrevocable': '将信托设为不可撤销',
+  'content.description.set-irrevocable': 'If you choose to set irrevocable then the trust will be locked and will not be able to withdraw.',
+  'set-irrevocable.last-submit.description': '请在钱包中确认交易等待交易成功',
+  'button.set-irrevocable.back-to-main': '回到我的信托',
+  'set-irrevocable.last-submit.tx-success': '已成功将信托设为不可撤销！',
+  'set-irrevocable.last-submit.success': '提交成功',
+  'set-irrevocable.last-submit.wait-tx': '请等待交易确认成功',
   'beneficiaries.label.available-to-claim': '可领取',
   'beneficiaries.claim.last-submit.description':
     '如果你连接的钱包地址是受益人，你可以在这里领取相关信托资产',
