@@ -187,11 +187,11 @@ export const AssetList: React.FC = ({ ...restprops }) => {
                 <TokenIcon className='list-icon' address={data.type} />
               </Box>
               <Box>
-                <Text fontWeight={fontWeight.medium}>{data.asset}</Text>
+                <Text fontSize='lg'>{data.asset}</Text>
                 <TokenName
                   address={data.type}
                   as='p'
-                  fontSize='md'
+                  fontSize='sm'
                   color={colors.grey[200]}
                 />
               </Box>
@@ -210,10 +210,10 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         Render(data) {
           return (
             <Flex flexDirection='column' alignItems='center'>
-              <Text fontWeight={fontWeight.medium}>
+              <Text fontSize='lg'>
                 {data.unlockdate?.firstLine}
               </Text>
-              <Text as='p' fontSize='md' color={colors.grey[200]}>
+              <Text as='p' fontSize='sm' color={colors.grey[200]}>
                 {data.unlockdate?.secondLine} UTC
               </Text>
             </Flex>
@@ -230,10 +230,10 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         Render(data) {
           return (
             <Flex flexDirection='column' alignItems='center'>
-              <Text fontWeight={fontWeight.medium}>
+              <Text fontSize='lg'>
                 {data.unlockperiod.number}
               </Text>
-              <Text as='p' fontSize='md' color={colors.grey[200]}>
+              <Text as='p' fontSize='sm' color={colors.grey[200]}>
                 {data.unlockperiod.timePeriod}
               </Text>
             </Flex>
@@ -250,8 +250,8 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         Render(data) {
           return (
             <Flex flexDirection='column' alignItems='center'>
-              <Text fontWeight={fontWeight.medium}>{data.numpayouts}</Text>
-              <Text as='p' fontSize='md' color={colors.grey[200]}>
+              <Text fontSize='lg'>{data.numpayouts}</Text>
+              <Text as='p' fontSize='sm' color={colors.grey[200]}>
                 {t('content.asset-list.payouts')}
               </Text>
             </Flex>
@@ -268,8 +268,8 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         Render(data) {
           return (
             <Flex flexDirection='column' alignItems='center'>
-              <Text fontWeight={fontWeight.medium}>{data.claimable}</Text>
-              <Text as='p' fontSize='md' color={colors.grey[200]}>
+              <Text fontSize='lg'>{data.claimable}</Text>
+              <Text as='p' fontSize='sm' color={colors.grey[200]}>
                 ≈ ${data.claimableUSD}
               </Text>
             </Flex>
@@ -289,8 +289,8 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         Render(data) {
           return (
             <Flex flexDirection='column' alignItems='flex-end'>
-              <Text fontWeight={fontWeight.medium}>{data.unreleasedAmount}</Text>
-              <Text as='p' fontSize='md' color={colors.grey[200]}>
+              <Text fontSize='lg'>{data.unreleasedAmount}</Text>
+              <Text as='p' fontSize='sm' color={colors.grey[200]}>
                 ≈ ${data.unreleasedAmountUSD}
               </Text>
             </Flex>
@@ -361,8 +361,6 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         {/* <Link href={`/dashboard/beneficiary/claim`} passHref> */}
           <Button
             variant='primary'
-            py={13}
-            px={41}
             sx={{ textTransform: 'uppercase' }}
             width={250}
             height={52}
