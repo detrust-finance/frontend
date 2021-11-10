@@ -64,11 +64,7 @@ const Table: React.FC<TableProps> = ({
         variant={tableHeaderVariant ? tableHeaderVariant : 'table-header'}
         {...tableHeaderStyle}
       >
-        {subRowComponent && (
-          <Box width={30} textAlign='center'>
-            +
-          </Box>
-        )}
+        <Box width={30} textAlign='center' />
         {columns &&
           columns.map((col: TableColumnProps) => (
             <Box

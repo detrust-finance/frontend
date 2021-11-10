@@ -22,14 +22,23 @@ const useDefaultTheme = () => {
     extraBold: 800,
   }
 
+  // const fontSizes = {
+  //   xs: rem('8px'),
+  //   sm: rem('12px'),
+  //   md: rem('14px'),
+  //   lg: rem('16px'),
+  //   xl: rem('20px'),
+  //   xxl: rem('24px'),
+  //   xxxl: rem('30px'),
+  // }
   const fontSizes = {
-    xs: rem('8px'),
-    sm: rem('12px'),
-    md: rem('14px'),
-    lg: rem('16px'),
-    xl: rem('20px'),
-    xxl: rem('24px'),
-    xxxl: rem('30px'),
+    xs: '8px',
+    sm: '12px',
+    md: '14px',
+    lg: '16px',
+    xl: '20px',
+    xxl: '24px',
+    xxxl: '30px',
   }
   const borderRadius = {
     0: 0,
@@ -283,11 +292,11 @@ const useDefaultTheme = () => {
         border: '1px solid rgba(0, 0, 0, 0.1)',
         boxSizing: 'border-box',
         boxShadow: '0px 20px 80px rgba(0, 0, 0, 0.02)',
-        height: 80,
+        py: '22px',
         '&:last-child': {
           borderBottomLeftRadius: 10,
           borderBottomRightRadius: 10,
-        }
+        },
       },
       'layout-content': {
         flex: 1,
