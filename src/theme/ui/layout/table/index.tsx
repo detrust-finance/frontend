@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Flex, Box, Text } from 'rebass/styled-components'
-import SimpleBar from 'simplebar-react'
+//import SimpleBar from 'simplebar-react'
 import _ from 'lodash'
 // Components
 //import { Spacer } from '../../'
@@ -157,13 +157,13 @@ const Table: React.FC<TableProps> = ({
         </Flex>
       )}
       <Box {...restprops}>
-        <SimpleBar
+        {/* <SimpleBar
           style={
             !scrollbarsStyle
               ? { minHeight: 290, maxHeight: 290 }
               : { ...scrollbarsStyle }
           }
-        >
+        > */}
           {/* <Spacer size='sm' /> */}
           <Flex flexDirection='column' sx={{ position: 'relative' }}>
             {dataSource?.length > 0 &&
@@ -251,7 +251,7 @@ const Table: React.FC<TableProps> = ({
                       ),
               )}
           </Flex>
-        </SimpleBar>
+        {/* </SimpleBar> */}
       </Box>
     </Flex>
   )

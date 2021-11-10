@@ -37,12 +37,14 @@ const Settlor: NextPage = () => {
 
         <TrustList />
 
-        <Flex flexDirection='row' justifyContent='center'>
+        <Flex
+          flexDirection='row'
+          justifyContent='center'
+          sx={{ mt: '40px' }}
+        >
           <Link href='/dashboard/settlor/create-new-trust'>
             <Button
               variant='primary'
-              py={13}
-              px={41}
               sx={{ textTransform: 'uppercase' }}
               width={250}
               height={52}
