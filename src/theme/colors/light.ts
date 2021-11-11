@@ -26,6 +26,7 @@ const lightTheme = {
   jaffa: '#F0864B',
   ebonyClay: '#212832',
   zircon: '#FAFCFF',
+  dolphin: '#212832',
 }
 
 export default lightTheme

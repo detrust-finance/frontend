@@ -17,12 +17,18 @@ const Login: React.FC = () => {
         alignItems='center'
         variant='layout-content'
       >
-        <Title title={t('content.title.dashboard')} />
-        <Spacer size='xl' />
-        <Box as='p' fontSize='md'>
+        <Title title={t('content.title.dashboard')} mb='20px' />
+        {/* <Spacer size='xl' /> */}
+        <Box
+          as='p'
+          fontSize='lg'
+          color='dolphin'
+          opacity={0.5}
+          mb='64px'
+        >
           {t('content.description.dashboard')}
         </Box>
-        <Spacer size='xxxxl' />
+        {/* <Spacer size='xxxxl' /> */}
         <Web3StatusInner text={t('content.buttons.connect-your-wallet')} />
       </Flex>
     </DashboardLayout>
