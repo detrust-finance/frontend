@@ -152,11 +152,7 @@ const SelectLanguageButton: React.FC = () => {
     <Flex
       variant='nav-item'
       sx={{
-        alignItems: 'center',
-        //backgroundColor: colors.red[100],
-        color: colors.ebonyClay,
         py: '6.5px',
-        //width: 25,
         textAlign: 'center',
         mr: [10, 10, 25, null],
         '&:hover': {
@@ -164,10 +160,8 @@ const SelectLanguageButton: React.FC = () => {
         },
       }}
     >
-      {locale?.toUpperCase()}
-        <Box sx={{ ml: '6px' }}>
-          <Image src='/images/down.svg' width={9} height={5} />
-        </Box>
+      <Box mr='5.5px'>{locale}</Box>
+      <Image src='/images/down.svg' width={9} height={5} />
      </Flex>
   )
 }
