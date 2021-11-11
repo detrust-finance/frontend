@@ -12,6 +12,10 @@ const useDefaultTheme = () => {
   const fonts = {
     // body: "'Poppins', sans-serif",
     // header: "'Poppins', sans-serif",
+    hel: 'Helvetica',
+    vol: "'Volkhov', Helvetica",
+    pop: "'Poppins', Helvetica",
+    rob: "'Roboto', Helvetica",
   }
   const fontWeight = {
     light: 300,
@@ -183,7 +187,9 @@ const useDefaultTheme = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: fontSizes['lg'],
+        //fontSize: fontSizes['lg'],
+        fontSize: '17px',
+        fontFamily: 'hel',
         //color: darkMode ? DarkTheme.white : LightTheme.white,
         bg: darkMode ? DarkTheme.white : LightTheme.white,
         // '.menucaption': {
@@ -562,7 +568,7 @@ export const GlobalStyle = createGlobalStyle<any>`
 
   html {
     font-size: 16px;
-    font-family: ${({ fonts }) => fonts.body};
+    // font-family: ${({ fonts }) => fonts.body};
     color: ${({ colors, darkMode }) =>
       darkMode ? colors.white : colors.black};
     /*background: ${({ colors, darkMode }) =>
@@ -578,9 +584,9 @@ export const GlobalStyle = createGlobalStyle<any>`
     margin: 0;
   }
 
-  button, input, select, label, p, a, h1, h2, h3, h4, h5, h6, ul, li, div {
-    font-family: ${({ fonts }) => fonts.body} !important;
-  }
+  // button, input, select, label, p, a, h1, h2, h3, h4, h5, h6, ul, li, div {
+  //   font-family: ${({ fonts }) => fonts.body} !important;
+  // }
 
   button {
     cursor: pointer !important;

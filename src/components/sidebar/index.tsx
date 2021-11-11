@@ -107,7 +107,11 @@ const SidebarItem: React.FC<{ item: ISidebarMenu }> = ({ item }) => {
           />
         )} */}
         {/* <Spacer size='xl' /> */}
-        <Text as='span' fontWeight='bold' sx={{ textTransform: 'uppercase' }}>
+        <Text
+          as='span'
+          sx={{
+            textTransform: 'uppercase'
+          }}>
           {t(`sidebar.label.${item.title}`)}
         </Text>
         {/* <Spacer size='sm' />
