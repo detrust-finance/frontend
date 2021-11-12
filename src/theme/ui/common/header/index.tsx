@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 // Components
-import { Flex, Box } from 'rebass/styled-components'
+import { Flex, Box, Text } from 'rebass/styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
 import Modal from '../../layout/modal'
@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next'
 import DropDown from '../../../../components/dropw-down'
 import { useActiveWeb3React } from '../../../../libs/wallet'
 import { shortenAddress } from '../../../../libs/wallet/utils'
+import { CheckCircledOutline } from 'iconoir-react'
 //import MobileMenu from './mobile-menu'
 
 const Header: React.FC = () => {
@@ -170,20 +171,23 @@ const SelectLanguageMenu: React.FC<SelectLanguageMenuProps> = ({
   handleClose,
 }) => {
   const { colors } = useTheme()
-  const { asPath, locales } = useRouter()
+  const { asPath, locale: curLocale, locales } = useRouter()
   const { t } = useTranslation('common')
 
   return (
     <Box
       sx={{
-        width: 122,
+        py: '10px',
         bg: colors.white,
         // borderWidth: 1,
         // borderStyle: 'solid',
         // borderColor: colors.red[100],
+        border: '1px solid rgba(0, 0, 0, 0.1)',
         boxShadow: '0px 100px 80px rgba(0, 0, 0, 0.02), 0px 64.8148px 46.8519px rgba(0, 0, 0, 0.0151852), 0px 38.5185px 25.4815px rgba(0, 0, 0, 0.0121481), 0px 20px 13px rgba(0, 0, 0, 0.01), 0px 8.14815px 6.51852px rgba(0, 0, 0, 0.00785185), 0px 1.85185px 3.14815px rgba(0, 0, 0, 0.00481481)',
         borderRadius: '6px',
         overflow: 'hidden',
+        fontFamily: 'hel',
+        fontSize: '17px',
         // '.arrow': {
         //   marginTop: '-6px',
         //   marginBottom: '1px',
@@ -202,20 +206,40 @@ const SelectLanguageMenu: React.FC<SelectLanguageMenuProps> = ({
           onClick={handleClose}
           key={locale}
           px={20}
-          py='8px'
+          py='20px'
           textAlign='center'
           sx={{
             '&:hover': {
               bg: colors.grey[100],
             },
-            '& a': {
-              color: colors.black,
-              textDecoration: 'none',
-            },
+            // '& a': {
+            //   color: colors.black,
+            //   textDecoration: 'none',
+            // },
           }}
         >
           <Link href={asPath} locale={locale}>
-            {t(`lang.label.${locale}`)}
+            <Flex
+            >
+              <Box
+                width='17px'
+                height='17px'
+                mr='6px'
+              >
+                {(locale === curLocale) &&
+                  <CheckCircledOutline
+                    color={colors.jaffa}
+                    strokeWidth={2.5}
+                    width='17px'
+                    height='17px'/>}
+              </Box>
+              <Text
+                sx={{color: colors.black}}
+                pr='10px'
+              >
+                {t(`lang.label.${locale}`)}
+              </Text>
+            </Flex>
           </Link>
         </Box>
       ))}
