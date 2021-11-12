@@ -24,7 +24,6 @@ const lightTheme = {
   },
   green: '#29B500',
   jaffa: '#F0864B',
-  ebonyClay: '#212832',
   zircon: '#FAFCFF',
   dolphin: '#212832',
 }

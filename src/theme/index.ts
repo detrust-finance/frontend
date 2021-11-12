@@ -127,7 +127,7 @@ const useDefaultTheme = () => {
       },
       'nav-item': {
         //color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
-        color: 'ebonyClay',
+        color: 'dolphin',
         textDecoration: 'none',
         //fontSize: [fontSizes.md, fontSizes.md, fontSizes.md, null],
         fontSize: '17px',

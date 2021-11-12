@@ -168,7 +168,7 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
               id={`connect-${key}`}
               key={key}
               active={option.connector && option.connector === connector}
-              color={option.color}
+              //color={option.color}
               link={option.href}
               header={option.name}
               icon={`/images/${option.iconName}`}
@@ -187,7 +187,7 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
               <Option
                 id={`connect-${key}`}
                 key={key}
-                color={'#E8831D'}
+                //color={'#E8831D'}
                 header={'Install Metamask'}
                 link={'https://metamask.io/'}
                 icon={'/images/metamask.png'}
@@ -221,7 +221,7 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
             }}
             key={key}
             active={option.connector === connector}
-            color={option.color}
+            //color={option.color}
             link={option.href}
             header={option.name}
             icon={`/images/${option.iconName}`}
@@ -265,7 +265,9 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
       )
     }
     return (
-      <Box>
+      <Box
+        color='dolphin'
+      >
         {walletView !== WALLET_VIEWS.ACCOUNT ? (
           <>
             <Button
@@ -283,7 +285,9 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
         ) : (
           <Box>
             <Flex flexDirection='row' alignItems='center' justifyContent='space-between'>
-              <Text>{t('wallet.label.connect-to-a-wallet')}</Text>
+              <Text fontSize='17px' lineHeight='25px'>
+                {t('wallet.label.connect-to-a-wallet')}
+              </Text>
               <X
                 width='14px'
                 height='14px'
@@ -315,7 +319,10 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
           )}
           {walletView !== WALLET_VIEWS.PENDING && (
             <Flex mt='32px'>
-              <Text>{t('wallet.label.new-to-ethereum')}? &nbsp;</Text>{' '}
+              <Text color='rgba(33, 40, 50, 0.5)'>
+                {t('wallet.label.new-to-ethereum')}? &nbsp;
+              </Text>
+              {' '}
               <ExternalLink href='https://ethereum.org/wallets/'>
                 {t('wallet.label.learn-more-about-wallets')}
               </ExternalLink>
