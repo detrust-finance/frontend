@@ -84,7 +84,7 @@ const PendingView: React.FC<PendingViewProps> = ({
             <Option
               id={`connect-${key}`}
               key={key}
-              color={option.color}
+              //color={option.color}
               header={option.name}
               icon={'/images/' + option.iconName}
             />

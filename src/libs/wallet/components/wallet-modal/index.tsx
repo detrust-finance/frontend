@@ -21,6 +21,7 @@ import { setupNetwork } from '../../utils/wallet'
 
 // Close icon 
 import { X } from 'react-feather'
+import { ArrowLeft } from 'iconoir-react'
 
 const WALLET_VIEWS = {
   OPTIONS: 'options',
@@ -268,7 +269,7 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
       <Box
         color='dolphin'
       >
-        {walletView !== WALLET_VIEWS.ACCOUNT ? (
+        {/* {walletView !== WALLET_VIEWS.ACCOUNT ? (
           <>
             <Button
               variant='secondary'
@@ -282,12 +283,24 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
             </Button>
             <Spacer size='xl' />
           </>
-        ) : (
+        ) : ( */}
           <Box>
             <Flex flexDirection='row' alignItems='center' justifyContent='space-between'>
-              <Text fontSize='17px' lineHeight='25px'>
-                {t('wallet.label.connect-to-a-wallet')}
-              </Text>
+              {walletView !== WALLET_VIEWS.ACCOUNT ?
+                <ArrowLeft
+                  width='20px'
+                  height='20px'
+                  cursor='pointer'
+                  onClick={() => {
+                    setPendingError(false)
+                    setWalletView(WALLET_VIEWS.ACCOUNT)
+                  }}
+                />
+                :
+                <Text fontSize='17px' lineHeight='25px'>
+                  {t('wallet.label.connect-to-a-wallet')}
+                </Text>
+              }
               <X
                 width='14px'
                 height='14px'
@@ -298,7 +311,7 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
             </Flex>
             <Spacer size='xl' />
           </Box>
-        )}
+        {/* )} */}
         <Box>
           {walletView === WALLET_VIEWS.PENDING ? (
             <PendingView
