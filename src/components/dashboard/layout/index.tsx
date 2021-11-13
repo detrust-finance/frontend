@@ -35,7 +35,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   React.useEffect(() => {
     if (!account || chainEnabled) return
     onPresent(
-      <Modal title={t('modal.title.warning')} width={[320, 320, 386, null]}>
+      <Modal /*title={t('modal.title.warning')} width={[320, 500, 500, null]}*/>
         <NetworkModal />
       </Modal>,
       {
