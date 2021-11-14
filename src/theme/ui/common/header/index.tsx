@@ -209,8 +209,9 @@ const SelectLanguageMenu: React.FC<SelectLanguageMenuProps> = ({
           py='20px'
           textAlign='center'
           sx={{
+            cursor: 'pointer',
             '&:hover': {
-              bg: colors.grey[100],
+              fontWeight: 'bold',
             },
             // '& a': {
             //   color: colors.black,

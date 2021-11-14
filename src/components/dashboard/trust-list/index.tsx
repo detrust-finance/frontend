@@ -507,13 +507,13 @@ const TrustEditMenu = ({
       alignItems='center'
       sx={{
         width: 180,
-        height: 130,
         bg: colors.white,
         boxShadow: '0px 100px 80px rgba(0, 0, 0, 0.02), 0px 64.8148px 46.8519px rgba(0, 0, 0, 0.0151852), 0px 38.5185px 25.4815px rgba(0, 0, 0, 0.0121481), 0px 20px 13px rgba(0, 0, 0, 0.01), 0px 8.14815px 6.51852px rgba(0, 0, 0, 0.00785185), 0px 1.85185px 3.14815px rgba(0, 0, 0, 0.00481481)',
         borderRadius: '8px',
         border: '1px solid rgba(0, 0, 0, 0.1)',
         overflow: 'hidden',
-        color: '#212832',
+        color: 'dolphin',
+        px: '20px',
       }}
     >
       <Box
@@ -522,15 +522,16 @@ const TrustEditMenu = ({
           handleClose?.()
           toggleRevokeModal()
         }}
-        px={20}
-        py='10px'
-        textAlign='center'
+        width='100%'
+        py='26px'
+        textAlign='left'
+        fontSize='lg'
         sx={{
+          cursor: 'pointer',
           '&:hover': {
-            bg: colors.grey[100],
+            fontWeight: 'bold',
           },
           '& a': {
-            color: colors.black,
             textDecoration: 'none',
           },
         }}
@@ -551,15 +552,16 @@ const TrustEditMenu = ({
           handleClose?.()
           toggleSetIrrevocableModal()
         }}
-        px={20}
-        py='10px'
-        textAlign='center'
+        width='100%'
+        py='26px'
+        textAlign='left'
+        fontSize='lg'
         sx={{
+          cursor: 'pointer',
           '&:hover': {
-            bg: colors.grey[100],
+            fontWeight: 'bold',
           },
           '& a': {
-            color: colors.black,
             textDecoration: 'none',
           },
         }}
