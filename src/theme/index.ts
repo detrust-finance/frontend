@@ -562,6 +562,11 @@ const useDefaultTheme = () => {
           color: darkMode ? DarkTheme.white : LightTheme.white,
         },
       },
+      copy: {
+        ...buttonStyles,
+        bg: darkMode ? DarkTheme.white : LightTheme.white,
+        color: LightTheme.dolphin,
+      }
     },
   }
 }
