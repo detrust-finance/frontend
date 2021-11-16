@@ -9,6 +9,9 @@ import Link from 'next/link'
 //import Image from 'next/image'
 import { Flex, Text, Box } from 'rebass/styled-components'
 //import { Spacer } from '../../theme/ui'
+import Tippy from '@tippyjs/react'
+import 'tippy.js/dist/tippy.css' // optional
+import 'tippy.js/themes/light.css'
 // Constants
 import { sidebarMenu, ISidebarMenu } from '../../constants'
 //import { toColorString } from 'polished'
@@ -107,13 +110,29 @@ const SidebarItem: React.FC<{ item: ISidebarMenu }> = ({ item }) => {
           />
         )} */}
         {/* <Spacer size='xl' /> */}
-        <Text
-          as='span'
-          sx={{
-            textTransform: 'uppercase'
-          }}>
-          {t(`sidebar.label.${item.title}`)}
-        </Text>
+        <Tippy
+          placement='bottom'
+          arrow
+          theme='light'
+          content={
+            <Flex
+              width='251px'
+              height='61px'
+              justifyContent='center'
+              alignItems='center'
+              fontFamily='hel'
+              fontSize='17px'
+            >{t(`sidebar.label.${item.subtitle}`)}</Flex>
+          }
+        >
+          <Text
+            as='span'
+            sx={{
+              textTransform: 'uppercase'
+            }}>
+            {t(`sidebar.label.${item.title}`)}
+          </Text>
+        </Tippy>
         {/* <Spacer size='sm' />
         <Text as='span' className='menucaption'>
           {t(`sidebar.label.${item.subtitle}`)}
