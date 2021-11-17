@@ -377,7 +377,7 @@ const useDefaultTheme = () => {
         p: 24,
       },
       'list-title': {
-        fontWeight: fontWeight.semiBold,
+        //fontWeight: fontWeight.semiBold,
         //bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
         background: 'linear-gradient(0deg, #63738B, #63738B), linear-gradient(180deg, #FFA666 0%, #FF7660 100%)',
         borderRadius: '10px 10px 0px 0px',

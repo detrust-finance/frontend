@@ -286,8 +286,8 @@ export const TrustList: React.FC = ({ ...restprops }) => {
       <Flex flexDirection='column' mb='auto'>
         <Box variant='list' {...restprops}>
           <Flex variant='list-title'>
-            <Box sx={{ textTransform: 'uppercase' }}>{t('trust-list.title')}</Box>
-            <Box fontSize='md'>{shortenAddress(account!, 8)}</Box>
+            <Box fontSize='lg' sx={{ textTransform: 'uppercase' }}>{t('trust-list.title')}</Box>
+            <Box fontSize='lg'>{shortenAddress(account!, 6)}</Box>
           </Flex>
 
           <Box overflowX='auto' mb={[spacer['xxl'], spacer['xxl'], 0]}>
