@@ -386,7 +386,7 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
   const router = useRouter()
 
   return (
-    <Flex variant='list-details'>
+    <Flex variant='list-details' py='11px'>
       <Flex sx={{ position: 'relative' }} flex={0.7}>
         {/* <Flex variant='overlay'>
           <Box as='span' bg={colors.white} p={10}>
@@ -398,14 +398,14 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           justifyContent='center'
           alignItems='center'
           flex={1}
-          py={10}
+          //py={10}
         >
-          <Text color={colors.red[100]} fontWeight={fontWeight.semiBold}>
+          <Text color='#F0864B' fontSize='md'>
             {t('content.asset-list.claimed')}
           </Text>
           <Spacer size='lg' />
-          <Text fontWeight={fontWeight.semiBold}>{data.releasedAmount} ETH</Text>
-          <Text color={colors.grey[200]} mt={1} fontSize='md'>
+          <Text fontSize='md'>{data.releasedAmount} ETH</Text>
+          <Text color={colors.grey[200]} mt={1} fontSize='sm'>
             ≈ ${data.releasedAmountUSD}
           </Text>
         </Flex>
@@ -414,14 +414,14 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           justifyContent='center'
           alignItems='center'
           flex={1}
-          py={10}
+          //py={10}
         >
-          <Text fontWeight={fontWeight.semiBold}>
+          <Text fontSize='md'>
             {t('content.asset-list.locked')}
           </Text>
           <Spacer size='lg' />
-          <Text fontWeight={fontWeight.semiBold}>{data.lockedAmount} ETH</Text>
-          <Text color={colors.grey[200]} mt={1} fontSize='md'>
+          <Text fontSize='md'>{data.lockedAmount} ETH</Text>
+          <Text color={colors.grey[200]} mt={1} fontSize='sm'>
             ≈ ${data.lockedAmountUSD}
           </Text>
         </Flex>
@@ -448,9 +448,9 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
         justifyContent='center'
         alignItems='center'
         flex={0.3}
-        py={10}
+        //py={10}
       >
-        <Text fontWeight={fontWeight.semiBold}>
+        <Text fontSize='md'>
           {' '}
           {t('beneficiaries.label.available-to-claim')}
         </Text>
@@ -459,10 +459,12 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
         <Button
           variant='primary'
           disabled={!data.claimEnabled}
-          fontSize={10}
-          width={120}
-          py={10}
-          sx={{ textTransform: 'uppercase' }}
+          width='140px'
+          py='3px'
+          sx={{
+            textTransform: 'uppercase',
+            borderRadius: 4,
+          }}
           onClick={() => {
               //console.log(data.id)
               //console.log(data.beneficiary)

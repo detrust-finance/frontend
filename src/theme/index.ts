@@ -427,7 +427,7 @@ const useDefaultTheme = () => {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        p: 10,
+        p: '9.25px',
         // borderBottomWidth: 1,
         // borderBottomStyle: 'solid',
         // borderBottomColor: darkMode
@@ -594,9 +594,9 @@ export const GlobalStyle = createGlobalStyle<any>`
     margin: 0;
   }
 
-  // button, input, select, label, p, a, h1, h2, h3, h4, h5, h6, ul, li, div {
-  //   font-family: ${({ fonts }) => fonts.body} !important;
-  // }
+  button, input, select, label, p, a, h1, h2, h3, h4, h5, h6, ul, li, div {
+    font-family: ${({ fonts }) => fonts.pop} !important;
+  }
 
   button {
     cursor: pointer !important;

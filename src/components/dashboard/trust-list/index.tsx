@@ -361,15 +361,15 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           justifyContent='center'
           alignItems='center'
           flex={1}
-          py={10}
+          //py={10}
         >
-          <Text color={colors.red[100]} fontWeight={fontWeight.semiBold}>
+          <Text color='#F0864B' fontSize='md'>
             {' '}
             {t('content.trust-list.claimed')}
           </Text>
           <Spacer size='lg' />
-          <Text fontWeight={fontWeight.semiBold}>{data.releasedAmount} ETH</Text>
-          <Text color={colors.grey[200]} mt={1} fontSize='md'>
+          <Text fontSize='md'>{data.releasedAmount} ETH</Text>
+          <Text color={colors.grey[200]} mt={1} fontSize='sm'>
             ≈ ${data.releasedAmountUSD}
           </Text>
         </Flex>
@@ -378,14 +378,14 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           justifyContent='center'
           alignItems='center'
           flex={1}
-          py={10}
+          //py={10}
         >
-          <Text fontWeight={fontWeight.semiBold}>
+          <Text fontSize='md'>
             {t('content.trust-list.locked')}
           </Text>
           <Spacer size='lg' />
-          <Text fontWeight={fontWeight.semiBold}>{data.lockedAmount} ETH</Text>
-          <Text color={colors.grey[200]} mt={1} fontSize='md'>
+          <Text fontSize='md'>{data.lockedAmount} ETH</Text>
+          <Text color={colors.grey[200]} mt={1} fontSize='sm'>
             ≈ ${data.lockedAmountUSD}
           </Text>
         </Flex>
@@ -408,7 +408,7 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           justifyContent='center'
           alignItems='center'
           flex={1}
-          py={10}
+          //py={10}
         >
           <DropDown
             buttonComponent={<TrustEditButton />}
@@ -419,7 +419,7 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
             }}
           />
           <Spacer size='lg' />
-          <Text fontWeight={fontWeight.semiBold}>
+          <Text fontSize='md'>
             {t('content.subtitle.settlor-edit')}
           </Text>
         </Flex>
@@ -447,18 +447,20 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
         justifyContent='center'
         alignItems='center'
         flex={0.3}
-        py={10}
+        //py={10}
       >
-        <Text paddingBottom='13px' fontWeight={fontWeight.semiBold}>
+        <Text paddingBottom='13px' fontSize='md'>
           {t('content.subtitle.settlor-top-up.add')}
         </Text>
 
         <Button
           variant='primary'
-          fontSize={10}
-          width={120}
-          py={10}
-          sx={{ textTransform: 'uppercase' }}
+          width='140px'
+          py='3px'
+          sx={{
+            textTransform: 'uppercase',
+            borderRadius: 4,
+          }}
           onClick={() =>
             router.push(`/dashboard/settlor/top-up-fund/${data.key}`)
           }
