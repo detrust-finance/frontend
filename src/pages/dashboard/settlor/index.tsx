@@ -29,7 +29,7 @@ const Settlor: NextPage = () => {
             subtitle={t('content.subtitle.settlor-dashboard')}
           />
           <Spacer size='xl' />
-          <Box as='p' fontSize='md'>
+          <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
             {t('content.description.settlor')}
           </Box>
           <Spacer size='xxl' />

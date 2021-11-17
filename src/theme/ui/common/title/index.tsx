@@ -15,9 +15,9 @@ const Title: React.FC<TitleProps> = ({ title, subtitle, ...restprops }) => {
         as='h1'
         sx={{
           //color: darkMode ? colors.blue[100] : colors.blue[100],
-          color: colors.jaffa,
-          fontSize: [fontSizes.xxl, fontSizes.xxl, fontSizes.xxxl],
-          fontWeight: 800,
+          color: '#5E6282',
+          fontSize: fontSizes.lg,
+          fontWeight: 'bold',
           textTransform: 'uppercase',
         }}
       >
@@ -27,10 +27,12 @@ const Title: React.FC<TitleProps> = ({ title, subtitle, ...restprops }) => {
             as='span'
             sx={{
               pl: 2,
-              color: darkMode ? colors.grey[200] : colors.grey[200],
-              fontSize: [fontSizes.xxl, fontSizes.xxl, fontSizes.xxxl],
-              fontWeight: 800,
+              //color: darkMode ? colors.grey[200] : colors.grey[200],
+              color: '#5E6282',
+              fontSize: fontSizes.lg,
+              fontWeight: 'bold',
               textTransform: 'uppercase',
+              opacity: 0.4,
             }}
           >
             {subtitle}
