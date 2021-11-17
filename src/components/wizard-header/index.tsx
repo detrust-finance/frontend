@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Box } from 'rebass/styled-components'
 import { Spacer } from '../../theme/ui'
-import { Check } from 'react-feather'
+import { Check } from 'iconoir-react'
 import { IWizardHeader, WizardHeaderProps } from './interfaces'
 import { useTheme } from '../../hooks'
 
@@ -65,10 +65,10 @@ const WizardHeader: React.FC<WizardHeaderProps> = ({ headers }) => {
               left: `calc(${header.number/n*100}% - 100px)`,
             }}
           >
-            <Flex variant={`wizard-number-${header.status}`}>
-              {header.status === 'done' ? <Check height={12} /> : header.number}
+            <Flex variant={`wizard-number-${header.status}`} fontSize='md'>
+              {header.status === 'done' ? <Check strokeWidth={3} width='24px' height='24px' /> : header.number}
             </Flex>
-            <Box mt='8px' height={24}>
+            <Box mt='8px' height='24px'>
               {header.title}
             </Box>
           </Flex>

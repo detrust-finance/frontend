@@ -83,9 +83,9 @@ const useDefaultTheme = () => {
 
   const wizardNumberCommon = React.useMemo(
     () => ({
-      width: 18,
-      height: 18,
-      borderRadius: 18,
+      width: 24,
+      height: 24,
+      borderRadius: 12,
       p: '5px',
       mr: [0, 0, '8px'],
       mb: ['8px', '8px', 0],
