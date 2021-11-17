@@ -615,33 +615,6 @@ export const GlobalStyle = createGlobalStyle<any>`
     text-decoration: hover;
   }
 
-  @media (min-width: ${({ breakpoints }) => breakpoints[1]}) {
-    html {
-      font-size: 12px;
-    }
-    body {
-      padding-bottom: 0;
-    }
-  }
-
-  @media (min-width: ${({ breakpoints }) => breakpoints[2]}) {
-    html {
-      font-size: 12px;
-    }
-    body {
-      padding-bottom: 0;
-    }
-  }
-
-  @media (min-width: ${({ breakpoints }) => breakpoints[3]}) {
-    html {
-      font-size: 14px;
-    }
-    body {
-      padding-bottom: 0;
-    }
-  }
-
   /* Reat datepicker styles */
   .react-datepicker {
     font-family: ${({ fonts }) => fonts.body};
