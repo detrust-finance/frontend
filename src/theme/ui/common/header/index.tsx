@@ -69,11 +69,10 @@ const Header: React.FC = () => {
         </Box>
       </Link>
 
-      {/* <Box> */}
       <Flex
         alignItems='center'
         fontSize={fontSizes.lg}
-        fontWeight={fontWeight.medium}
+        //fontWeight={fontWeight.medium}
         // sx={{ cursor: 'pointer' }}
       >
         <DropDown
@@ -84,7 +83,10 @@ const Header: React.FC = () => {
             left: -39.5,
           }}
         />
-        {account && isTablet && shortenAddress(account, 12)}
+        {account && isTablet &&
+        <Text fontSize='17px'>
+          {shortenAddress(account, 4)}
+        </Text>}
         <Flex
           sx={{
             bg: account ? colors.jaffa : colors.grey[200],

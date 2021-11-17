@@ -60,11 +60,12 @@ const useDefaultTheme = () => {
   const tableRow = React.useMemo(
     () => ({
       fontSize: fontSizes.lg,
-      fontWeight: fontWeight.regular,
+      //fontWeight: fontWeight.regular,
       padding: `10px`,
       width: '100%',
     }),
-    [fontSizes.lg, fontWeight.regular],
+    //[fontSizes.lg, fontWeight.regular],
+    [fontSizes.lg],
   )
 
   const wizardHeaderCommon = React.useMemo(
@@ -578,9 +579,10 @@ export const GlobalStyle = createGlobalStyle<any>`
     font-size: 16px;
     // font-family: ${({ fonts }) => fonts.body};
     color: ${({ colors, darkMode }) =>
-      darkMode ? colors.white : colors.black};
+      darkMode ? colors.white : colors.dolphin};
     /*background: ${({ colors, darkMode }) =>
       darkMode ? colors.grey[100] : colors.grey[100]};*/
+    font-weight: normal;
   }
 
   body {
