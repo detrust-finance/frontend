@@ -11,7 +11,6 @@ import { Flex, Text, Box } from 'rebass/styled-components'
 //import { Spacer } from '../../theme/ui'
 import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css' // optional
-import 'tippy.js/themes/light.css'
 // Constants
 import { sidebarMenu, ISidebarMenu } from '../../constants'
 //import { toColorString } from 'polished'
