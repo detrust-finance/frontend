@@ -112,7 +112,7 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
               }
             />
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
               {t('content.description.beneficiary')}
             </Box>
             <Spacer size='xl' />

@@ -144,7 +144,7 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
               subtitle={t('content.subtitle.settlor-new-trust')}
             />
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
               {t('content.description.settlor-steps')}
             </Box>
             <Spacer size='xl' />
