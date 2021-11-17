@@ -357,7 +357,11 @@ export const AssetList: React.FC = ({ ...restprops }) => {
       </Flex>
       }
 
-      <Flex flexDirection='row' justifyContent='center'>
+      <Flex
+        flexDirection='row'
+        justifyContent='center'
+        sx={{ mt: '40px' }}
+      >
         {/* <Link href={`/dashboard/beneficiary/claim`} passHref> */}
           <Button
             variant='primary'
