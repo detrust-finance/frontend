@@ -11,6 +11,7 @@ export interface InputProps extends InputPropsRebass {
 
 export interface DatePickerProps extends DatePickerPropsOriginal {
   label?: string
+  startAdornment?: React.ReactNode
   endAdornment?: React.ReactNode
   required?: boolean
 }

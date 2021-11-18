@@ -6,7 +6,7 @@ import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import { Reset } from 'styled-reset'
 import useDefaultTheme, { GlobalStyle } from '../theme'
-import 'simplebar/dist/simplebar.min.css'
+//import 'simplebar/dist/simplebar.min.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import '../components/home/style.css'
 // Language

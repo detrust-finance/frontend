@@ -148,7 +148,7 @@ export const InputFormGroup: React.FC<InputProps> = ({
 }
 
 export const DatePicker = React.forwardRef<DatePickerProps, any>(
-  ({ label, name, endAdornment, ...restprops }, ref) => {
+  ({ label, name, startAdornment, endAdornment, ...restprops }, ref) => {
     const { darkMode, colors, borderRadius, spacer, fontSizes } = useTheme()
     return (
       <Flex flexDirection='column' width='100%'>
@@ -177,6 +177,7 @@ export const DatePicker = React.forwardRef<DatePickerProps, any>(
             },
           }}
         >
+          {startAdornment}
           <DatePickerOriginal {...restprops} ref={ref} />
           {endAdornment && endAdornment}
         </Flex>
