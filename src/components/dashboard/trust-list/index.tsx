@@ -300,9 +300,9 @@ export const TrustList: React.FC = ({ ...restprops }) => {
               tableHeaderStyle={{
                 minWidth: 650,
               }}
-              scrollbarsStyle={{
-                height: isTablet ? 290 : 'auto',
-              }}
+              // scrollbarsStyle={{
+              //   height: isTablet ? 290 : 'auto',
+              // }}
             />
           </Box>
         </Box>
@@ -346,22 +346,16 @@ interface SubRowProps {
 }
 const SubRow: React.FC<SubRowProps> = ({ data }) => {
   const { t } = useTranslation('dashboard')
-  const { colors, fontWeight } = useTheme()
+  const { colors } = useTheme()
   const router = useRouter()
   return (
     <Flex variant='list-details'>
       <Flex sx={{ position: 'relative' }} flex={0.7}>
-        {/* <Flex variant='overlay'>
-          <Box as='span' bg={colors.white} p={10}>
-            Work in progress.
-          </Box>
-        </Flex> */}
         <Flex
           flexDirection='column'
           justifyContent='center'
           alignItems='center'
           flex={1}
-          //py={10}
         >
           <Text color='#F0864B' fontSize='md'>
             {' '}
@@ -373,12 +367,12 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
             ≈ ${data.releasedAmountUSD}
           </Text>
         </Flex>
+
         <Flex
           flexDirection='column'
           justifyContent='center'
           alignItems='center'
           flex={1}
-          //py={10}
         >
           <Text fontSize='md'>
             {t('content.trust-list.locked')}
@@ -389,19 +383,7 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
             ≈ ${data.lockedAmountUSD}
           </Text>
         </Flex>
-        {/* <Flex
-          flexDirection='column'
-          justifyContent='center'
-          alignItems='center'
-          flex={1}
-          py={10}
-        >
-          <Text fontWeight={fontWeight.semiBold}>
-            {t('create-new-trust.label.revocable')}
-          </Text>
-          <Spacer size='lg' />
-          <Text fontWeight={fontWeight.semiBold}>{data.revocable ? "true" : "false"}</Text>
-        </Flex> */}
+
         {data.revocable &&
         <Flex
           flexDirection='column'
@@ -424,22 +406,6 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           </Text>
         </Flex>
         }
-        {/* <Flex
-          flexDirection='column'
-          justifyContent='center'
-          alignItems='center'
-          flex={1}
-          py={10}
-        >
-          <Text fontWeight={fontWeight.semiBold} color={colors.green}>
-            {t('content.trust-list.unclaimed')}
-          </Text>
-          <Spacer size='lg' />
-          <Text fontWeight={fontWeight.semiBold}>{data.unreleasedAmount} ETH</Text>
-          <Text color={colors.grey[200]} mt={1} fontSize='md'>
-            ≈ ${data.unreleasedAmountUSD}
-          </Text>
-        </Flex> */}
       </Flex>
 
       <Flex

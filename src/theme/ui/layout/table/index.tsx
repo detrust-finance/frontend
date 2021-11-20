@@ -21,7 +21,7 @@ const Table: React.FC<TableProps> = ({
   subRowComponent,
   dataSource,
   loading,
-  scrollbarsStyle,
+  //scrollbarsStyle,
   tableHeaderStyle,
   tableHeaderVariant,
   sortable,

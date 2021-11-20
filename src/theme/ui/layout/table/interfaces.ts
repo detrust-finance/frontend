@@ -6,7 +6,7 @@ export interface TableProps extends FlexProps {
   subRowComponent?: (data: any) => React.ReactNode
   dataSource: any[]
   loading?: boolean
-  scrollbarsStyle?: any
+  //scrollbarsStyle?: any
   tableHeaderStyle?: any
   tableHeaderVariant?: any
   sortable?: boolean
