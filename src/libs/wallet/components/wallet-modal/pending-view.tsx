@@ -1,6 +1,6 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import React from 'react'
-//import Option from './option'
+import Option from './option'
 import { SUPPORTED_WALLETS } from '../../constants'
 import { injected } from '../../connectors'
 //import Loader from '../loader'
@@ -26,7 +26,7 @@ const PendingView: React.FC<PendingViewProps> = ({
   const isMetamask = window?.ethereum?.isMetaMask
   const { t } = useTranslation('wallet')
   return (
-    <Flex flexDirection='column' width='100%'>
+    <Flex flexDirection='column' width='100%' justifyContent='center'>
       <Box p='30px' />
       {Object.keys(SUPPORTED_WALLETS).map(key => {
         const option = SUPPORTED_WALLETS[key]
@@ -47,13 +47,32 @@ const PendingView: React.FC<PendingViewProps> = ({
             //   header={option.name}
             //   icon={'/images/' + option.iconName}
             // />
-            <Image
-              id={`connect-${key}`}
-              key={key}
-              width='30px'
-              height='30px'
-              src={'/images/' + option.iconName}
-            />
+            // <Image
+            //   id={`connect-${key}`}
+            //   key={key}
+            //   width='30px'
+            //   height='30px'
+            //   src={'/images/' + option.iconName}
+            // />
+            <Flex
+              justifyContent='center'
+              sx={{
+                '.wallet-icon': {
+                  bg: 'white',
+                  borderRadius: 1337,
+                  padding: '3px !important',
+                },
+                //marginRight: '20px',
+              }}
+            >
+              <Image
+                src={'/images/' + option.iconName}
+                alt='Icon'
+                width={30}
+                height={30}
+                className='wallet-icon'
+              />
+            </Flex>
           )
         }
         return null
