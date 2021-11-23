@@ -52,29 +52,35 @@ const WizardHeader: React.FC<WizardHeaderProps> = ({ headers }) => {
         bg: colors.jaffa,
       }}
     />
-      {headers.map((header: IWizardHeader, index: number) => (
-        <React.Fragment key={`wizard-header-${index}`}>
-          <Flex
-            width={200}
-            alignItems='center'
-            justifyContent='center'
-            flexDirection='column'
-            sx={{
-              position: 'absolute',
-              top: '-9px',
-              left: `calc(${header.number/n*100}% - 100px)`,
-            }}
-          >
-            <Flex variant={`wizard-number-${header.status}`} fontSize='md'>
-              {header.status === 'done' ? <Check strokeWidth={3} width='24px' height='24px' /> : header.number}
-            </Flex>
-            <Box mt='8px' height='24px'>
-              {header.title}
-            </Box>
+    {headers.map((header: IWizardHeader, index: number) => (
+      <React.Fragment key={`wizard-header-${index}`}>
+        <Flex
+          width='300px' // width-root
+          alignItems='center'
+          justifyContent='center'
+          flexDirection='column'
+          sx={{
+            position: 'absolute',
+            top: '-9px',
+            left: `calc(${header.number/n*100}% - 150px)`, // 150px is half of width-root!
+          }}
+        >
+          <Flex variant={`wizard-number-${header.status}`} fontSize='md'>
+            {header.status === 'done' ? <Check strokeWidth={3} width='24px' height='24px' /> : header.number}
           </Flex>
-          {index < headers.length - 1 && <Spacer />}
-        </React.Fragment>
-      ))}
+          <Box
+            mt='8px'
+            width={[80, 100, 250, 300]} // no more than width-root
+            fontSize={['sm', 'sm', 'md', 'lg']}
+            opacity={0.6}
+            textAlign='center'
+          >
+            {header.title}
+          </Box>
+        </Flex>
+        {index < headers.length - 1 && <Spacer />}
+      </React.Fragment>
+    ))}
   </Box>
 }
 
