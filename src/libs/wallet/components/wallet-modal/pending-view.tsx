@@ -68,8 +68,8 @@ const PendingView: React.FC<PendingViewProps> = ({
               <Image
                 src={'/images/' + option.iconName}
                 alt='Icon'
-                width={30}
-                height={30}
+                width={50}
+                height={50}
                 className='wallet-icon'
               />
             </Flex>
@@ -105,6 +105,7 @@ const PendingView: React.FC<PendingViewProps> = ({
             flexDirection='column'
             justifyContent='center'
             alignItems='center'
+            py='40px'
           >
             {t('wallet.label.initializing')}
           </Flex>
