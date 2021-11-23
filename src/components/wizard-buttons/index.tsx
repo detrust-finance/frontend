@@ -21,9 +21,8 @@ const WizardButtons: React.FC<WizardButtonsProps> = ({
       {buttons.map((button: IWizardButton, index: number) => (
         <React.Fragment key={`wizard-button-${index}`}>
           {button.href ? (
-            // <Link href={button.href} passHref>
+            <Link href={button.href} passHref>
               <Button
-                href={button.href} passHref
                 py={13}
                 px={41}
                 sx={{ textTransform: 'uppercase', cursor: 'default' }}
@@ -32,7 +31,7 @@ const WizardButtons: React.FC<WizardButtonsProps> = ({
               >
                 {button.title}
               </Button>
-            // </Link>
+            </Link>
           ) : (
             <Button
               py={13}
