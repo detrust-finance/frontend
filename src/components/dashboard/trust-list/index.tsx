@@ -477,92 +477,122 @@ const SubRow2 = ({ data }: SubRowProps) => {
   const { colors } = useTheme()
   const router = useRouter()
   return (
-    <Flex variant='list-details'>
-      <Flex sx={{ position: 'relative' }} flex={0.7}>
+    <>
+      <Box>
         <Flex
+          variant='outlined-box-left2'
           flexDirection='column'
-          justifyContent='center'
-          alignItems='center'
-          flex={1}
+          sx={{ borderBottomColor: 'transparent' }}
         >
-          <Text color='#F0864B' fontSize='md'>
-            {' '}
-            {t('content.trust-list.claimed')}
-          </Text>
-          <Spacer size='lg' />
-          <Text fontSize='md'>{data.releasedAmount} ETH</Text>
-          <Text color={colors.grey[200]} mt={1} fontSize='sm'>
-            ≈ ${data.releasedAmountUSD}
+          <Text color='#F0864B' fontSize='lg'>
+          {t('content.trust-list.claimed')}
           </Text>
         </Flex>
+        <Flex
+          flexDirection='row'
+          variant='outlined-box3'
+          alignContent='center'
+        >
+          <Flex
+            flexDirection='column'
+            alignItems='left'
+            sx={{ gap: '5px 0px' }}
+          >
+            <Text fontSize='lg'>{data.releasedAmount} ETH</Text>
+            <Text as='p' fontSize='sm' color={colors.grey[200]}>
+              ≈ ${data.releasedAmountUSD}
+            </Text>
+          </Flex>
+        </Flex>
+      </Box>
 
+      <Box>
         <Flex
+          variant='outlined-box-left2'
           flexDirection='column'
-          justifyContent='center'
-          alignItems='center'
-          flex={1}
+          sx={{ borderBottomColor: 'transparent' }}
         >
-          <Text fontSize='md'>
-            {t('content.trust-list.locked')}
-          </Text>
-          <Spacer size='lg' />
-          <Text fontSize='md'>{data.lockedAmount} ETH</Text>
-          <Text color={colors.grey[200]} mt={1} fontSize='sm'>
-            ≈ ${data.lockedAmountUSD}
+          <Text fontSize='lg'>
+          {t('content.trust-list.locked')}
           </Text>
         </Flex>
-
-        {data.revocable &&
         <Flex
-          flexDirection='column'
-          justifyContent='center'
-          alignItems='center'
-          flex={1}
-          //py={10}
+          flexDirection='row'
+          variant='outlined-box3'
+          alignContent='center'
         >
-          <DropDown
-            buttonComponent={<TrustEditButton />}
-            menuComponent={<TrustEditMenu trustId={data.key} />}
-            menuStyle={{
-              top: 32,
-              left: -39.5,
-            }}
-          />
-          <Spacer size='lg' />
-          <Text fontSize='md'>
-            {t('content.subtitle.settlor-edit')}
-          </Text>
+          <Flex
+            flexDirection='column'
+            alignItems='left'
+            sx={{ gap: '5px 0px' }}
+          >
+            <Text fontSize='lg'>{data.lockedAmount} ETH</Text>
+            <Text as='p' fontSize='sm' color={colors.grey[200]}>
+              ≈ ${data.lockedAmountUSD}
+            </Text>
+          </Flex>
         </Flex>
-        }
-      </Flex>
+      </Box>
 
       <Flex
-        flexDirection='column'
-        justifyContent='center'
-        alignItems='center'
-        flex={0.3}
-        //py={10}
+        flexDirection='row'
+        justifyContent='space-between'
+        p='20px'
       >
-        <Text paddingBottom='13px' fontSize='md'>
-          {t('content.subtitle.settlor-top-up.add')}
-        </Text>
-
-        <Button
-          variant='primary'
-          width='140px'
-          py='3px'
-          sx={{
-            textTransform: 'uppercase',
-            borderRadius: 4,
-          }}
-          onClick={() =>
-            router.push(`/dashboard/settlor/top-up-fund/${data.key}`)
-          }
+        <Flex
+          flexDirection='row'
+          justifyContent='center'
         >
-          {t('button.label.top-up')}
-        </Button>
+          {data.revocable &&
+          <Flex
+            flexDirection='column'
+            justifyContent='center'
+            alignItems='center'
+            //py={10}
+          >
+            <DropDown
+              buttonComponent={<TrustEditButton />}
+              menuComponent={<TrustEditMenu trustId={data.key} />}
+              menuStyle={{
+                top: -46,
+                left: 40,
+              }}
+            />
+            <Spacer size='lg' />
+            <Text fontSize='md'>
+              {t('content.subtitle.settlor-edit')}
+            </Text>
+          </Flex>
+          }
+        </Flex>
+
+        <Flex
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
+          //py={10}
+        >
+          <Text paddingBottom='13px' fontSize='md'>
+            {t('content.subtitle.settlor-top-up.add')}
+          </Text>
+
+          <Button
+            variant='primary'
+            width='140px'
+            py='3px'
+            sx={{
+              textTransform: 'uppercase',
+              borderRadius: 4,
+            }}
+            onClick={() =>
+              router.push(`/dashboard/settlor/top-up-fund/${data.key}`)
+            }
+          >
+            {t('button.label.top-up')}
+          </Button>
+        </Flex>
       </Flex>
-    </Flex>
+    </>
   )
 }
 
