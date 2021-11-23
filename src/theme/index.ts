@@ -334,6 +334,16 @@ const useDefaultTheme = () => {
         alignItems: 'left',
         p: 20,
       },
+      'outlined-box-left2': {
+        borderRadius: '10px 10px 0 0',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        justifyContent: 'center',
+        alignItems: 'left',
+        px: 20,
+        py: 19,
+      },
       'outlined-box2': {
         borderRadius: '0 0 10px 10px',
         borderWidth: 1,
@@ -342,6 +352,16 @@ const useDefaultTheme = () => {
         justifyContent: 'start',
         alignItems: 'left',
         p: 20,
+      },
+      'outlined-box3': {
+        borderRadius: '0 0 10px 10px',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        justifyContent: 'start',
+        alignItems: 'left',
+        px: 20,
+        py: '10.5px',
       },
       'outlined-box-full': {
         borderRadius: '10px',
@@ -390,6 +410,15 @@ const useDefaultTheme = () => {
         //bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
         background: 'linear-gradient(0deg, #63738B, #63738B), linear-gradient(180deg, #FFA666 0%, #FF7660 100%)',
         borderRadius: '10px 10px 0px 0px',
+        color: darkMode ? DarkTheme.white : LightTheme.white,
+        px: 20,
+        py: 13,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      },
+      'list-title-mobile': {
+        background: 'linear-gradient(0deg, #63738B, #63738B), linear-gradient(180deg, #FFA666 0%, #FF7660 100%)',
+        borderRadius: '10px 10px 10px 10px',
         color: darkMode ? DarkTheme.white : LightTheme.white,
         px: 20,
         py: 13,
@@ -611,9 +640,9 @@ export const GlobalStyle = createGlobalStyle<any>`
     cursor: pointer !important;
   }
 
-  p {
-    line-height: 1.5rem;
-  }
+  // p {
+  //   line-height: 1.5rem;
+  // }
 
   a {
     color: ${({ colors, darkMode }) =>

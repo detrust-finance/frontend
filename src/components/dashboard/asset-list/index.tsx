@@ -321,9 +321,9 @@ export const AssetList: React.FC = ({ ...restprops }) => {
               tableHeaderStyle={{
                 minWidth: 650,
               }}
-              scrollbarsStyle={{
-                height: isTablet ? 290 : 'auto',
-              }}
+              // scrollbarsStyle={{
+              //   height: isTablet ? 290 : 'auto',
+              // }}
             />
           </Box>
         </Box>

@@ -20,6 +20,7 @@ import usePrices from '../../../hooks/usePrices'
 import { Archive, EditPencil } from 'iconoir-react'
 import { Loader } from '../../loader'
 import DropDown from '../../dropw-down'
+import Table2 from '../../../theme/ui/layout/table2'
 
 export const TrustList: React.FC = ({ ...restprops }) => {
   const { colors, fontWeight, spacer } = useTheme()
@@ -167,7 +168,11 @@ export const TrustList: React.FC = ({ ...restprops }) => {
               <Box pr={12}>
                 <TokenIcon className='list-icon' address={data.type} />
               </Box>
-              <Box>
+              <Flex
+                flexDirection='column'
+                alignItems={isTablet ? 'center' : 'left'}
+                sx={{ gap: '5px 0px' }}
+              >
                 <Text fontSize='lg'>{data.asset}</Text>
                 <TokenName
                   address={data.type}
@@ -175,7 +180,7 @@ export const TrustList: React.FC = ({ ...restprops }) => {
                   fontSize='sm'
                   color={colors.grey[200]}
                 />
-              </Box>
+              </Flex>
             </Flex>
           )
         },
@@ -189,7 +194,11 @@ export const TrustList: React.FC = ({ ...restprops }) => {
         hideSort: true,
         Render(data) {
           return (
-            <Flex flexDirection='column' alignItems='center'>
+            <Flex
+              flexDirection='column'
+              alignItems={isTablet ? 'center' : 'left'}
+              sx={{ gap: '5px 0px' }}
+            >
               <Text fontSize='lg'>
                 {data.unlockdate?.firstLine}
               </Text>
@@ -209,7 +218,11 @@ export const TrustList: React.FC = ({ ...restprops }) => {
         hideSort: true,
         Render(data) {
           return (
-            <Flex flexDirection='column' alignItems='center'>
+            <Flex
+              flexDirection='column'
+              alignItems={isTablet ? 'center' : 'left'}
+              sx={{ gap: '5px 0px' }}
+            >
               <Text fontSize='lg'>
                 {data.unlockperiod.number}
               </Text>
@@ -229,7 +242,11 @@ export const TrustList: React.FC = ({ ...restprops }) => {
         hideSort: true,
         Render(data) {
           return (
-            <Flex flexDirection='column' alignItems='center'>
+            <Flex
+              flexDirection='column'
+              alignItems={isTablet ? 'center' : 'left'}
+              sx={{ gap: '5px 0px' }}
+            >
               <Text fontSize='lg'>{data.numpayouts}</Text>
               <Text as='p' fontSize='sm' color={colors.grey[200]}>
                 {t('content.trust-list.payouts')}
@@ -247,7 +264,11 @@ export const TrustList: React.FC = ({ ...restprops }) => {
         hideSort: true,
         Render(data) {
           return (
-            <Flex flexDirection='column' alignItems='center'>
+            <Flex
+              flexDirection='column'
+              alignItems={isTablet ? 'center' : 'left'}
+              sx={{ gap: '5px 0px' }}
+            >
               <Text fontSize='lg'>{data.claimable}</Text>
               <Text as='p' fontSize='sm' color={colors.grey[200]}>
                 ≈ ${data.claimableUSD}
@@ -268,7 +289,11 @@ export const TrustList: React.FC = ({ ...restprops }) => {
         hideSort: true,
         Render(data) {
           return (
-            <Flex flexDirection='column' alignItems='flex-end'>
+            <Flex
+              flexDirection='column'
+              alignItems={isTablet ? 'flex-end' : 'left'}
+              sx={{ gap: '5px 0px' }}
+            >
               <Text fontSize='lg'>{data.unreleasedAmount}</Text>
               <Text as='p' fontSize='sm' color={colors.grey[200]}>
                 ≈ ${data.unreleasedAmountUSD}
@@ -285,12 +310,13 @@ export const TrustList: React.FC = ({ ...restprops }) => {
     return (
       <Flex flexDirection='column' mb='auto'>
         <Box variant='list' {...restprops}>
-          <Flex variant='list-title'>
+          <Flex variant={isTablet ? 'list-title' : 'list-title-mobile'}>
             <Box fontSize='lg' sx={{ textTransform: 'uppercase' }}>{t('trust-list.title')}</Box>
             <Box fontSize='lg'>{shortenAddress(account!, 6)}</Box>
           </Flex>
 
           <Box overflowX='auto' mb={[spacer['xxl'], spacer['xxl'], 0]}>
+            {isTablet ?
             <Table
               columns={columns}
               subRowComponent={(data: any) => <SubRow data={data} />}
@@ -304,6 +330,14 @@ export const TrustList: React.FC = ({ ...restprops }) => {
               //   height: isTablet ? 290 : 'auto',
               // }}
             />
+            :
+            <Table2
+              columns={columns}
+              dataSource={data}
+              subRowComponent={(data: any) => <SubRow2 data={data} />}
+              //minWidth={650}
+            />
+            }
           </Box>
         </Box>
       </Flex>
@@ -345,6 +379,100 @@ interface SubRowProps {
   data: any
 }
 const SubRow: React.FC<SubRowProps> = ({ data }) => {
+  const { t } = useTranslation('dashboard')
+  const { colors } = useTheme()
+  const router = useRouter()
+  return (
+    <Flex variant='list-details'>
+      <Flex sx={{ position: 'relative' }} flex={0.7}>
+        <Flex
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
+          flex={1}
+        >
+          <Text color='#F0864B' fontSize='md'>
+            {' '}
+            {t('content.trust-list.claimed')}
+          </Text>
+          <Spacer size='lg' />
+          <Text fontSize='md'>{data.releasedAmount} ETH</Text>
+          <Text color={colors.grey[200]} mt={1} fontSize='sm'>
+            ≈ ${data.releasedAmountUSD}
+          </Text>
+        </Flex>
+
+        <Flex
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
+          flex={1}
+        >
+          <Text fontSize='md'>
+            {t('content.trust-list.locked')}
+          </Text>
+          <Spacer size='lg' />
+          <Text fontSize='md'>{data.lockedAmount} ETH</Text>
+          <Text color={colors.grey[200]} mt={1} fontSize='sm'>
+            ≈ ${data.lockedAmountUSD}
+          </Text>
+        </Flex>
+
+        {data.revocable &&
+        <Flex
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
+          flex={1}
+          //py={10}
+        >
+          <DropDown
+            buttonComponent={<TrustEditButton />}
+            menuComponent={<TrustEditMenu trustId={data.key} />}
+            menuStyle={{
+              top: 32,
+              left: -39.5,
+            }}
+          />
+          <Spacer size='lg' />
+          <Text fontSize='md'>
+            {t('content.subtitle.settlor-edit')}
+          </Text>
+        </Flex>
+        }
+      </Flex>
+
+      <Flex
+        flexDirection='column'
+        justifyContent='center'
+        alignItems='center'
+        flex={0.3}
+        //py={10}
+      >
+        <Text paddingBottom='13px' fontSize='md'>
+          {t('content.subtitle.settlor-top-up.add')}
+        </Text>
+
+        <Button
+          variant='primary'
+          width='140px'
+          py='3px'
+          sx={{
+            textTransform: 'uppercase',
+            borderRadius: 4,
+          }}
+          onClick={() =>
+            router.push(`/dashboard/settlor/top-up-fund/${data.key}`)
+          }
+        >
+          {t('button.label.top-up')}
+        </Button>
+      </Flex>
+    </Flex>
+  )
+}
+
+const SubRow2 = ({ data }: SubRowProps) => {
   const { t } = useTranslation('dashboard')
   const { colors } = useTheme()
   const router = useRouter()
