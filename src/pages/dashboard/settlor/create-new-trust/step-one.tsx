@@ -101,7 +101,7 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
             }
       }
     ],
-    [isTablet, navigation?.previous, t]
+    [isTablet, navigation?.next, t]
   )
 
   const onSubmit = React.useCallback(
