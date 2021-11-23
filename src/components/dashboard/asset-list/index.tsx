@@ -22,6 +22,7 @@ import usePrices from '../../../hooks/usePrices'
 import _ from 'lodash'
 import { Archive } from 'iconoir-react'
 import { Loader } from '../../loader'
+import Table2 from '../../../theme/ui/layout/table2'
 //import Link from 'next/link'
 
 export const AssetList: React.FC = ({ ...restprops }) => {
@@ -186,7 +187,11 @@ export const AssetList: React.FC = ({ ...restprops }) => {
                 {/*<Image src={data.asset.tradeAsset === 'ETH' ? IconETH : IconBTC} sx={{ width: rem('32px'), height: rem('32px'), marginRight: rem('8px') }} />*/}
                 <TokenIcon className='list-icon' address={data.type} />
               </Box>
-              <Box>
+              <Flex
+                flexDirection='column'
+                alignItems={isTablet ? 'center' : 'left'}
+                sx={{ gap: '5px 0px' }}
+              >
                 <Text fontSize='lg'>{data.asset}</Text>
                 <TokenName
                   address={data.type}
@@ -194,7 +199,7 @@ export const AssetList: React.FC = ({ ...restprops }) => {
                   fontSize='sm'
                   color={colors.grey[200]}
                 />
-              </Box>
+              </Flex>
             </Flex>
           )
         },
@@ -209,7 +214,11 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         hideSort: true,
         Render(data) {
           return (
-            <Flex flexDirection='column' alignItems='center'>
+            <Flex
+              flexDirection='column'
+              alignItems={isTablet ? 'center' : 'left'}
+              sx={{ gap: '5px 0px' }}
+            >
               <Text fontSize='lg'>
                 {data.unlockdate?.firstLine}
               </Text>
@@ -229,7 +238,11 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         hideSort: true,
         Render(data) {
           return (
-            <Flex flexDirection='column' alignItems='center'>
+            <Flex
+              flexDirection='column'
+              alignItems={isTablet ? 'center' : 'left'}
+              sx={{ gap: '5px 0px' }}
+            >
               <Text fontSize='lg'>
                 {data.unlockperiod.number}
               </Text>
@@ -249,7 +262,11 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         hideSort: true,
         Render(data) {
           return (
-            <Flex flexDirection='column' alignItems='center'>
+            <Flex
+              flexDirection='column'
+              alignItems={isTablet ? 'center' : 'left'}
+              sx={{ gap: '5px 0px' }}
+            >
               <Text fontSize='lg'>{data.numpayouts}</Text>
               <Text as='p' fontSize='sm' color={colors.grey[200]}>
                 {t('content.asset-list.payouts')}
@@ -267,7 +284,11 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         hideSort: true,
         Render(data) {
           return (
-            <Flex flexDirection='column' alignItems='center'>
+            <Flex
+              flexDirection='column'
+              alignItems={isTablet ? 'center' : 'left'}
+              sx={{ gap: '5px 0px' }}
+            >
               <Text fontSize='lg'>{data.claimable}</Text>
               <Text as='p' fontSize='sm' color={colors.grey[200]}>
                 ≈ ${data.claimableUSD}
@@ -288,7 +309,11 @@ export const AssetList: React.FC = ({ ...restprops }) => {
         hideSort: true,
         Render(data) {
           return (
-            <Flex flexDirection='column' alignItems='flex-end'>
+            <Flex
+              flexDirection='column'
+              alignItems={isTablet ? 'flex-end' : 'left'}
+              sx={{ gap: '5px 0px' }}
+            >
               <Text fontSize='lg'>{data.unreleasedAmount}</Text>
               <Text as='p' fontSize='sm' color={colors.grey[200]}>
                 ≈ ${data.unreleasedAmountUSD}
@@ -306,12 +331,13 @@ export const AssetList: React.FC = ({ ...restprops }) => {
       {(!isLoading && data.length) ?
       <Flex flexDirection='column' mb='auto'>
         <Box variant='list' {...restprops}>
-          <Flex variant='list-title'>
+          <Flex variant={isTablet ? 'list-title' : 'list-title-mobile'}>
             <Box fontSize='lg' sx={{ textTransform: 'uppercase' }}>{t('asset-list.title')}</Box>
             <Box fontSize='lg'>{shortenAddress(account!, 6)}</Box>
           </Flex>
 
           <Box overflowX='auto' mb={[spacer['xxl'], spacer['xxl'], 0]}>
+            {isTablet ?
             <Table
               columns={columns}
               subRowComponent={(data: any) => <SubRow data={data} />}
@@ -325,6 +351,14 @@ export const AssetList: React.FC = ({ ...restprops }) => {
               //   height: isTablet ? 290 : 'auto',
               // }}
             />
+            :
+            <Table2
+              columns={columns}
+              dataSource={data}
+              subRowComponent={(data: any) => <SubRow2 data={data} />}
+              //minWidth={650}
+            />
+            }
           </Box>
         </Box>
       </Flex> :
@@ -482,5 +516,112 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
         </Button>
       </Flex>
     </Flex>
+  )
+}
+
+const SubRow2 = ({ data }: SubRowProps) => {
+  const { t } = useTranslation('dashboard')
+  const { colors } = useTheme()
+  const router = useRouter()
+  return (
+    <>
+      <Box>
+        <Flex
+          variant='outlined-box-left2'
+          flexDirection='column'
+          sx={{ borderBottomColor: 'transparent' }}
+        >
+          <Text color='#F0864B' fontSize='lg'>
+          {t('content.asset-list.claimed')}
+          </Text>
+        </Flex>
+        <Flex
+          flexDirection='row'
+          variant='outlined-box3'
+          alignContent='center'
+        >
+          <Flex
+            flexDirection='column'
+            alignItems='left'
+            sx={{ gap: '5px 0px' }}
+          >
+            <Text fontSize='lg'>{data.releasedAmount} ETH</Text>
+            <Text as='p' fontSize='sm' color={colors.grey[200]}>
+              ≈ ${data.releasedAmountUSD}
+            </Text>
+          </Flex>
+        </Flex>
+      </Box>
+
+      <Box>
+        <Flex
+          variant='outlined-box-left2'
+          flexDirection='column'
+          sx={{ borderBottomColor: 'transparent' }}
+        >
+          <Text fontSize='lg'>
+          {t('content.asset-list.locked')}
+          </Text>
+        </Flex>
+        <Flex
+          flexDirection='row'
+          variant='outlined-box3'
+          alignContent='center'
+        >
+          <Flex
+            flexDirection='column'
+            alignItems='left'
+            sx={{ gap: '5px 0px' }}
+          >
+            <Text fontSize='lg'>{data.lockedAmount} ETH</Text>
+            <Text as='p' fontSize='sm' color={colors.grey[200]}>
+              ≈ ${data.lockedAmountUSD}
+            </Text>
+          </Flex>
+        </Flex>
+      </Box>
+
+      <Flex
+        flexDirection='row'
+        justifyContent='space-between'
+        p='20px'
+      >
+        <Box />
+
+        <Flex
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
+          //py={10}
+        >
+          <Text fontSize='md'>
+            {' '}
+            {t('beneficiaries.label.available-to-claim')}
+          </Text>
+          <Spacer size='lg' />
+
+          <Button
+            variant='primary'
+            disabled={!data.claimEnabled}
+            width='140px'
+            py='3px'
+            sx={{
+              textTransform: 'uppercase',
+              borderRadius: 4,
+            }}
+            onClick={() => {
+                //console.log(data.id)
+                //console.log(data.beneficiary)
+                router.push(
+                  `/dashboard/beneficiary/claim/${data.id}/${data.beneficiary}/${encodeURIComponent(data.asset)}`,
+                )
+              }
+            }
+          >
+            {t('button.label.claim-now')}
+          </Button>
+        </Flex>
+      </Flex>
+    </>
   )
 }
