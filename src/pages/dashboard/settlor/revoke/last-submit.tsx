@@ -111,11 +111,13 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
-              width: 240,
+              width: 250,
+              height: 52,
             }
           : {
               variant: 'grey-outline',
               flex: 1,
+              height: 52,
             },
       },
       {
@@ -123,10 +125,14 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         onClick: handleTryAgain,
         buttonProps: isTablet
           ? {
-              width: 240,
+              variant: 'primary',
+              width: 250,
+              height: 52,
             }
           : {
+              variant: 'primary',
               flex: 1,
+              height: 52,
             },
       },
     ],

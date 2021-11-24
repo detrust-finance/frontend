@@ -144,10 +144,12 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         onClick: handleTryAgain,
         buttonProps: isTablet
           ? {
+              variant: 'primary',
               width: 250,
               height: 52
           }
           : {
+              variant: 'primary',
               flex: 1,
               height: 52
             },

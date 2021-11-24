@@ -24,7 +24,7 @@ import {
   WizardHeader,
   DashboardLayout,
 } from '../../../../components'
-import { useTheme } from '../../../../hooks'
+import { useTheme, useResponsive } from '../../../../hooks'
 
 const Submit: React.FC<FullData> = ({ formData }) => {
   const { account, chainId } = useActiveWeb3React()
@@ -37,6 +37,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
   const [txId, setTxId] = React.useState('')
   const { spacer, colors, fontWeight } = useTheme()
   const router = useRouter()
+  const { isTablet } = useResponsive()
 
   const { onReleaseAll } = useReleaseAll()
   const { onReleaseAllTo } = useReleaseAllTo()
@@ -162,10 +163,31 @@ const Submit: React.FC<FullData> = ({ formData }) => {
       {
         title: t('button.label.cancel'),
         href: '/dashboard/beneficiary',
+        buttonProps: isTablet
+          ? {
+              variant: 'grey-outline',
+              width: 250,
+              height: 52,
+            }
+          : {
+              flex: 1,
+              height: 52,
+            },
       },
       {
         title: t('button.label.try-again'),
         onClick: handleTryAgain,
+        buttonProps: isTablet
+          ? {
+              variant: 'primary',
+              width: 250,
+              height: 52,
+            }
+          : {
+              variant: 'primary',
+              flex: 1,
+              height: 52,
+            },
       },
     ],
     [t, handleTryAgain],
