@@ -64,7 +64,7 @@ const Header: React.FC = () => {
       <DesktopNavigation /> */}
 
       <Link href='/' passHref>
-        <Box>
+        <Box sx={{ cursor: 'pointer' }}>
           <Image src='/images/logo.svg' width={137} height={25} />
         </Box>
       </Link>
