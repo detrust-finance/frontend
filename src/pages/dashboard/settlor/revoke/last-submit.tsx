@@ -170,7 +170,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
               <Loader size={58} />
             </Flex>
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='lg' opacity={0.5}>
               {t('revoke.last-submit.description')}
             </Box>
           </Flex>
@@ -300,7 +300,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
             >
               <Text
                 fontSize='md'
-                color={colors.grey[300]}
+                opacity={0.5}
                 sx={{ lineBreak: 'anywhere' }}
               >
                 {txId}{' '}
@@ -362,7 +362,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         >
           <Loader size={58} />
           <Spacer size='xxl' />
-          <Text fontWeight={fontWeight.medium} fontSize='md'>
+          <Text fontWeight={fontWeight.bold} fontSize='lg' color='#5E6282'>
             {t('revoke.last-submit.success')}{' '}
             {t('revoke.last-submit.wait-tx')}
           </Text>
@@ -375,7 +375,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
           >
             <Text
               fontSize='md'
-              color={colors.grey[300]}
+              opacity={0.5}
               sx={{ lineBreak: 'anywhere' }}
             >
               {txId}{' '}

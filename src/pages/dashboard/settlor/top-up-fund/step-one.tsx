@@ -28,7 +28,7 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
   } = useForm({
     defaultValues: formData,
   })
-  const { fontWeight, colors } = useTheme()
+  //const { fontWeight, colors } = useTheme()
   const headers = React.useMemo(
     (): IWizardHeader[] => [
       {
@@ -53,11 +53,13 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
-              width: 240,
+              width: 250,
+              height: 52
             }
           : {
               variant: 'grey-outline',
               flex: 1,
+              height: 52
             },
       },
       {
@@ -65,10 +67,12 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
         type: 'submit',
         buttonProps: isTablet
           ? {
-              width: 240,
+              width: 250,
+              height: 52
             }
           : {
               flex: 1,
+              height: 52
             },
       },
     ],
@@ -107,7 +111,7 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
               subtitle={t('content.subtitle.settlor-top-up')}
             />
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
               {t('content.description.top-up-fund')}
             </Box>
             <Spacer size='xl' />
@@ -179,12 +183,14 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
             <Spacer size='xxxl' /> */}
 
             <Flex
-              variant='outlined-box'
+              variant='outlined-box-left'
               flexDirection='column'
-              alignItems='center'
               sx={{ borderBottomColor: 'transparent' }}
             >
-              <Text fontWeight={fontWeight.medium}>
+              <Text
+                fontSize='lg'
+                opacity={0.9}
+              >
                 {t('top-up-fund.label.top-up-amount')}
               </Text>
             </Flex>
@@ -200,7 +206,7 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
                 },
               })}
               sx={{
-                textAlign: 'center',
+                textAlign: 'left',
               }}
               placeholder='0.00'
             />

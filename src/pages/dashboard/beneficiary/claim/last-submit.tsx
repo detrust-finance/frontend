@@ -188,7 +188,9 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               }
             />
             <Spacer size='xl' />
-            <Box as='p'>{t('beneficiaries.claim.last-submit.description')}</Box>
+            <Box as='p' fontSize='lg' opacity={0.5}>
+              {t('beneficiaries.claim.last-submit.description')}
+            </Box>
             <Spacer size='xl' />
             <WizardHeader headers={headers} />
           </Box>
@@ -208,7 +210,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               <Loader size={58} />
             </Flex>
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='lg' opacity={0.5}>
               {t('create-new-trust.last-submit.description')}
             </Box>
           </Flex>
@@ -244,7 +246,9 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               }
             />
             <Spacer size='xl' />
-            <Box as='p'>{t('beneficiaries.claim.last-submit.description')}</Box>
+            <Box as='p' fontSize='lg' opacity={0.5}>
+              {t('beneficiaries.claim.last-submit.description')}
+            </Box>
             <Spacer size='xl' />
             <WizardHeader headers={headers} />
           </Box>
@@ -304,7 +308,9 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               }
             />
             <Spacer size='xl' />
-            <Box as='p'>{t('beneficiaries.claim.last-submit.description')}</Box>
+            <Box as='p' fontSize='lg' opacity={0.5}>
+              {t('beneficiaries.claim.last-submit.description')}
+            </Box>
             <Spacer size='xl' />
             <WizardHeader headers={headers} />
           </Box>
@@ -335,7 +341,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               rel='noopener noreferrer'
               style={{ textDecoration: 'none' }}
             >
-              <Text fontSize='md' color={colors.grey[300]}>
+              <Text fontSize='md' opacity={0.5}>
                 {txId}{' '}
                 <Image
                   src='/images/icon-external-url.svg'
@@ -377,7 +383,9 @@ const Submit: React.FC<FullData> = ({ formData }) => {
             }
           />
           <Spacer size='xl' />
-          <Box as='p'>{t('beneficiaries.claim.last-submit.description')}</Box>
+          <Box as='p' fontSize='lg' opacity={0.5}>
+            {t('beneficiaries.claim.last-submit.description')}
+          </Box>
           <Spacer size='xl' />
           <WizardHeader headers={headers} />
         </Box>
@@ -394,7 +402,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
         >
           <Loader size={58} />
           <Spacer size='xxl' />
-          <Text fontWeight={fontWeight.medium} fontSize='md'>
+          <Text fontWeight={fontWeight.bold} fontSize='lg' color='#5E6282'>
             {t('top-up-fund.last-submit.success')}{' '}
             {t('top-up-fund.last-submit.wait-tx')}
           </Text>
@@ -405,7 +413,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
             rel='noopener noreferrer'
             style={{ textDecoration: 'none' }}
           >
-            <Text fontSize='md' color={colors.grey[300]}>
+            <Text fontSize='md' opacity={0.5}>
               {txId}{' '}
               <Image
                 src='/images/icon-external-url.svg'

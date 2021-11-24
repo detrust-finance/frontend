@@ -284,7 +284,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
               <Loader size={58} />
             </Flex>
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='lg' opacity={0.5}>
               {t('create-new-trust.last-submit.description')}
             </Box>
           </Flex>
@@ -415,7 +415,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
             >
               <Text
                 fontSize='md'
-                color={colors.grey[300]}
+                opacity={0.5}
                 sx={{ lineBreak: 'anywhere' }}
               >
                 {txId}{' '}
@@ -490,7 +490,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
           >
             <Text
               fontSize='md'
-              color={colors.grey[300]}
+              opacity={0.5}
               sx={{ lineBreak: 'anywhere' }}
             >
               {txId}{' '}
