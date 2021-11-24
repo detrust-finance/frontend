@@ -281,10 +281,10 @@ const useDefaultTheme = () => {
         boxSizing: 'border-box',
         color: darkMode ? DarkTheme.black : LightTheme.dolphin,
         fontSize: fontSizes.lg,
-        p: 10,
-        py: 16,
+        px: 10,
         height: 42,
         justifyContent: 'space-between',
+        alignItems: 'center',
       },
       'table-sub.text': {
         ...tableRow,
