@@ -199,7 +199,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
 
           <Flex
             flexDirection='column'
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -256,7 +256,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
           <Spacer size='xl' />
 
           <Flex
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -317,7 +317,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
           <Spacer size='xxl' />
           <Flex
             flexDirection='column'
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -330,7 +330,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               height={52}
             />
             <Spacer size='xxl' />
-            <Text fontWeight={fontWeight.medium} fontSize='md'>
+            <Text fontWeight={fontWeight.bold} fontSize='lg' color='#5E6282'>
               {t('top-up-fund.last-submit.tx-success')}
               {/*t('top-up-fund.last-submit.tx-success-id')*/}
             </Text>
@@ -341,7 +341,11 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               rel='noopener noreferrer'
               style={{ textDecoration: 'none' }}
             >
-              <Text fontSize='md' opacity={0.5}>
+              <Text
+                fontSize='md'
+                opacity={0.5}
+                color='dolphin'
+              >
                 {txId}{' '}
                 <Image
                   src='/images/icon-external-url.svg'
@@ -393,7 +397,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
         <Spacer size='xxl' />
         <Flex
           flexDirection='column'
-          variant='outlined-box'
+          variant='outlined-box-full'
           width='100%'
           flex={1}
           justifyContent='center'
@@ -413,7 +417,11 @@ const Submit: React.FC<FullData> = ({ formData }) => {
             rel='noopener noreferrer'
             style={{ textDecoration: 'none' }}
           >
-            <Text fontSize='md' opacity={0.5}>
+            <Text
+              fontSize='md'
+              opacity={0.5}
+              color='dolphin'
+            >
               {txId}{' '}
               <Image
                 src='/images/icon-external-url.svg'

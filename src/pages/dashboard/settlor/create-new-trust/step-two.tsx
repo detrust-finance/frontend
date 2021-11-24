@@ -96,7 +96,7 @@ const StepTwo: React.FC<FullData> = ({ formData, navigation }) => {
 
         <Spacer size='xxxl' />
 
-        <Box width='100%' mb='auto'>
+        <Box width='100%' mb='30px'>
           <Box variant='outlined-box-full' px={spacer.xl}>
             <Flex justifyContent='space-between'>
               <Text fontWeight={fontWeight.medium}>

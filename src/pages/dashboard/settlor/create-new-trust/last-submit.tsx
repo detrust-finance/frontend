@@ -328,7 +328,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
           <Spacer size='xl' />
 
           <Flex
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -389,7 +389,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
 
           <Flex
             flexDirection='column'
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -402,7 +402,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
               height={52}
             />
             <Spacer size='xxl' />
-            <Text fontWeight={fontWeight.medium} fontSize='md'>
+            <Text fontWeight={fontWeight.bold} fontSize='lg' color='#5E6282'>
               {t('create-new-trust.last-submit.tx-success')}
               {/*t('create-new-trust.last-submit.tx-success-id')*/}
             </Text>
@@ -416,6 +416,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
               <Text
                 fontSize='md'
                 opacity={0.5}
+                color='dolphin'
                 sx={{ lineBreak: 'anywhere' }}
               >
                 {txId}{' '}
@@ -477,7 +478,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         >
           <Loader size={58} />
           <Spacer size='xxl' />
-          <Text fontWeight={fontWeight.medium} fontSize='md'>
+          <Text fontWeight={fontWeight.bold} fontSize='lg' color='#5E6282'>
             {t('create-new-trust.last-submit.success')}{' '}
             {t('create-new-trust.last-submit.wait-tx')}
           </Text>
@@ -491,6 +492,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
             <Text
               fontSize='md'
               opacity={0.5}
+              color='dolphin'
               sx={{ lineBreak: 'anywhere' }}
             >
               {txId}{' '}
