@@ -19,6 +19,7 @@ import {
   RobotoNormalBlueBell14px,
   ValignTextMiddle,
 } from "./styledMixins";
+import Account from '../../theme/ui/common/account';
 
 const lauchUrl = '/dashboard/settlor'
 
@@ -100,8 +101,7 @@ const configDesktop = {
       top: 56,
     },
     account: {
-      width: 40,
-      height: 40,
+      size: 40,
       left: 1261,
       top: 46,
     },
@@ -452,8 +452,7 @@ const configTablet = {
     //   top: 56,
     // },
     account: {
-      width: 40,
-      height: 40,
+      size: 40,
       left: 731,
       top: 56,
     },
@@ -808,8 +807,7 @@ const configMobile = {
     //   top: 56,
     // },
     account: {
-      width: 40,
-      height: 40,
+      size: 40,
       left: 315,
       top: 46,
     },
@@ -1141,9 +1139,17 @@ function Home({device}: HomeProps) {
           <NavItem {...c.topNav.item4}>Links To</NavItem>
         </ScrollWindowButton>
       </>}
-      <a href={lauchUrl}>
+      {/* <a href={lauchUrl}>
         <HoverImage src='/images/account.svg' {...c.topNav.account} />
-      </a>
+      </a> */}
+      <Account
+        size={c.topNav.account.size}
+        sx={{
+          position: 'absolute',
+          top: c.topNav.account.top,
+          left: c.topNav.account.left
+        }}
+      />
       {/* Use Cases */}
       <Image src='/images/use-cases-deco.svg' {...c.useCases.deco} />
       <SmallText id='use-cases' {...c.useCases.title}>Use Cases</SmallText>

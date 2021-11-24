@@ -1,14 +1,12 @@
 import React from 'react'
-import _ from 'lodash'
+//import _ from 'lodash'
 // Components
 import { Flex, Box, Text } from 'rebass/styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
-import Modal from '../../layout/modal'
-import WalletModal from '../../../../libs/wallet/components/wallet-modal'
 //import { Menu as MenuIcon, User } from 'react-feather'
 // Hooks
-import { useModal, useDrawer, useResponsive, useTheme } from '../../../../hooks'
+import { useDrawer, useResponsive, useTheme } from '../../../../hooks'
 import { useRouter } from 'next/router'
 // Constants
 import { menu, IMenu, SelectLanguageMenuProps } from '../../../../constants'
@@ -17,6 +15,7 @@ import DropDown from '../../../../components/dropw-down'
 import { useActiveWeb3React } from '../../../../libs/wallet'
 import { shortenAddress } from '../../../../libs/wallet/utils'
 import { CheckCircledOutline } from 'iconoir-react'
+import Account from '../account'
 //import MobileMenu from './mobile-menu'
 
 const Header: React.FC = () => {
@@ -25,13 +24,6 @@ const Header: React.FC = () => {
   const { account } = useActiveWeb3React()
 
   const { isTablet } = useResponsive()
-
-  const [toggleWalletModal] = useModal(
-    //<Modal title={t('wallet.modal.title')}>
-    <Modal>
-      <WalletModal />
-    </Modal>,
-  )
 
   return (
     <Flex
@@ -84,27 +76,13 @@ const Header: React.FC = () => {
           }}
         />
         {account && isTablet &&
-        <Text fontSize='17px'>
+        <Text
+          fontSize='17px'
+          mr='25px'
+        >
           {shortenAddress(account, 4)}
         </Text>}
-        <Flex
-          sx={{
-            bg: account ? colors.jaffa : colors.grey[200],
-            width: 40,
-            height: 40,
-            borderRadius: 25,
-            justifyContent: 'center',
-            alignItems: 'center',
-            color: colors.white,
-            ml: 25,
-            pr: '1px',
-            cursor: 'pointer',
-          }}
-          onClick={toggleWalletModal}
-        >
-          <Image src='/images/user.svg' width={22} height={24} />
-          {/* <User height={16} /> */}
-        </Flex>
+        <Account size='40px' />
       </Flex>
       {/* </Box> */}
     </Flex>

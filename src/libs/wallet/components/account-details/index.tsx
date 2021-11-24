@@ -18,6 +18,7 @@ import { SUPPORTED_WALLETS } from '../../constants'
 import { useTheme, useResponsive } from '../../../../hooks'
 import { Cancel } from 'iconoir-react'
 import Image from 'next/image'
+import Account from '../../../../theme/ui/common/account'
 
 const AccountDetails: React.FC<AccountDetailsProps> = ({ openOptions, onDismiss }) => {
   const { t } = useTranslation('wallet')
@@ -72,23 +73,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ openOptions, onDismiss 
         {account && (
           <Copy variant='copy' toCopy={account} />
         )}
-        {isTablet &&
-        <Flex
-          sx={{
-            bg: account ? colors.jaffa : colors.grey[200],
-            width: 40,
-            height: 40,
-            borderRadius: 25,
-            justifyContent: 'center',
-            alignItems: 'center',
-            color: colors.white,
-            ml: 25,
-            pr: '1px',
-            cursor: 'pointer',
-          }}
-        >
-          <Image src='/images/user.svg' width={22} height={24} />
-        </Flex>}
+        {isTablet && <Account size='40px' disableClick ml='25px' />}
       </Flex>
       {/* <Spacer size='xl' />
       <Flex flexDirection='column' width='100%'>
