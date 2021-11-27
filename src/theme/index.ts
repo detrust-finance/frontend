@@ -633,7 +633,7 @@ export const GlobalStyle = createGlobalStyle<any>`
   }
 
   button, input, select, label, p, a, h1, h2, h3, h4, h5, h6, ul, li, div {
-    font-family: ${({ fonts }) => fonts.pop} !important;
+    font-family: ${({ fonts }) => fonts.pop} /*!important*/;
   }
 
   button {
