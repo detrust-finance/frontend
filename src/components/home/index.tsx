@@ -19,6 +19,7 @@ import {
   RobotoNormalBlueBell14px,
   ValignTextMiddle,
 } from "./styledMixins";
+import LanguageSelect from '../../theme/ui/common/language-select'
 import Account from '../../theme/ui/common/account';
 
 const lauchUrl = '/dashboard/settlor'
@@ -99,6 +100,10 @@ const configDesktop = {
     item4: {
       left: 478+443,
       top: 56,
+    },
+    language: {
+      left: 1182,
+      top: 51,
     },
     account: {
       size: 40,
@@ -451,6 +456,10 @@ const configTablet = {
     //   left: 478+443,
     //   top: 56,
     // },
+    language: {
+      left: 617,
+      top: 60,
+    },
     account: {
       size: 40,
       left: 731,
@@ -806,10 +815,14 @@ const configMobile = {
     //   left: 478+443,
     //   top: 56,
     // },
+    language: {
+      left: 252,
+      top: 48,
+    },
     account: {
       size: 40,
       left: 315,
-      top: 46,
+      top: 41,
     },
   },
   useCases: {
@@ -1142,6 +1155,13 @@ function Home({device}: HomeProps) {
       {/* <a href={lauchUrl}>
         <HoverImage src='/images/account.svg' {...c.topNav.account} />
       </a> */}
+      <LanguageSelect
+        sx={{
+          position: 'absolute',
+          top: c.topNav.language.top,
+          left: c.topNav.language.left,
+        }}
+      />
       <Account
         size={c.topNav.account.size}
         sx={{

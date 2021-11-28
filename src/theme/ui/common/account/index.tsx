@@ -24,6 +24,10 @@ const Account = ({ size, disableClick, sx, ...restprops }: Props) => {
 
   const clickSx = disableClick ? {} : {
     cursor: 'pointer',
+    transition: 'all 0.2s ease',
+    '&:hover': {
+      transform: 'scale(1.3)',
+    },
   }
   const clickProps = disableClick ? {} : {
     onClick: toggleWalletModal,
