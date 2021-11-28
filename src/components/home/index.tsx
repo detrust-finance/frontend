@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import {
   // PoppinsSemiBoldDolphin18px,
   PoppinsNormalWhite18px,
@@ -1122,6 +1123,7 @@ interface HomeProps {
 
 function Home({device}: HomeProps) {
   const c = configByDevice[device]
+  const { t } = useTranslation('home')
 
   return (
     <HorizontalCenterPage {...c.pageSize}>
@@ -1129,27 +1131,27 @@ function Home({device}: HomeProps) {
       <Ellipse {...c.topLeftLight} />
       <Image src='/images/hero-bg.svg' {...c.heroBg} />
       <Image {...c.heroImage} />
-      <Tagline id='hero' {...c.tagLine}>DATA OF THE PROTOCOL:</Tagline>
+      <Tagline id='hero' {...c.tagLine}>{t('home.tag-line')}</Tagline>
       <Image src='/images/data-deco.svg' {...c.dataDeco} />
       <Heading {...c.dataHeading} />
-      <Desc {...c.dataDesc}>Trust on chain by Smart Contract. Protect your assets and family.</Desc>
+      <Desc {...c.dataDesc}>{t('home.data-desc')}</Desc>
       <a href={lauchUrl}>
-        <LaunchButton {...c.heroLaunchApp}>Launch App</LaunchButton>
+        <LaunchButton {...c.heroLaunchApp}>{t('home.launch-app')}</LaunchButton>
       </a>
       {/* Top Nav */}
       <Logo {...c.topNav.logo} />
       {device === 'desktop' && <>
         <ScrollTopWindowButton>
-          <NavItem {...c.topNav.item1}>Home</NavItem>
+          <NavItem {...c.topNav.item1}>{t('home.nav.home')}</NavItem>
         </ScrollTopWindowButton>
         <ScrollWindowButton byId='use-cases'>
-          <NavItem {...c.topNav.item2}>Use Cases</NavItem>
+          <NavItem {...c.topNav.item2}>{t('home.nav.use-cases')}</NavItem>
         </ScrollWindowButton>
         <ScrollWindowButton byId='milestone'>
-          <NavItem {...c.topNav.item3}>Milestone</NavItem>
+          <NavItem {...c.topNav.item3}>{t('home.nav.milestone')}</NavItem>
         </ScrollWindowButton>
         <ScrollWindowButton byId='links-to'>
-          <NavItem {...c.topNav.item4}>Links To</NavItem>
+          <NavItem {...c.topNav.item4}>{t('home.nav.links-to')}</NavItem>
         </ScrollWindowButton>
       </>}
       {/* <a href={lauchUrl}>
@@ -1172,49 +1174,49 @@ function Home({device}: HomeProps) {
       />
       {/* Use Cases */}
       <Image src='/images/use-cases-deco.svg' {...c.useCases.deco} />
-      <SmallText id='use-cases' {...c.useCases.title}>Use Cases</SmallText>
-      <BigText {...c.useCases.desc}>Use Cases Of The Product</BigText>
+      <SmallText id='use-cases' {...c.useCases.title}>{t('home.use-cases.title')}</SmallText>
+      <BigText {...c.useCases.desc}>{t('home.use-cases.desc')}</BigText>
       {/*   case 1 */}
       <Image src='/images/use-cases-wallet.png' {...c.useCases.case1.image} />
-      <UseCasesTitle {...c.useCases.case1.title}>use cases</UseCasesTitle>
-      <UseCasesDesc {...c.useCases.case1.desc}>use cases: make 3 use cases of the product</UseCasesDesc>
+      <UseCasesTitle {...c.useCases.case1.title}>{t('home.case1.title')}</UseCasesTitle>
+      <UseCasesDesc {...c.useCases.case1.desc}>{t('home.case1.desc')}</UseCasesDesc>
       {/*   case 2 */}
       <UseCaseBackgroundSmall {...c.useCases.case2.bg1} />
       <UseCaseBackground {...c.useCases.case2.bg2} />
       <Image src='/images/use-cases-trading.png' {...c.useCases.case2.image} />
-      <UseCasesTitle {...c.useCases.case2.title}>use cases</UseCasesTitle>
-      <UseCasesDesc {...c.useCases.case2.desc}>use cases: make 3 use cases of the product</UseCasesDesc>
+      <UseCasesTitle {...c.useCases.case2.title}>{t('home.case2.title')}</UseCasesTitle>
+      <UseCasesDesc {...c.useCases.case2.desc}>{t('home.case2.desc')}</UseCasesDesc>
       {/*   case 3 */}
       <Image src='/images/use-cases-donation.png' {...c.useCases.case3.image} />
-      <UseCasesTitle {...c.useCases.case3.title}>use cases</UseCasesTitle>
-      <UseCasesDesc {...c.useCases.case3.desc}>use cases: make 3 use cases of the product</UseCasesDesc>
+      <UseCasesTitle {...c.useCases.case3.title}>{t('home.case3.title')}</UseCasesTitle>
+      <UseCasesDesc {...c.useCases.case3.desc}>{t('home.case3.desc')}</UseCasesDesc>
       {/* Milestone */}
-      <SmallText id='milestone' {...c.milestone.title}>Milestone</SmallText>
-      <BigText {...c.milestone.desc}>What Would The Protocol Upgrade In The Future</BigText>
+      <SmallText id='milestone' {...c.milestone.title}>{t('home.milestone.title')}</SmallText>
+      <BigText {...c.milestone.desc}>{t('home.milestone.desc')}</BigText>
       <Image src='/images/abstract-big-deco.svg' {...c.milestone.deco} />
       <Image {...c.milestone.image} />
       {/* Links To */}
-      <SmallText id='links-to' {...c.links.title}>Easy and Fast</SmallText>
-      <BigText {...c.links.desc}>Learn More About DeTrust, Chat With The Team</BigText>
+      <SmallText id='links-to' {...c.links.title}>{t('home.links.title')}</SmallText>
+      <BigText {...c.links.desc}>{t('home.links.desc')}</BigText>
       {/*   link 1 */}
       <a href="https://twitter.com" target="_blank" rel="noreferrer">
         <ExternalLinkGroup src='/images/twitter-logo.svg' {...c.links.link1.group}>
           <ExternalLinkLabel>Twitter</ExternalLinkLabel>
-          <ExternalLinkDesc {...c.links.link1.desc}>Follow @DeTrust for updates and news.</ExternalLinkDesc>
+          <ExternalLinkDesc {...c.links.link1.desc}>{t('home.twitter.desc')}</ExternalLinkDesc>
         </ExternalLinkGroup>
       </a>
       {/*   link 2 */}
-      <a href="https://github.com" target="_blank" rel="noreferrer">
+      <a href="https://github.com/detrust-finance" target="_blank" rel="noreferrer">
         <ExternalLinkGroup src='/images/github-logo.svg' {...c.links.link2.group}>
           <ExternalLinkLabel>Github</ExternalLinkLabel>
-          <ExternalLinkDesc {...c.links.link2.desc}>Follow @DeTrust for updates and news.</ExternalLinkDesc>
+          <ExternalLinkDesc {...c.links.link2.desc}>{t('home.github.desc')}</ExternalLinkDesc>
         </ExternalLinkGroup>
       </a>
        {/*   link 3 */}
        <a href="https://telegram.org" target="_blank" rel="noreferrer">
         <ExternalLinkGroup src='/images/telegram-logo.svg' {...c.links.link3.group}>
           <ExternalLinkLabel>Telegram</ExternalLinkLabel>
-          <ExternalLinkDesc {...c.links.link3.desc}>Follow @DeTrust for updates and news.</ExternalLinkDesc>
+          <ExternalLinkDesc {...c.links.link3.desc}>{t('home.telegram.desc')}</ExternalLinkDesc>
         </ExternalLinkGroup>
       </a>
       {/* Launch */}
@@ -1226,25 +1228,25 @@ function Home({device}: HomeProps) {
           src='/images/circles.svg' {...c.launch.bgCircles[1]} /> }
       </LaunchBg>
       <Logo {...c.launch.logo} />
-      <BigText2 {...c.launch.desc}>DeTrust Trust on chain by Smart Contract. Protect your assets and family.</BigText2>
+      <BigText2 {...c.launch.desc}>{t('home.launch.desc')}</BigText2>
       <a href={lauchUrl}>
-       <LaunchButton {...c.launch.launchApp}>Launch App</LaunchButton>
+       <LaunchButton {...c.launch.launchApp}>{t('home.launch-app')}</LaunchButton>
       </a>
       {/* Footer */}
       <FooterBg {...c.footer.bg} />
       <Ellipse {...c.footer.bottomRightLight} />
       { device !== 'mobile' && <>
         <ScrollTopWindowButton>
-          <SmallNavItem {...c.footer.item1}>Home</SmallNavItem>
+          <SmallNavItem {...c.footer.item1}>{t('home.nav.home')}</SmallNavItem>
         </ScrollTopWindowButton>
         <ScrollWindowButton byId='use-cases'>
-          <SmallNavItem {...c.footer.item2}>Use Cases</SmallNavItem>
+          <SmallNavItem {...c.footer.item2}>{t('home.nav.use-cases')}</SmallNavItem>
         </ScrollWindowButton>
         <ScrollWindowButton byId='milestone'>
-          <SmallNavItem {...c.footer.item3}>Milestone</SmallNavItem>
+          <SmallNavItem {...c.footer.item3}>{t('home.nav.milestone')}</SmallNavItem>
         </ScrollWindowButton>
         <ScrollWindowButton byId='links-to'>
-          <SmallNavItem {...c.footer.item4}>Links To</SmallNavItem>
+          <SmallNavItem {...c.footer.item4}>{t('home.nav.links-to')}</SmallNavItem>
         </ScrollWindowButton>
       </>}
       <a href="https://twitter.com" target="_blank" rel="noreferrer">
@@ -1259,7 +1261,7 @@ function Home({device}: HomeProps) {
       <Rectangle {...c.footer.splitter} />
       <TextLabel {...c.footer.label}>@2021 DeTrust</TextLabel>
       <a href={lauchUrl}>
-        <SmallLaunchButton {...c.footer.launchApp}>Launch App</SmallLaunchButton>
+        <SmallLaunchButton {...c.footer.launchApp}>{t('home.launch-app')}</SmallLaunchButton>
       </a>
     </HorizontalCenterPage>
   )
