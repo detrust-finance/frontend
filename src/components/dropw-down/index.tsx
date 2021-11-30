@@ -18,7 +18,9 @@ const DropDown: React.FC<DropdownProps> = ({
 
   return (
     <ClickAwayListener onClickAway={handleClose}>
-      <Box sx={{ position: 'relative' }}>
+      <Box
+        sx={{ position: 'relative' }}
+      >
         {trigger === 'hover' && (
           <Box
             sx={{ cursor: 'pointer', userSelect: 'none' }}

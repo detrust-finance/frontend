@@ -152,7 +152,7 @@ const Table: React.FC<TableProps> = ({
           Loading...
         </Flex>
       )}
-      <Box {...restprops}>
+      {/* <Box {...restprops}> */}
         {/* <SimpleBar
           style={
             !scrollbarsStyle
@@ -161,7 +161,10 @@ const Table: React.FC<TableProps> = ({
           }
         > */}
           {/* <Spacer size='sm' /> */}
-          <Flex flexDirection='column' sx={{ position: 'relative' }}>
+          <Flex
+            flexDirection='column'
+            sx={{ position: 'relative' }}
+          >
             {dataSource?.length > 0 &&
               _.orderBy(dataSource, [sortHeader], [sortDirection])?.map(
                 (source: any, i: number) =>
@@ -248,7 +251,7 @@ const Table: React.FC<TableProps> = ({
               )}
           </Flex>
         {/* </SimpleBar> */}
-      </Box>
+      {/* </Box> */}
     </Flex>
   )
 }
