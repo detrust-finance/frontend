@@ -123,7 +123,7 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
             <WizardHeader headers={headers} />
           </Box>
 
-          <Spacer size='xxxl' />
+          <Spacer size='xxl' />
 
           <Box width='100%' mb='auto'>
             <Flex

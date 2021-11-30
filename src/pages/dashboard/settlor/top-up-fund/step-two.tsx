@@ -88,7 +88,7 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
           <WizardHeader headers={headers} />
         </Box>
 
-        <Spacer size='xxxl' />
+        <Spacer size='xxl' />
 
         <Box width='100%' mb='auto'>
           <Box

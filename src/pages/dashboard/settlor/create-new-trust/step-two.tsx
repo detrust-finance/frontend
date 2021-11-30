@@ -94,7 +94,7 @@ const StepTwo: React.FC<FullData> = ({ formData, navigation }) => {
           <WizardHeader headers={headers} />
         </Box>
 
-        <Spacer size='xxxl' />
+        <Spacer size='xxl' />
 
         <Box width='100%' mb='30px'>
           <Box variant='outlined-box-full' px={spacer.xl}>

@@ -271,7 +271,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
             <WizardHeader headers={headers} />
           </Box>
 
-          <Spacer size='xl' />
+          <Spacer size='xxl' />
 
           <Flex
             flexDirection='column'
@@ -327,7 +327,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
             <WizardHeader headers={headers} />
           </Box>
 
-          <Spacer size='xl' />
+          <Spacer size='xxl' />
 
           <Flex
             variant='outlined-box-full'

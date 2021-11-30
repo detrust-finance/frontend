@@ -137,7 +137,7 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
           variant='layout-content'
           alignItems='center'
         >
-          <Box width='100%' mb={[spacer.xxxl, spacer.xxxl, 0]}>
+          <Box width='100%'>
             <Title
               title={t('content.title.settlor')}
               subtitle={t('content.subtitle.settlor-new-trust')}
@@ -149,6 +149,8 @@ const StepOne: React.FC<FullData> = ({ setForm, formData, navigation }) => {
             <Spacer size='xl' />
             <WizardHeader headers={headers} />
           </Box>
+
+          <Spacer size='xxl' />
 
           <Flex
             flexDirection='column'
