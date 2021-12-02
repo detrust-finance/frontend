@@ -152,7 +152,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
       {
         title: t('beneficiaries.claim.step-one.confirm'),
         number: 2,
-        status: 'active',
+        status: 'done',
       },
     ],
     [t],
