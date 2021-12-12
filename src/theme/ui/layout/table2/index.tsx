@@ -31,11 +31,12 @@ const Table2 = ({
                 //mt='24px'
                 //mb='auto'
                 sx={{ gap: '10px' }}
+                key={data.key}
               >
                 {columns.map((col: TableColumnProps) => {
                   //console.log(col)
                   return (
-                    <Box>
+                    <Box key={col.key}>
                       <Flex
                         variant='outlined-box-left2'
                         flexDirection='column'
