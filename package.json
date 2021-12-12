@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.20",
+    "@mui/base": "^5.0.0-alpha.59",
     "@rebass/forms": "^4.0.6",
     "@tippyjs/react": "^4.2.6",
     "@types/react-datepicker": "^4.1.3",

@@ -19,8 +19,10 @@ import { useRouter } from 'next/router'
 import usePrices from '../../../hooks/usePrices'
 import { Archive, EditPencil } from 'iconoir-react'
 import { Loader } from '../../loader'
-import DropDown from '../../dropw-down'
+//import DropDown from '../../dropw-down'
 import Table2 from '../../../theme/ui/layout/table2'
+import Popper from '@mui/base/PopperUnstyled'
+import ClickAwayListener from 'react-click-away-listener'
 
 export const TrustList: React.FC = ({ ...restprops }) => {
   const { colors, fontWeight, spacer } = useTheme()
@@ -426,14 +428,15 @@ const SubRow: React.FC<SubRowProps> = ({ data }) => {
           flex={1}
           //py={10}
         >
-          <DropDown
+          {/* <DropDown
             buttonComponent={<TrustEditButton />}
             menuComponent={<TrustEditMenu trustId={data.key} />}
-            menuStyle={{
-              top: 32,
-              left: -39.5,
-            }}
-          />
+            // menuStyle={{
+            //   top: 32,
+            //   left: -39.5,
+            // }}
+          /> */}
+          <TrustEditDropDown trustId={data.key} />
           <Spacer size='lg' />
           <Text fontSize='md'>
             {t('content.subtitle.settlor-edit')}
@@ -550,14 +553,15 @@ const SubRow2 = ({ data }: SubRowProps) => {
             alignItems='center'
             //py={10}
           >
-            <DropDown
+            {/* <DropDown
               buttonComponent={<TrustEditButton />}
               menuComponent={<TrustEditMenu trustId={data.key} />}
-              menuStyle={{
-                top: -46,
-                left: 40,
-              }}
-            />
+              // menuStyle={{
+              //   top: -46,
+              //   left: 40,
+              // }}
+            /> */}
+            <TrustEditDropDown trustId={data.key} />
             <Spacer size='lg' />
             <Text fontSize='md'>
               {t('content.subtitle.settlor-edit')}
@@ -595,13 +599,6 @@ const SubRow2 = ({ data }: SubRowProps) => {
     </>
   )
 }
-
-const TrustEditButton = () => <EditPencil
-  color='#212832'
-  width={32}
-  height={32}
-  strokeWidth={1}
-/>
 
 interface TrustEditMenuProps {
   handleClose?: React.EffectCallback
@@ -644,7 +641,7 @@ const TrustEditMenu = ({
     >
       <Box
         onClick={() => {
-          console.log(trustId)
+          //console.log(trustId)
           handleClose?.()
           toggleRevokeModal()
         }}
@@ -695,5 +692,44 @@ const TrustEditMenu = ({
         {t('content.subtitle.settlor-edit.set-irrevocable')}
       </Box>
     </Flex>
+  )
+}
+
+interface TrustEditDropDownProps {
+  trustId: string | number
+}
+
+const TrustEditDropDown = ({ trustId }: TrustEditDropDownProps) => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <ClickAwayListener onClickAway={handleClose}>
+      <Box>
+        <Box
+          sx={{ cursor: 'pointer', userSelect: 'none' }}
+          onClick={handleClick}
+        >
+          <EditPencil
+            color='#212832'
+            width={32}
+            height={32}
+            strokeWidth={1}
+          />
+        </Box>
+        <Popper anchorEl={anchorEl} open={open}>
+          <TrustEditMenu
+            trustId={trustId}
+            handleClose={handleClose}
+          />
+        </Popper>
+      </Box>
+    </ClickAwayListener>
   )
 }
