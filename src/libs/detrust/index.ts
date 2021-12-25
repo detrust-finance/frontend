@@ -16,6 +16,8 @@ export {
   useGetBalance,
   useTopUp,
   useTopUpFromBalance,
+  useRevoke,
+  useSetIrrevocable,
   useReleaseAll,
   useRelease,
   useReleaseAllTo,

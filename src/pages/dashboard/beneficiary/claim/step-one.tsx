@@ -54,11 +54,13 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
-              width: 240,
+              width: 250,
+              height: 52,
             }
           : {
               variant: 'grey-outline',
               flex: 1,
+              height: 52,
             },
       },
       {
@@ -66,10 +68,12 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
         type: 'submit',
         buttonProps: isTablet
           ? {
-              width: 240,
+              width: 250,
+              height: 52,
             }
           : {
               flex: 1,
+              height: 52,
             },
       },
     ],
@@ -112,23 +116,25 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
               }
             />
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
               {t('content.description.beneficiary')}
             </Box>
             <Spacer size='xl' />
             <WizardHeader headers={headers} />
           </Box>
 
-          <Spacer size='xxxl' />
+          <Spacer size='xxl' />
 
           <Box width='100%' mb='auto'>
             <Flex
-              variant='outlined-box'
+              variant='outlined-box-left'
               flexDirection='column'
-              alignItems='center'
               sx={{ borderBottomColor: 'transparent' }}
             >
-              <Text fontWeight={fontWeight.medium}>
+              <Text
+                fontSize='lg'
+                opacity={0.9}
+              >
                 {t('beneficiaries.claim.step-one.release-address')}
               </Text>
             </Flex>
@@ -143,7 +149,10 @@ const StepOne: React.FC<FullData> = ({ formData, setForm, navigation }) => {
                   message: tc('error.field-is-not-eth-address'),
                 },
               })}
-              sx={{ textAlign: 'center' }}
+              sx={{
+                textAlign: 'left',
+                opacity: 0.8,
+              }}
               placeholder={t('beneficiaries.claim.enter-address')}
             />
             {errors?.releaseToAddress?.message && (

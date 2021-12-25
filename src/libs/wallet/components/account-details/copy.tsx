@@ -28,7 +28,7 @@ const CopyHelper: React.FC<CopyHelperProps> = ({
             <Text ml='8px'>{t('copied')}</Text>
           </>
         ) : (
-          <Copy size={'16'} />
+          <Copy color='grey' size={'16'} />
         )}
         {isCopied ? '' : children}
       </Flex>

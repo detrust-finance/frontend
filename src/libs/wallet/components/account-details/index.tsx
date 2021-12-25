@@ -15,12 +15,16 @@ import { shortenAddress } from '../../utils'
 import { AccountDetailsProps } from './interfaces'
 // Constants
 import { SUPPORTED_WALLETS } from '../../constants'
-import { useTheme } from '../../../../hooks'
+import { useTheme, useResponsive } from '../../../../hooks'
+import { Cancel } from 'iconoir-react'
+import Image from 'next/image'
+import Account from '../../../../theme/ui/common/account'
 
-const AccountDetails: React.FC<AccountDetailsProps> = ({ openOptions }) => {
+const AccountDetails: React.FC<AccountDetailsProps> = ({ openOptions, onDismiss }) => {
   const { t } = useTranslation('wallet')
   const { account, connector } = useActiveWeb3React()
   const { colors } = useTheme()
+  const { isTablet } = useResponsive()
 
   function formatConnectorName() {
     const { ethereum } = window
@@ -36,50 +40,42 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ openOptions }) => {
   }
 
   return (
-    <Box>
+    <Flex flexDirection='column'>
       <Flex justifyContent='space-between' alignItems='center'>
-        {formatConnectorName()}
-        <Flex>
-          <Button
-            variant='secondary'
-            onClick={() => {
-              openOptions()
-            }}
-            sx={{ textTransform: 'uppercase' }}
-          >
-            {t('wallet.button.change')}
-          </Button>
-          {connector !== injected && connector !== walletlink && (
-            <Button
-              variant='secondary'
-              onClick={() => {
-                // eslint-disable-next-line @typescript-eslint/no-extra-semi
-                ;(connector as any).close()
-              }}
-              ml='8px'
-              p='px'
-              sx={{ textTransform: 'uppercase' }}
-            >
-              <LogOut height={16} />
-            </Button>
-          )}
-        </Flex>
+        <Text fontSize='17px' sx={{ textTransform: 'uppercase' }}>
+          {t('wallet.modal.title')}
+        </Text>
+        <Cancel
+          width='14px'
+          height='14px'
+          onClick={onDismiss}
+          cursor='pointer'
+          color='black'
+        />
       </Flex>
-      <Spacer size='xl' />
-      <Box
+      <Text fontSize='17px' my='42px'>
+        {formatConnectorName()}
+      </Text>
+      <Flex
         id='web3-account-identifier-row'
+        alignItems='center'
         p={24}
         sx={{
-          borderWidth: 1,
-          borderStyle: 'solid',
-          borderColor: colors.blue[100],
+          border: '1px solid rgba(0, 0, 0, 0.1)',
+          boxSizing: 'border-box',
+          boxShadow: '0px 20px 80px rgba(0, 0, 0, 0.02)',
+          borderRadius: '8px',
         }}
       >
-        <Text fontSize='xl' textAlign='center'>
+        <Text fontSize={['sm', 'sm', '17px', '17px']} textAlign='center'>
           {account && shortenAddress(account, 10)}
         </Text>
-      </Box>
-      <Spacer size='xl' />
+        {account && (
+          <Copy variant='copy' toCopy={account} />
+        )}
+        {isTablet && <Account size='40px' disableClick ml='25px' />}
+      </Flex>
+      {/* <Spacer size='xl' />
       <Flex flexDirection='column' width='100%'>
         {account && (
           <Copy
@@ -91,8 +87,39 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({ openOptions }) => {
             <Text ml='8px'>{t('wallet.button.copy-address')}</Text>
           </Copy>
         )}
+      </Flex> */}
+      <Flex
+        justifyContent='center'
+        alignItems='center'
+        width='100%'
+        my='40px'
+      >
+        <Button
+          variant='primary'
+          onClick={() => {
+            openOptions()
+          }}
+          px='50px'
+          sx={{ textTransform: 'uppercase' }}
+        >
+          {t('wallet.button.change')}
+        </Button>
+        {connector !== injected && connector !== walletlink && (
+          <Button
+            variant='secondary'
+            onClick={() => {
+              // eslint-disable-next-line @typescript-eslint/no-extra-semi
+              ;(connector as any).close()
+            }}
+            ml='8px'
+            px='30px'
+            sx={{ textTransform: 'uppercase' }}
+          >
+            <LogOut height={16} />
+          </Button>
+        )}
       </Flex>
-    </Box>
+    </Flex>
   )
 }
 

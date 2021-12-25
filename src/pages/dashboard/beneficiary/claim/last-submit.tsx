@@ -24,7 +24,7 @@ import {
   WizardHeader,
   DashboardLayout,
 } from '../../../../components'
-import { useTheme } from '../../../../hooks'
+import { useTheme, useResponsive } from '../../../../hooks'
 
 const Submit: React.FC<FullData> = ({ formData }) => {
   const { account, chainId } = useActiveWeb3React()
@@ -37,6 +37,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
   const [txId, setTxId] = React.useState('')
   const { spacer, colors, fontWeight } = useTheme()
   const router = useRouter()
+  const { isTablet } = useResponsive()
 
   const { onReleaseAll } = useReleaseAll()
   const { onReleaseAllTo } = useReleaseAllTo()
@@ -151,7 +152,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
       {
         title: t('beneficiaries.claim.step-one.confirm'),
         number: 2,
-        status: 'active',
+        status: 'done',
       },
     ],
     [t],
@@ -162,10 +163,31 @@ const Submit: React.FC<FullData> = ({ formData }) => {
       {
         title: t('button.label.cancel'),
         href: '/dashboard/beneficiary',
+        buttonProps: isTablet
+          ? {
+              variant: 'grey-outline',
+              width: 250,
+              height: 52,
+            }
+          : {
+              flex: 1,
+              height: 52,
+            },
       },
       {
         title: t('button.label.try-again'),
         onClick: handleTryAgain,
+        buttonProps: isTablet
+          ? {
+              variant: 'primary',
+              width: 250,
+              height: 52,
+            }
+          : {
+              variant: 'primary',
+              flex: 1,
+              height: 52,
+            },
       },
     ],
     [t, handleTryAgain],
@@ -188,16 +210,18 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               }
             />
             <Spacer size='xl' />
-            <Box as='p'>{t('beneficiaries.claim.last-submit.description')}</Box>
+            <Box as='p' fontSize='lg' opacity={0.5}>
+              {t('beneficiaries.claim.last-submit.description')}
+            </Box>
             <Spacer size='xl' />
             <WizardHeader headers={headers} />
           </Box>
 
-          <Spacer size='xl' />
+          <Spacer size='xxl' />
 
           <Flex
             flexDirection='column'
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -208,7 +232,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               <Loader size={58} />
             </Flex>
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='lg' opacity={0.5}>
               {t('create-new-trust.last-submit.description')}
             </Box>
           </Flex>
@@ -244,15 +268,17 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               }
             />
             <Spacer size='xl' />
-            <Box as='p'>{t('beneficiaries.claim.last-submit.description')}</Box>
+            <Box as='p' fontSize='lg' opacity={0.5}>
+              {t('beneficiaries.claim.last-submit.description')}
+            </Box>
             <Spacer size='xl' />
             <WizardHeader headers={headers} />
           </Box>
 
-          <Spacer size='xl' />
+          <Spacer size='xxl' />
 
           <Flex
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -304,14 +330,18 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               }
             />
             <Spacer size='xl' />
-            <Box as='p'>{t('beneficiaries.claim.last-submit.description')}</Box>
+            <Box as='p' fontSize='lg' opacity={0.5}>
+              {t('beneficiaries.claim.last-submit.description')}
+            </Box>
             <Spacer size='xl' />
             <WizardHeader headers={headers} />
           </Box>
+
           <Spacer size='xxl' />
+
           <Flex
             flexDirection='column'
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -324,7 +354,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               height={52}
             />
             <Spacer size='xxl' />
-            <Text fontWeight={fontWeight.medium} fontSize='md'>
+            <Text fontWeight={fontWeight.bold} fontSize='lg' color='#5E6282'>
               {t('top-up-fund.last-submit.tx-success')}
               {/*t('top-up-fund.last-submit.tx-success-id')*/}
             </Text>
@@ -335,7 +365,11 @@ const Submit: React.FC<FullData> = ({ formData }) => {
               rel='noopener noreferrer'
               style={{ textDecoration: 'none' }}
             >
-              <Text fontSize='md' color={colors.grey[300]}>
+              <Text
+                fontSize='md'
+                opacity={0.5}
+                color='dolphin'
+              >
                 {txId}{' '}
                 <Image
                   src='/images/icon-external-url.svg'
@@ -377,15 +411,18 @@ const Submit: React.FC<FullData> = ({ formData }) => {
             }
           />
           <Spacer size='xl' />
-          <Box as='p'>{t('beneficiaries.claim.last-submit.description')}</Box>
+          <Box as='p' fontSize='lg' opacity={0.5}>
+            {t('beneficiaries.claim.last-submit.description')}
+          </Box>
           <Spacer size='xl' />
           <WizardHeader headers={headers} />
         </Box>
 
         <Spacer size='xxl' />
+
         <Flex
           flexDirection='column'
-          variant='outlined-box'
+          variant='outlined-box-full'
           width='100%'
           flex={1}
           justifyContent='center'
@@ -394,7 +431,7 @@ const Submit: React.FC<FullData> = ({ formData }) => {
         >
           <Loader size={58} />
           <Spacer size='xxl' />
-          <Text fontWeight={fontWeight.medium} fontSize='md'>
+          <Text fontWeight={fontWeight.bold} fontSize='lg' color='#5E6282'>
             {t('top-up-fund.last-submit.success')}{' '}
             {t('top-up-fund.last-submit.wait-tx')}
           </Text>
@@ -405,7 +442,11 @@ const Submit: React.FC<FullData> = ({ formData }) => {
             rel='noopener noreferrer'
             style={{ textDecoration: 'none' }}
           >
-            <Text fontSize='md' color={colors.grey[300]}>
+            <Text
+              fontSize='md'
+              opacity={0.5}
+              color='dolphin'
+            >
               {txId}{' '}
               <Image
                 src='/images/icon-external-url.svg'

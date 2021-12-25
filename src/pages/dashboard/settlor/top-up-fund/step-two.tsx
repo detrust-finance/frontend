@@ -41,11 +41,13 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
-              width: 240,
+              width: 250,
+              height: 52
             }
           : {
               variant: 'grey-outline',
               flex: 1,
+              height: 52
             },
       },
       {
@@ -53,10 +55,12 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
         onClick: navigation?.next,
         buttonProps: isTablet
           ? {
-              width: 240,
+              width: 250,
+              height: 52
             }
           : {
               flex: 1,
+              height: 52
             },
       },
     ],
@@ -77,27 +81,29 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
             subtitle={t('content.subtitle.settlor-top-up')}
           />
           <Spacer size='xl' />
-          <Box as='p' fontSize='md'>
+          <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
             {t('content.description.top-up-fund')}
           </Box>
           <Spacer size='xl' />
           <WizardHeader headers={headers} />
         </Box>
 
-        <Spacer size='xxxl' />
+        <Spacer size='xxl' />
 
         <Box width='100%' mb='auto'>
-          <Box variant='outlined-box' px={spacer.xl}>
+          <Box
+            variant='outlined-box-full'
+            px={spacer.xl}
+          >
             <Flex justifyContent='space-between'>
-              <Text fontWeight={fontWeight.medium}>
+              <Text fontSize='lg' lineHeight='30px'>
                 {t('create-new-trust.label.fundname')}{' '}
               </Text>
               <Box variant='dots' />
               <Text>{`${formData?.fundName}`}</Text>
             </Flex>
-            <Spacer size='xxl' />
             <Flex justifyContent='space-between'>
-              <Text fontWeight={fontWeight.medium}>
+              <Text fontSize='lg' lineHeight='30px'>
                 {t('top-up-fund.label.beneficiary-address')}{' '}
               </Text>
               <Box variant='dots' />
@@ -107,9 +113,8 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
                   : shortenAddress(formData?.beneficiaryAddress)
               }`}</Text>
             </Flex>
-            <Spacer size='xxl' />
             <Flex justifyContent='space-between'>
-              <Text fontWeight={fontWeight.medium}>
+              <Text fontSize='lg' lineHeight='34px'>
                 {t('top-up-fund.label.settlor-address')}
               </Text>
               <Box variant='dots' />
@@ -127,9 +132,8 @@ const StepThree: React.FC<FullData> = ({ formData, navigation }) => {
               <Box variant='dots' />
               <Text>{`${formData?.fundSource}`}</Text>
             </Flex> */}
-            <Spacer size='xxl' />
             <Flex justifyContent='space-between'>
-              <Text fontWeight={fontWeight.medium}>
+              <Text fontSize='lg' lineHeight='30px'>
                 {t('top-up-fund.label.top-up-amount')}
               </Text>
               <Box variant='dots' />

@@ -5,9 +5,10 @@ import { SUPPORTED_WALLETS } from '../../constants'
 import { injected } from '../../connectors'
 //import Loader from '../loader'
 import { useTranslation } from 'react-i18next'
-import { useTheme } from '../../../../hooks'
+//import { useTheme } from '../../../../hooks'
 import { Box, Flex } from 'rebass/styled-components'
-import { Button, Spacer } from '../../../../theme/ui'
+import { Button } from '../../../../theme/ui'
+import Image from 'next/image'
 
 interface PendingViewProps {
   connector?: AbstractConnector
@@ -24,51 +25,9 @@ const PendingView: React.FC<PendingViewProps> = ({
 }) => {
   const isMetamask = window?.ethereum?.isMetaMask
   const { t } = useTranslation('wallet')
-  const { colors } = useTheme()
   return (
-    <Flex flexDirection='column' width='100%'>
-      <Box
-        flex={1}
-        flexDirection='column'
-        p={24}
-        sx={{
-          borderWidth: 1,
-          borderStyle: 'solid',
-          borderColor: colors.blue[100],
-        }}
-      >
-        {error ? (
-          <Flex
-            width='100%'
-            flexDirection='column'
-            justifyContent='center'
-            alignItems='center'
-          >
-            <Box>{t('wallet.label.error-connecting')}</Box>
-            <Spacer />
-            <Button
-              variant='secondary'
-              onClick={() => {
-                setPendingError(false)
-                connector && tryActivation(connector)
-              }}
-              sx={{ textTransform: 'uppercase' }}
-            >
-              {t('wallet.label.try-again')}
-            </Button>
-          </Flex>
-        ) : (
-          <Flex
-            width='100%'
-            flexDirection='column'
-            justifyContent='center'
-            alignItems='center'
-          >
-            {t('wallet.label.initializing')}
-          </Flex>
-        )}
-      </Box>
-      <Spacer size='xl' />
+    <Flex flexDirection='column' width='100%' justifyContent='center'>
+      <Box p='30px' />
       {Object.keys(SUPPORTED_WALLETS).map(key => {
         const option = SUPPORTED_WALLETS[key]
         if (option.connector === connector) {
@@ -81,17 +40,76 @@ const PendingView: React.FC<PendingViewProps> = ({
             }
           }
           return (
-            <Option
-              id={`connect-${key}`}
-              key={key}
-              color={option.color}
-              header={option.name}
-              icon={'/images/' + option.iconName}
-            />
+            // <Option
+            //   id={`connect-${key}`}
+            //   key={key}
+            //   //color={option.color}
+            //   header={option.name}
+            //   icon={'/images/' + option.iconName}
+            // />
+            // <Image
+            //   id={`connect-${key}`}
+            //   key={key}
+            //   width='30px'
+            //   height='30px'
+            //   src={'/images/' + option.iconName}
+            // />
+            <Flex
+              justifyContent='center'
+              sx={{
+                '.wallet-icon': {
+                  bg: 'white',
+                  borderRadius: 1337,
+                  padding: '3px !important',
+                },
+                //marginRight: '20px',
+              }}
+            >
+              <Image
+                src={'/images/' + option.iconName}
+                alt='Icon'
+                width={50}
+                height={50}
+                className='wallet-icon'
+              />
+            </Flex>
           )
         }
         return null
       })}
+        {error ? (
+          <Flex
+            width='100%'
+            flexDirection='column'
+            justifyContent='center'
+            alignItems='center'
+          >
+            <Box mt='20px' fontSize='17px'>
+              {t('wallet.label.error-connecting')}
+            </Box>
+            <Button
+              variant='primary'
+              onClick={() => {
+                setPendingError(false)
+                connector && tryActivation(connector)
+              }}
+              my='40px'
+              sx={{ textTransform: 'uppercase' }}
+            >
+              {t('wallet.label.try-again')}
+            </Button>
+          </Flex>
+        ) : (
+          <Flex
+            width='100%'
+            flexDirection='column'
+            justifyContent='center'
+            alignItems='center'
+            py='40px'
+          >
+            {t('wallet.label.initializing')}
+          </Flex>
+        )}
     </Flex>
   )
 }

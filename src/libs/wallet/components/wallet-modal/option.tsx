@@ -8,7 +8,7 @@ import { useTheme } from '../../../../hooks'
 interface OptionProps {
   link?: string | null
   onClick?: any
-  color: string
+  //color: string
   header: React.ReactNode
   icon: any
   active?: boolean
@@ -31,10 +31,12 @@ export const Option: React.FC<OptionProps> = ({
       onClick={onClick}
       className={active ? 'active' : ''}
       width='100%'
+      height='68px'
+      fontFamily='pop'
     >
       <Flex alignItems='center' justifyContent='space-between' width='100%'>
         <Flex flexDirection='column' alignItems='flex-start'>
-          <Text fontSize='lg'>{header}</Text>
+          <Text fontSize='17px'>{header}</Text>
         </Flex>
         <Box
           sx={{
@@ -43,13 +45,14 @@ export const Option: React.FC<OptionProps> = ({
               borderRadius: 1337,
               padding: '3px !important',
             },
+            marginRight: '20px',
           }}
         >
           <Image
             src={icon}
             alt='Icon'
-            width={24}
-            height={24}
+            width={40}
+            height={40}
             className='wallet-icon'
           />
         </Box>

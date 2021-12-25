@@ -41,7 +41,8 @@ const Input = React.forwardRef<any, InputProps>(
             borderColor: darkMode ? colors.grey[100] : colors.grey[100],
             borderWidth: 1,
             borderStyle: 'solid',
-            borderRadius: borderRadius[4],
+            //borderRadius: borderRadius[4],
+            borderRadius: '0 0 10px 10px',
             transition: 'all ease-in-out 0.2s',
             '&:focus-within': {
               borderColor: darkMode ? colors.white : colors.black,
@@ -147,7 +148,7 @@ export const InputFormGroup: React.FC<InputProps> = ({
 }
 
 export const DatePicker = React.forwardRef<DatePickerProps, any>(
-  ({ label, name, endAdornment, ...restprops }, ref) => {
+  ({ label, name, startAdornment, endAdornment, ...restprops }, ref) => {
     const { darkMode, colors, borderRadius, spacer, fontSizes } = useTheme()
     return (
       <Flex flexDirection='column' width='100%'>
@@ -176,6 +177,7 @@ export const DatePicker = React.forwardRef<DatePickerProps, any>(
             },
           }}
         >
+          {startAdornment}
           <DatePickerOriginal {...restprops} ref={ref} />
           {endAdornment && endAdornment}
         </Flex>

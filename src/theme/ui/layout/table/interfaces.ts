@@ -6,7 +6,7 @@ export interface TableProps extends FlexProps {
   subRowComponent?: (data: any) => React.ReactNode
   dataSource: any[]
   loading?: boolean
-  scrollbarsStyle?: any
+  //scrollbarsStyle?: any
   tableHeaderStyle?: any
   tableHeaderVariant?: any
   sortable?: boolean
@@ -17,7 +17,7 @@ export interface TableColumnProps {
   key: number | string
   title: string
   dataIndex: string
-  width?: string // percent or pixesl eg. 20% | 250px
+  width?: string // percent or pixels eg. 20% | 250px
   align?: 'left' | 'center' | 'right'
   sortBy?: string | undefined
   hideSort?: boolean

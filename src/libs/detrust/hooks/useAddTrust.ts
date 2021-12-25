@@ -11,6 +11,8 @@ import {
   sendBalanceTo,
   topUp,
   topUpFromBalance,
+  revoke,
+  setIrrevocable,
 } from '../utils/detrust'
 import { useActiveWeb3React } from '../../wallet'
 
@@ -159,6 +161,42 @@ export const useTopUpFromBalance = () => {
   )
 
   return { onTopUpFromBalance: handleAction }
+}
+
+export const useRevoke = () => {
+  const contract = useDetrustContract(true)
+
+  const handleAction = useCallback(
+    async trustId => {
+      try {
+        const tx = await revoke(contract, trustId)
+        return tx
+      } catch (e) {
+        return e
+      }
+    },
+    [contract],
+  )
+
+  return { onRevoke: handleAction }
+}
+
+export const useSetIrrevocable = () => {
+  const contract = useDetrustContract(true)
+
+  const handleAction = useCallback(
+    async trustId => {
+      try {
+        const tx = await setIrrevocable(contract, trustId)
+        return tx
+      } catch (e) {
+        return e
+      }
+    },
+    [contract],
+  )
+
+  return { onSetIrrevocable: handleAction }
 }
 
 export const useRelease = () => {

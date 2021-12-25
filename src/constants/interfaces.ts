@@ -10,6 +10,7 @@ export interface ISidebarMenu extends IMenu {
   subtitle: string
   className: string
   exact?: boolean
+  left: string | number
 }
 
 export interface ISidebarMenuIcon {

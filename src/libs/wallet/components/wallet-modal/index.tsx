@@ -19,6 +19,10 @@ import { useTranslation } from 'react-i18next'
 import { useWallet, useToastify } from '../../hooks'
 import { setupNetwork } from '../../utils/wallet'
 
+// Close icon 
+import { X } from 'react-feather'
+import { ArrowLeft } from 'iconoir-react'
+
 const WALLET_VIEWS = {
   OPTIONS: 'options',
   OPTIONS_SECONDARY: 'options_secondary',
@@ -165,7 +169,7 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
               id={`connect-${key}`}
               key={key}
               active={option.connector && option.connector === connector}
-              color={option.color}
+              //color={option.color}
               link={option.href}
               header={option.name}
               icon={`/images/${option.iconName}`}
@@ -184,7 +188,7 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
               <Option
                 id={`connect-${key}`}
                 key={key}
-                color={'#E8831D'}
+                //color={'#E8831D'}
                 header={'Install Metamask'}
                 link={'https://metamask.io/'}
                 icon={'/images/metamask.png'}
@@ -218,7 +222,7 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
             }}
             key={key}
             active={option.connector === connector}
-            color={option.color}
+            //color={option.color}
             link={option.href}
             header={option.name}
             icon={`/images/${option.iconName}`}
@@ -262,8 +266,10 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
       )
     }
     return (
-      <Box>
-        {walletView !== WALLET_VIEWS.ACCOUNT ? (
+      <Box
+        color='dolphin'
+      >
+        {/* {walletView !== WALLET_VIEWS.ACCOUNT ? (
           <>
             <Button
               variant='secondary'
@@ -277,12 +283,35 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
             </Button>
             <Spacer size='xl' />
           </>
-        ) : (
+        ) : ( */}
           <Box>
-            <Text>{t('wallet.label.connect-to-a-wallet')}</Text>
+            <Flex flexDirection='row' alignItems='center' justifyContent='space-between'>
+              {walletView !== WALLET_VIEWS.ACCOUNT ?
+                <ArrowLeft
+                  width='20px'
+                  height='20px'
+                  cursor='pointer'
+                  onClick={() => {
+                    setPendingError(false)
+                    setWalletView(WALLET_VIEWS.ACCOUNT)
+                  }}
+                />
+                :
+                <Text fontSize='17px' lineHeight='25px'>
+                  {t('wallet.label.connect-to-a-wallet')}
+                </Text>
+              }
+              <X
+                width='14px'
+                height='14px'
+                onClick={onDismiss}
+                cursor='pointer'
+                color='black'
+              />
+            </Flex>
             <Spacer size='xl' />
           </Box>
-        )}
+        {/* )} */}
         <Box>
           {walletView === WALLET_VIEWS.PENDING ? (
             <PendingView
@@ -303,7 +332,10 @@ const WalletModal: React.FC<{ onDismiss?: any }> = ({ onDismiss }) => {
           )}
           {walletView !== WALLET_VIEWS.PENDING && (
             <Flex mt='32px'>
-              <Text>{t('wallet.label.new-to-ethereum')}? &nbsp;</Text>{' '}
+              <Text color='rgba(33, 40, 50, 0.5)'>
+                {t('wallet.label.new-to-ethereum')}? &nbsp;
+              </Text>
+              {' '}
               <ExternalLink href='https://ethereum.org/wallets/'>
                 {t('wallet.label.learn-more-about-wallets')}
               </ExternalLink>

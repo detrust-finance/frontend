@@ -290,7 +290,8 @@ const TransferFunds: NextPage = () => {
             >
               <Text
                 fontSize='md'
-                color={colors.grey[300]}
+                opacity={0.5}
+                color='dolphin'
                 sx={{ lineBreak: 'anywhere' }}
               >
                 {txId}{' '}
@@ -364,7 +365,8 @@ const TransferFunds: NextPage = () => {
             >
               <Text
                 fontSize='md'
-                color={colors.grey[300]}
+                opacity={0.5}
+                color='dolphin'
                 sx={{ lineBreak: 'anywhere' }}
               >
                 {txId}{' '}

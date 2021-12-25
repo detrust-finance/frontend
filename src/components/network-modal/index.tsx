@@ -2,11 +2,12 @@ import React from 'react'
 
 import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
-import { Box, Flex } from 'rebass/styled-components'
+import { Box, Flex, Text } from 'rebass/styled-components'
+import { Cancel, ChatBubbleWarning } from 'iconoir-react'
 import { useTheme } from '../../hooks'
 import { ModalContext } from '../../theme/ui/layout/modal'
 import { ChainId, useWallet } from '../../libs/wallet'
-import { Spacer } from '../../theme/ui'
+//import { Spacer } from '../../theme/ui'
 import { DETRUST_NETWORKS } from '../../libs/detrust'
 
 const NetworkModal: React.FC = () => {
@@ -35,18 +36,49 @@ const NetworkModal: React.FC = () => {
       flexDirection='column'
       alignItems='center'
       justifyContent='center'
-      height={147}
+      mb={40}
     >
-      <Box color={colors.black} fontSize={fontSizes.md}>
+      <Flex
+        width='100%'
+        flexDirection='row'
+        alignItems='center'
+        justifyContent='space-between'
+        mb={45}
+      >
+        <Text
+          sx={{
+            textTransform: 'uppercase',
+            fontSize: '16px',
+            lineHeight: '24px',
+            //mb: '30px',
+          }}
+        >
+          {t('modal.title.warning')}
+        </Text>
+        <Cancel
+          width='14px'
+          height='14px'
+          onClick={onDismiss}
+          cursor='pointer'
+          color='black'
+        />
+      </Flex>
+      <ChatBubbleWarning
+        width={28}
+        height={28}
+      />
+      <Box color={colors.dolphin} fontSize='17px' mt={14} mb={20}>
         {t('modal.text.change-network')}
       </Box>
-      <Spacer size='lg' />
+      {/* <Spacer size='lg' /> */}
       {possibleNetworks.map((network: any) => (
         <Flex
           key={network.name}
           alignItems='center'
-          fontWeight={fontWeight.semiBold}
+          fontWeight={fontWeight.bold}
           fontSize={fontSizes.xl}
+          color='jaffa'
+          mt={10}
         >
           <Box mr='8px' pt='1px'>
             <Image src='/images/icon-eth-3x.png' width={22} height={22} />

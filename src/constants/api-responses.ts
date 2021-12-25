@@ -139,6 +139,34 @@ export const walletTrustTokens: IApiTrustToken[] = [
     },
     decimals: 18,
     network: {
+      name: 'Ethereum Testnet Ropsten',
+      chain_id: '3',
+    },
+    coingecko_id: 'ethereum',
+  },
+  {
+    name: 'Ethereum',
+    symbol: 'ETH',
+    contract_address: '0x0000000000000000000000000000000000000000',
+    enabled: true,
+    price_usd: '1865.6',
+    icon: {
+      url: '/images/tokens/icon_eth_96c8bda2d8.png',
+      width: 28,
+      height: 28,
+    },
+    icon2x: {
+      url: '/images/tokens/icon_eth_2x_4939521980.png',
+      width: 56,
+      height: 56,
+    },
+    icon3x: {
+      url: '/images/tokens/icon_eth_3x_5d446260b3.png',
+      width: 84,
+      height: 84,
+    },
+    decimals: 18,
+    network: {
       name: 'Ethereum Testnet Rinkeby',
       chain_id: '4',
     },

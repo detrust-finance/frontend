@@ -6,8 +6,9 @@ import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import { Reset } from 'styled-reset'
 import useDefaultTheme, { GlobalStyle } from '../theme'
-import 'simplebar/dist/simplebar.min.css'
+//import 'simplebar/dist/simplebar.min.css'
 import 'react-datepicker/dist/react-datepicker.css'
+import '../components/home/style.css'
 // Language
 import i18n from '../i18n'
 import { ResponsiveContextProvider, PricesContextProvider } from '../contexts'
@@ -55,10 +56,10 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
           href='https://fonts.gstatic.com'
           crossOrigin='true'
         />
-        <link
+        {/* <link
           href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap'
           rel='stylesheet'
-        />
+        /> */}
       </Head>
       <I18nextProvider i18n={i18n} defaultNS='common'>
         <Web3ReactProvider getLibrary={getLibrary}>

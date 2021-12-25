@@ -3,6 +3,7 @@ import Head from 'next/head'
 // Components
 import { Box, BoxProps } from 'rebass/styled-components'
 import { Header } from '../../../../theme/ui'
+import { useTheme } from '../../../../hooks'
 
 interface Props extends BoxProps {
   children?: ReactNode
@@ -20,6 +21,8 @@ const Layout = ({
   image = 'https://detrust.finance/images/cover.png',
   ...restprops
 }: Props) => {
+  const { colors } = useTheme()
+
   return (
     <>
       <Head>
@@ -47,8 +50,12 @@ const Layout = ({
       <Header />
       <Box
         width={['100%', '100%', '100%', null]}
+        pt={144}
+        pb={40}
         mx='auto'
-        px={[10, 10, 20, 0]}
+        //px={[10, 10, 20, 0]}
+        px={['1px', '1px', 26, 140]}
+        bg={colors.zircon}
         {...restprops}
       >
         {children}

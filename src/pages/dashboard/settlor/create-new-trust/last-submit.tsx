@@ -209,11 +209,6 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         number: 2,
         status: 'done',
       },
-      {
-        title: t('create-new-trust.menu.step-three'),
-        number: 3,
-        status: 'done',
-      },
     ],
     [t],
   )
@@ -226,10 +221,13 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
-              width: 240,
+              width: 250,
+              height: 52,
             }
           : {
+              variant: 'grey-outline',
               flex: 1,
+              height: 52,
             },
       },
       {
@@ -237,11 +235,14 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         onClick: handleTryAgain,
         buttonProps: isTablet
           ? {
-              variant: 'grey-outline',
-              width: 240,
+              variant: 'primary',
+              width: 250,
+              height: 52,
             }
           : {
+              variant: 'primary',
               flex: 1,
+              height: 52,
             },
       },
     ],
@@ -263,18 +264,18 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
               subtitle={t('content.subtitle.settlor-new-trust')}
             />
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
               {t('content.description.beneficiary')}
             </Box>
             <Spacer size='xl' />
             <WizardHeader headers={headers} />
           </Box>
 
-          <Spacer size='xl' />
+          <Spacer size='xxl' />
 
           <Flex
             flexDirection='column'
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -285,7 +286,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
               <Loader size={58} />
             </Flex>
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='lg' opacity={0.5}>
               {t('create-new-trust.last-submit.description')}
             </Box>
           </Flex>
@@ -319,17 +320,17 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
               subtitle={t('content.subtitle.settlor-new-trust')}
             />
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
               {t('content.description.beneficiary')}
             </Box>
             <Spacer size='xl' />
             <WizardHeader headers={headers} />
           </Box>
 
-          <Spacer size='xl' />
+          <Spacer size='xxl' />
 
           <Flex
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -379,7 +380,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
               subtitle={t('content.subtitle.settlor-new-trust')}
             />
             <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
+            <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
               {t('content.description.beneficiary')}
             </Box>
             <Spacer size='xl' />
@@ -390,7 +391,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
 
           <Flex
             flexDirection='column'
-            variant='outlined-box'
+            variant='outlined-box-full'
             width='100%'
             flex={1}
             justifyContent='center'
@@ -403,7 +404,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
               height={52}
             />
             <Spacer size='xxl' />
-            <Text fontWeight={fontWeight.medium} fontSize='md'>
+            <Text fontWeight={fontWeight.bold} fontSize='lg' color='#5E6282'>
               {t('create-new-trust.last-submit.tx-success')}
               {/*t('create-new-trust.last-submit.tx-success-id')*/}
             </Text>
@@ -416,7 +417,8 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
             >
               <Text
                 fontSize='md'
-                color={colors.grey[300]}
+                opacity={0.5}
+                color='dolphin'
                 sx={{ lineBreak: 'anywhere' }}
               >
                 {txId}{' '}
@@ -458,7 +460,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
             subtitle={t('content.subtitle.settlor-new-trust')}
           />
           <Spacer size='xl' />
-          <Box as='p' fontSize='md'>
+          <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
             {t('content.description.beneficiary')}
           </Box>
           <Spacer size='xl' />
@@ -469,7 +471,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
 
         <Flex
           flexDirection='column'
-          variant='outlined-box'
+          variant='outlined-box-full'
           width='100%'
           flex={1}
           justifyContent='center'
@@ -478,7 +480,7 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
         >
           <Loader size={58} />
           <Spacer size='xxl' />
-          <Text fontWeight={fontWeight.medium} fontSize='md'>
+          <Text fontWeight={fontWeight.bold} fontSize='lg' color='#5E6282'>
             {t('create-new-trust.last-submit.success')}{' '}
             {t('create-new-trust.last-submit.wait-tx')}
           </Text>
@@ -491,7 +493,8 @@ const Submit: React.FC<FullData> = ({ formData, navigation }) => {
           >
             <Text
               fontSize='md'
-              color={colors.grey[300]}
+              opacity={0.5}
+              color='dolphin'
               sx={{ lineBreak: 'anywhere' }}
             >
               {txId}{' '}

@@ -29,24 +29,25 @@ const Settlor: NextPage = () => {
             subtitle={t('content.subtitle.settlor-dashboard')}
           />
           <Spacer size='xl' />
-          <Box as='p' fontSize='md'>
+          <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
             {t('content.description.settlor')}
           </Box>
           <Spacer size='xxl' />
         </Box>
 
-        <Flex flexDirection='column' mb='auto'>
-          <TrustList />
-        </Flex>
+        <TrustList />
 
-        <Flex flexDirection='row' justifyContent='center'>
+        <Flex
+          flexDirection='row'
+          justifyContent='center'
+          sx={{ mt: '40px' }}
+        >
           <Link href='/dashboard/settlor/create-new-trust'>
             <Button
               variant='primary'
-              py={13}
-              px={41}
               sx={{ textTransform: 'uppercase' }}
-              width={240}
+              width={250}
+              height={52}
             >
               {t('button.label.create-trust')}
             </Button>

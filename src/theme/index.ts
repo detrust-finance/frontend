@@ -1,17 +1,21 @@
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
-import { rem, lighten, rgba } from 'polished'
+import { rem, lighten, rgba, toColorString, darken } from 'polished'
 import { DarkTheme, LightTheme } from './colors'
 
 const useDefaultTheme = () => {
   const breakpoints: string[] = React.useMemo(
-    () => ['0px', '600px', '1200px', '1900px'],
+    () => ['375px', '834px', '1440px', '1900px'],
     [],
   )
   const darkMode = React.useMemo(() => false, [])
   const fonts = {
-    body: "'Montserrat', sans-serif",
-    header: "'Montserrat', sans-serif",
+    // body: "'Poppins', sans-serif",
+    // header: "'Poppins', sans-serif",
+    hel: 'Helvetica',
+    vol: "'Volkhov', Helvetica",
+    pop: "'Poppins', Helvetica",
+    rob: "'Roboto', Helvetica",
   }
   const fontWeight = {
     light: 300,
@@ -22,14 +26,23 @@ const useDefaultTheme = () => {
     extraBold: 800,
   }
 
+  // const fontSizes = {
+  //   xs: rem('8px'),
+  //   sm: rem('12px'),
+  //   md: rem('14px'),
+  //   lg: rem('16px'),
+  //   xl: rem('20px'),
+  //   xxl: rem('24px'),
+  //   xxxl: rem('30px'),
+  // }
   const fontSizes = {
-    xs: rem('8px'),
-    sm: rem('12px'),
-    md: rem('14px'),
-    lg: rem('16px'),
-    xl: rem('20px'),
-    xxl: rem('24px'),
-    xxxl: rem('30px'),
+    xs: '8px',
+    sm: '12px',
+    md: '14px',
+    lg: '16px',
+    xl: '20px',
+    xxl: '24px',
+    xxxl: '30px',
   }
   const borderRadius = {
     0: 0,
@@ -37,7 +50,8 @@ const useDefaultTheme = () => {
   const buttonStyles = {
     // cursor: 'default',
     borderRadius: borderRadius[0],
-    fontWeight: fontWeight.bold,
+    //fontWeight: fontWeight.bold,
+    fontWeight: 'normal',
     transition: 'all ease-in-out 0.2s',
     '&:active': {
       transform: 'scale(0.95)',
@@ -46,11 +60,12 @@ const useDefaultTheme = () => {
   const tableRow = React.useMemo(
     () => ({
       fontSize: fontSizes.lg,
-      fontWeight: fontWeight.regular,
+      //fontWeight: fontWeight.regular,
       padding: `10px`,
       width: '100%',
     }),
-    [fontSizes.lg, fontWeight.regular],
+    //[fontSizes.lg, fontWeight.regular],
+    [fontSizes.lg],
   )
 
   const wizardHeaderCommon = React.useMemo(
@@ -68,9 +83,9 @@ const useDefaultTheme = () => {
 
   const wizardNumberCommon = React.useMemo(
     () => ({
-      width: 18,
-      height: 18,
-      borderRadius: 18,
+      width: 24,
+      height: 24,
+      borderRadius: 12,
       p: '5px',
       mr: [0, 0, '8px'],
       mb: ['8px', '8px', 0],
@@ -108,14 +123,17 @@ const useDefaultTheme = () => {
     spacer: space,
     variants: {
       body: {
-        width: '100%',
-        height: 'calc(100vh - 60px)',
+        // width: '100%',
+        // height: 'calc(100vh - 60px)',
       },
       'nav-item': {
-        color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
+        //color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
+        color: 'dolphin',
         textDecoration: 'none',
-        fontSize: [fontSizes.md, fontSizes.md, fontSizes.md, null],
-        fontWeight: fontWeight.semiBold,
+        //fontSize: [fontSizes.md, fontSizes.md, fontSizes.md, null],
+        fontSize: '17px',
+        fontFamily: 'hel',
+        //fontWeight: fontWeight.semiBold,
         textTransform: 'uppercase',
         px: [10, 10, 20, null],
         cursor: 'pointer',
@@ -154,8 +172,9 @@ const useDefaultTheme = () => {
         },
       },
       'sidebar-nav': {
-        width: [180, 180, 180, 200],
-        flexDirection: 'column',
+        //width: [180, 180, 180, 200],
+        width: '100%',
+        flexDirection: 'row',
       },
       'sidebar-nav-mobile': {
         width: '100%',
@@ -166,42 +185,45 @@ const useDefaultTheme = () => {
       },
       'sidebar-nav-item': {
         cursor: 'pointer',
-        width: [180, 180, 180, 200],
-        height: 300,
+        //width: [180, 180, 180, 200],
+        width: '50%',
+        height: 61,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: fontSizes['lg'],
-        color: darkMode ? DarkTheme.white : LightTheme.white,
-        bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
-        '.menucaption': {
-          color: darkMode ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.4)',
-          fontSize: fontSizes['md'],
-        },
-        '.caption': {
-          color: darkMode ? DarkTheme.grey[300] : LightTheme.grey[300],
-          fontSize: fontSizes['md'],
-        },
-        '&:hover .caption': {
-          color: darkMode ? DarkTheme.white : LightTheme.white,
-        },
-        '&.dark': {
-          bg: darkMode ? DarkTheme.blue[300] : LightTheme.blue[300],
-        },
-        '&.darker': {
-          bg: darkMode ? DarkTheme.blue[400] : LightTheme.blue[400],
-        },
-        '&:hover': {
-          bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
-          color: darkMode ? DarkTheme.white : LightTheme.white,
-        },
-        '&.active': {
-          bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
-          color: darkMode ? DarkTheme.white : LightTheme.white,
-          '.caption': {
-            color: darkMode ? DarkTheme.white : LightTheme.white,
-          },
-        },
+        //fontSize: fontSizes['lg'],
+        fontSize: '17px',
+        fontFamily: 'hel',
+        //color: darkMode ? DarkTheme.white : LightTheme.white,
+        bg: darkMode ? DarkTheme.white : LightTheme.white,
+        // '.menucaption': {
+        //   color: darkMode ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.4)',
+        //   fontSize: fontSizes['md'],
+        // },
+        // '.caption': {
+        //   color: darkMode ? DarkTheme.grey[300] : LightTheme.grey[300],
+        //   fontSize: fontSizes['md'],
+        // },
+        // '&:hover .caption': {
+        //   color: darkMode ? DarkTheme.white : LightTheme.white,
+        // },
+        // '&.dark': {
+        //   bg: darkMode ? DarkTheme.blue[300] : LightTheme.blue[300],
+        // },
+        // '&.darker': {
+        //   bg: darkMode ? DarkTheme.blue[400] : LightTheme.blue[400],
+        // },
+        // '&:hover': {
+        //   bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
+        //   color: darkMode ? DarkTheme.white : LightTheme.white,
+        // },
+        // '&.active': {
+        //   bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
+        //   color: darkMode ? DarkTheme.white : LightTheme.white,
+        //   '.caption': {
+        //     color: darkMode ? DarkTheme.white : LightTheme.white,
+        //   },
+        // },
       },
       'sidebar-nav-item-mobile': {
         cursor: 'pointer',
@@ -253,12 +275,16 @@ const useDefaultTheme = () => {
         flexDirection: 'row',
         fontWeight: fontWeight.regular,
         width: '100%',
-        bg: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
-        color: darkMode ? DarkTheme.black : LightTheme.black,
-        fontSize: fontSizes.md,
-        p: 10,
-        py: 16,
+        //bg: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        background: 'linear-gradient(0deg, rgba(33, 40, 50, 0.05), rgba(33, 40, 50, 0.05)), #FFFFFF',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxSizing: 'border-box',
+        color: darkMode ? DarkTheme.black : LightTheme.dolphin,
+        fontSize: fontSizes.lg,
+        px: 10,
+        height: 42,
         justifyContent: 'space-between',
+        alignItems: 'center',
       },
       'table-sub.text': {
         ...tableRow,
@@ -267,21 +293,78 @@ const useDefaultTheme = () => {
       },
       'table-row': {
         ...tableRow,
-        borderBottomWidth: 1,
-        borderBottomStyle: 'solid',
-        borderBottomColor: darkMode
-          ? DarkTheme.grey[100]
-          : LightTheme.grey[100],
+        // borderBottomWidth: 1,
+        // borderBottomStyle: 'solid',
+        // borderBottomColor: darkMode
+        //   ? DarkTheme.grey[100]
+        //   : LightTheme.grey[100],
+        background: '#FFF',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxSizing: 'border-box',
+        boxShadow: '0px 20px 80px rgba(0, 0, 0, 0.02)',
+        py: '22px',
+        '&:last-child': {
+          borderBottomLeftRadius: 10,
+          borderBottomRightRadius: 10,
+        },
       },
       'layout-content': {
         flex: 1,
-        height: ['calc(100vh - 140px)', 'calc(100vh - 140px)', 600],
+        minHeight: ['calc(100vh - 140px)', 'calc(100vh - 140px)', 600],
+        height: 'auto',
         overflowY: 'auto',
         bg: darkMode ? DarkTheme.white : LightTheme.white,
         p: [20, 20, 40],
       },
       'outlined-box': {
-        borderRadius: 2,
+        borderRadius: '10px 10px 0 0',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        justifyContent: 'center',
+        alignItems: 'center',
+        py: 20,
+      },
+      'outlined-box-left': {
+        borderRadius: '10px 10px 0 0',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        justifyContent: 'center',
+        alignItems: 'left',
+        p: 20,
+      },
+      'outlined-box-left2': {
+        borderRadius: '10px 10px 0 0',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        justifyContent: 'center',
+        alignItems: 'left',
+        px: 20,
+        py: 19,
+      },
+      'outlined-box2': {
+        borderRadius: '0 0 10px 10px',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        justifyContent: 'start',
+        alignItems: 'left',
+        p: 20,
+      },
+      'outlined-box3': {
+        borderRadius: '0 0 10px 10px',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+        justifyContent: 'start',
+        alignItems: 'left',
+        px: 20,
+        py: '10.5px',
+      },
+      'outlined-box-full': {
+        borderRadius: '10px',
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
@@ -309,6 +392,9 @@ const useDefaultTheme = () => {
       modal: {
         bg: darkMode ? DarkTheme.black : LightTheme.white,
         fontSize: fontSizes.md,
+        borderRadius: 8,
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxShadow: '0px 100px 80px rgba(0, 0, 0, 0.02), 0px 64.8148px 46.8519px rgba(0, 0, 0, 0.0151852), 0px 38.5185px 25.4815px rgba(0, 0, 0, 0.0121481), 0px 20px 13px rgba(0, 0, 0, 0.01), 0px 8.14815px 6.51852px rgba(0, 0, 0, 0.00785185), 0px 1.85185px 3.14815px rgba(0, 0, 0, 0.00481481)',
       },
       'modal-header': {
         bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
@@ -320,8 +406,19 @@ const useDefaultTheme = () => {
         p: 24,
       },
       'list-title': {
-        fontWeight: fontWeight.semiBold,
-        bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
+        //fontWeight: fontWeight.semiBold,
+        //bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
+        background: 'linear-gradient(0deg, #63738B, #63738B), linear-gradient(180deg, #FFA666 0%, #FF7660 100%)',
+        borderRadius: '10px 10px 0px 0px',
+        color: darkMode ? DarkTheme.white : LightTheme.white,
+        px: 20,
+        py: 13,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      },
+      'list-title-mobile': {
+        background: 'linear-gradient(0deg, #63738B, #63738B), linear-gradient(180deg, #FFA666 0%, #FF7660 100%)',
+        borderRadius: '10px 10px 10px 10px',
         color: darkMode ? DarkTheme.white : LightTheme.white,
         px: 20,
         py: 13,
@@ -368,29 +465,36 @@ const useDefaultTheme = () => {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        p: 10,
-        borderBottomWidth: 1,
-        borderBottomStyle: 'solid',
-        borderBottomColor: darkMode
-          ? DarkTheme.grey[100]
-          : LightTheme.grey[100],
-      },
+        p: '9.25px',
+        // borderBottomWidth: 1,
+        // borderBottomStyle: 'solid',
+        // borderBottomColor: darkMode
+        //   ? DarkTheme.grey[100]
+        //   : LightTheme.grey[100],
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxSizing: 'border-box',
+        boxShadow: '0px 20px 80px rgba(0, 0, 0, 0.02)',
+        '&:last-child': {
+            borderBottomLeftRadius: 10,
+            borderBottomRightRadius: 10,
+          }
+        },
       'wizard-header-inactive': {
         ...wizardHeaderCommon,
         color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
-        borderBottomColor: darkMode
-          ? DarkTheme.grey[200]
-          : LightTheme.grey[200],
+        // borderBottomColor: darkMode
+        //   ? DarkTheme.grey[200]
+        //   : LightTheme.grey[200],
       },
       'wizard-header-active': {
         ...wizardHeaderCommon,
         color: darkMode ? DarkTheme.black : LightTheme.black,
-        borderBottomColor: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
+        // borderBottomColor: darkMode ? DarkTheme.red[100] : LightTheme.jaffa,
       },
       'wizard-header-done': {
         ...wizardHeaderCommon,
         color: darkMode ? DarkTheme.black : LightTheme.black,
-        borderBottomColor: darkMode ? DarkTheme.green : LightTheme.green,
+        // borderBottomColor: darkMode ? DarkTheme.green : LightTheme.green,
       },
       'wizard-number-inactive': {
         ...wizardNumberCommon,
@@ -399,12 +503,12 @@ const useDefaultTheme = () => {
       },
       'wizard-number-active': {
         ...wizardNumberCommon,
-        bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
+        bg: darkMode ? DarkTheme.red[100] : LightTheme.jaffa,
         color: darkMode ? DarkTheme.white : LightTheme.white,
       },
       'wizard-number-done': {
         ...wizardNumberCommon,
-        bg: darkMode ? DarkTheme.green : LightTheme.green,
+        bg: darkMode ? DarkTheme.green : LightTheme.jaffa,
         color: darkMode ? DarkTheme.white : LightTheme.white,
       },
       dots: {
@@ -442,28 +546,33 @@ const useDefaultTheme = () => {
     buttons: {
       primary: {
         ...buttonStyles,
-        fontSize: fontSizes.md,
-        bg: darkMode ? DarkTheme.red[100] : LightTheme.red[100],
+        fontSize: '16px',
+        lineHeight: '24px',
+        borderRadius: 10,
+        background: 'linear-gradient(180deg, #FFA666 0%, #FF7660 100%)',
         color: darkMode ? DarkTheme.white : LightTheme.white,
         '&:hover': {
-          bg: darkMode
-            ? lighten(0.1, DarkTheme.red[100])
-            : lighten(0.1, LightTheme.red[100]),
+          background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), linear-gradient(180deg, #FFA666 0%, #FF7660 100%)',
         },
         '&:disabled': {
-          bg: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
+          background: darkMode ? DarkTheme.grey[100] : LightTheme.grey[100],
           color: darkMode ? DarkTheme.white : LightTheme.white,
         },
       },
       secondary: {
         ...buttonStyles,
         fontSize: fontSizes.md,
-        bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
-        color: darkMode ? DarkTheme.white : LightTheme.white,
+        //bg: darkMode ? DarkTheme.blue[100] : LightTheme.blue[100],
+        bg: darkMode ? DarkTheme.white : LightTheme.white,
+        //color: darkMode ? DarkTheme.white : LightTheme.white,
+        color: '#212832',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxShadow: '0px 20px 80px rgba(0, 0, 0, 0.02)',
+        borderRadius: 8,
         '&:hover': {
           bg: darkMode
-            ? lighten(0.1, DarkTheme.blue[100])
-            : lighten(0.1, LightTheme.blue[100]),
+            ? lighten(0.1, DarkTheme.white)
+            : darken(0.1, LightTheme.white),
         },
         '&:disabled': {
           bg: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
@@ -472,12 +581,17 @@ const useDefaultTheme = () => {
       },
       'grey-outline': {
         ...buttonStyles,
-        fontSize: fontSizes.md,
+        fontSize: '16px',
+        lineHeight: '24px',
+        borderRadius: 10,
         bg: darkMode ? DarkTheme.white : LightTheme.white,
-        color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
+        //color: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
+        color: '#212832',
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
+        //borderColor: darkMode ? DarkTheme.grey[200] : LightTheme.grey[200],
+        //borderColor: '#212832',
+        borderColor: 'rgba(33, 40, 50, 0.4)',
         '&:hover': {
           borderColor: darkMode ? DarkTheme.black : LightTheme.black,
           color: darkMode ? DarkTheme.black : LightTheme.black,
@@ -487,6 +601,11 @@ const useDefaultTheme = () => {
           color: darkMode ? DarkTheme.white : LightTheme.white,
         },
       },
+      copy: {
+        ...buttonStyles,
+        bg: darkMode ? DarkTheme.white : LightTheme.white,
+        color: LightTheme.dolphin,
+      }
     },
   }
 }
@@ -495,68 +614,43 @@ export const GlobalStyle = createGlobalStyle<any>`
   /* Global styles bellow */
 
   html {
-    font-size: 12px;
-    font-family: ${({ fonts }) => fonts.body};
+    font-size: 16px;
+    // font-family: ${({ fonts }) => fonts.body};
     color: ${({ colors, darkMode }) =>
-      darkMode ? colors.white : colors.black};
-    background: ${({ colors, darkMode }) =>
-      darkMode ? colors.grey[100] : colors.grey[100]};
+      darkMode ? colors.white : colors.dolphin};
+    /*background: ${({ colors, darkMode }) =>
+      darkMode ? colors.grey[100] : colors.grey[100]};*/
+    font-weight: normal;
   }
 
   body {
-    font-family: ${({ fonts }) => fonts.body};
+    // font-family: ${({ fonts }) => fonts.body};
+    font-family: Poppins;
     padding: 0;
-    padding-top: 60px;
+    /* padding-top: 60px; */
     /* padding-bottom: 60px; */
     margin: 0;
   }
 
   button, input, select, label, p, a, h1, h2, h3, h4, h5, h6, ul, li, div {
-    font-family: ${({ fonts }) => fonts.body} !important;
+    font-family: ${({ fonts }) => fonts.pop} /*!important*/;
   }
 
   button {
     cursor: pointer !important;
   }
 
-  p {
-    line-height: 1.5rem;
-  }
+  // p {
+  //   line-height: 1.5rem;
+  // }
 
   a {
     color: ${({ colors, darkMode }) =>
-      darkMode ? colors.blue[100] : colors.blue[100]};
+      darkMode ? colors.blue[100] : colors.jaffa};
   }
 
   a:hover {
     text-decoration: hover;
-  }
-
-  @media (min-width: ${({ breakpoints }) => breakpoints[1]}) {
-    html {
-      font-size: 12px;
-    }
-    body {
-      padding-bottom: 0;
-    }
-  }
-
-  @media (min-width: ${({ breakpoints }) => breakpoints[2]}) {
-    html {
-      font-size: 12px;
-    }
-    body {
-      padding-bottom: 0;
-    }
-  }
-
-  @media (min-width: ${({ breakpoints }) => breakpoints[3]}) {
-    html {
-      font-size: 14px;
-    }
-    body {
-      padding-bottom: 0;
-    }
   }
 
   /* Reat datepicker styles */
@@ -597,6 +691,33 @@ export const GlobalStyle = createGlobalStyle<any>`
   .react-datepicker__day--selected:hover, .react-datepicker__day--in-selecting-range:hover, .react-datepicker__day--in-range:hover, .react-datepicker__month-text--selected:hover, .react-datepicker__month-text--in-selecting-range:hover, .react-datepicker__month-text--in-range:hover, .react-datepicker__quarter-text--selected:hover, .react-datepicker__quarter-text--in-selecting-range:hover, .react-datepicker__quarter-text--in-range:hover, .react-datepicker__year-text--selected:hover, .react-datepicker__year-text--in-selecting-range:hover, .react-datepicker__year-text--in-range:hover {
     background: ${({ colors }) => colors.red[100]};
     border-radius: 0;
+  }
+
+  /* Tippy styles */
+  .tippy-box[data-theme~=light] {
+    color: ${({ colors }) => colors.dolphin};
+    background-color: #fff;
+    //box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.02), 0px 64.8148px 46.8519px rgba(0, 0, 0, 0.0151852), 0px 38.5185px 25.4815px rgba(0, 0, 0, 0.0121481), 0px 20px 13px rgba(0, 0, 0, 0.01), 0px 8.14815px 6.51852px rgba(0, 0, 0, 0.00785185), 0px 1.85185px 3.14815px rgba(0, 0, 0, 0.00481481);
+    box-shadow: 0 0 20px 4px rgba(154, 161, 177, .15), 0 4px 80px -8px rgba(36, 40, 47, .25), 0 4px 4px -2px rgba(91, 94, 105, .15);
+    border-radius: 6px;
+  }
+  .tippy-box[data-theme~=light][data-placement^=top]>.tippy-arrow:before {
+    border-top-color: #fff
+  }
+  .tippy-box[data-theme~=light][data-placement^=bottom]>.tippy-arrow:before {
+    border-bottom-color: #fff
+  }
+  .tippy-box[data-theme~=light][data-placement^=left]>.tippy-arrow:before {
+    border-left-color: #fff
+  }
+  .tippy-box[data-theme~=light][data-placement^=right]>.tippy-arrow:before {
+    border-right-color: #fff
+  }
+  .tippy-box[data-theme~=light]>.tippy-backdrop {
+    background-color: #fff
+  }
+  .tippy-box[data-theme~=light]>.tippy-svg-arrow {
+    fill: #fff
   }
 `
 

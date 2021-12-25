@@ -23,6 +23,9 @@ const lightTheme = {
     500: rgba(8, 30, 88, 0.8),
   },
   green: '#29B500',
+  jaffa: '#F0864B',
+  zircon: '#FAFCFF',
+  dolphin: '#212832',
 }
 
 export default lightTheme

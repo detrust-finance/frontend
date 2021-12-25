@@ -2,8 +2,9 @@ import { SelectOption } from '../theme/ui/forms/input/interfaces'
 import { IMenu, ISidebarMenu } from './interfaces'
 
 export const defaultLanguage = 'en'
-//export const API_URL = 'https://api.studio.thegraph.com/query/2808/detrust-subgraph/v0.0.6'
-export const API_URL = 'https://api.studio.thegraph.com/query/9482/detrust/v2.0.1'
+
+//export const API_URL = 'https://api.studio.thegraph.com/query/2808/detrust-subgraph/v0.0.9' // testnet
+export const API_URL = 'https://api.studio.thegraph.com/query/9482/detrust/v2.0.1' // mainnet
 // export const API_URL =
 //   process.env.NODE_ENV === 'development'
 //     ? 'https://api-dev.detrust.finance/graphql' :
@@ -84,8 +85,11 @@ export const sidebarMenu: ISidebarMenu[] = [
       '/dashboard/settlor',
       '/dashboard/settlor/create-new-trust',
       '/dashboard/settlor/top-up-fund/[trustId]',
+      '/dashboard/settlor/revoke/[trustId]',
+      '/dashboard/settlor/set-irrevocable/[trustId]',
     ],
     className: 'dark',
+    left: 0,
   },
   {
     icon: {
@@ -104,6 +108,7 @@ export const sidebarMenu: ISidebarMenu[] = [
       '/dashboard/beneficiary/claim/[...params]',
     ],
     className: 'darker',
+    left: '50%',
   },
 ]
 

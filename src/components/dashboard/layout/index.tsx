@@ -26,7 +26,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   layoutBackgroundImage,
   ...restprops
 }) => {
-  const { isTablet } = useResponsive()
+  //const { isTablet } = useResponsive()
   const { t } = useTranslation('common')
   const { chainEnabled } = useWallet()
   const { account } = useActiveWeb3React()
@@ -35,7 +35,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   React.useEffect(() => {
     if (!account || chainEnabled) return
     onPresent(
-      <Modal title={t('modal.title.warning')} width={[320, 320, 386, null]}>
+      <Modal /*title={t('modal.title.warning')} width={[320, 500, 500, null]}*/>
         <NetworkModal />
       </Modal>,
       {
@@ -60,7 +60,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       }
     >
       <Container flexDirection='column'>
-        {isTablet && (
+        {/* {isTablet && (
           <>
             <Section justifyContent='flex-end'>
               <Image src='/images/logo.svg' width={180} height={30} />
@@ -71,9 +71,13 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         <Section>
           {isTablet && <Sidebar />}
           {children}
+        </Section> */}
+        <Sidebar />
+        <Section>
+          {children}
         </Section>
       </Container>
-      {!isTablet && <MobileSidebar />}
+      {/* {!isTablet && <MobileSidebar />} */}
     </Layout>
   )
 }

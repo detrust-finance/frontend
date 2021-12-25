@@ -1,57 +1,26 @@
 import React from 'react'
-import SimpleBar from 'simplebar-react'
 import { Box, Flex, Text } from 'rebass/styled-components'
 import {
   IWizardButton,
   IWizardHeader,
-  DashboardLayout,
-  WizardHeader,
   WizardButtons,
+  WizardHeader,
+  DashboardLayout,
 } from '../../../../components'
 import { useTranslation } from 'react-i18next'
-import { Calendar as CalendarIcon } from 'react-feather'
-import {
-  Spacer,
-  Title,
-  Input,
-  DatePicker,
-  ErrorMessage,
-} from '../../../../theme/ui'
 import { FullData } from '../../../../interfaces'
+import { Spacer, Title } from '../../../../theme/ui'
 import { useResponsive, useTheme } from '../../../../hooks'
+import moment from 'moment'
+import { DATE_FORMAT_NO_TIME } from '../../../../constants'
+import { shortenAddress } from '../../../../libs/wallet/utils'
 // import { SelectOption } from '../../../../theme/ui/forms/input/interfaces'
-// import { INTERVAL_OPTIONS } from '../../../../constants'
-import { useForm, Controller, UseFormSetValue } from 'react-hook-form'
-import DropDown from '../../../../components/dropw-down'
 
-const StepTwo: React.FC<FullData> = ({ setForm, formData, navigation }) => {
+const StepTwo: React.FC<FullData> = ({ formData, navigation }) => {
   const { t } = useTranslation('dashboard')
   const { t: tc } = useTranslation('common')
-  const { fontWeight, spacer } = useTheme()
+  const { spacer, fontWeight } = useTheme()
   const { isTablet } = useResponsive()
-
-  const {
-    register,
-    handleSubmit,
-    control,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useForm({
-    defaultValues: formData,
-  })
-
-  const intervalInputBoxRef = React.useRef<any>()
-  const intervalMenuWidth = React.useMemo(
-    () => {
-      if (!intervalInputBoxRef?.current) return 169
-      return intervalInputBoxRef.current.offsetWidth
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [intervalInputBoxRef.current],
-  )
-
-  const { totalDepositAmount, releaseInterval } = watch()
 
   const headers = React.useMemo(
     (): IWizardHeader[] => [
@@ -65,11 +34,6 @@ const StepTwo: React.FC<FullData> = ({ setForm, formData, navigation }) => {
         number: 2,
         status: 'active',
       },
-      {
-        title: t('create-new-trust.menu.step-three'),
-        number: 3,
-        status: 'inactive',
-      },
     ],
     [t],
   )
@@ -82,631 +46,142 @@ const StepTwo: React.FC<FullData> = ({ setForm, formData, navigation }) => {
         buttonProps: isTablet
           ? {
               variant: 'grey-outline',
-              width: 240,
+              width: 250,
+              height: 52,
             }
           : {
               variant: 'grey-outline',
               flex: 1,
+              height: 52,
             },
       },
       {
         title: t('button.label.next'),
+        onClick: navigation?.next,
         buttonProps: isTablet
           ? {
-              type: 'submit',
-              width: 240,
+              width: 250,
+              height: 52,
             }
           : {
-              type: 'submit',
               flex: 1,
+              height: 52,
             },
       },
     ],
-    [isTablet, navigation?.previous, t],
-  )
-
-  const onSubmit = React.useCallback(
-    data => {
-      if (!setForm) return
-      Object.keys(data).map((key: string) => {
-        setForm({
-          target: {
-            name: key,
-            value: data[key],
-          },
-        })
-      })
-      navigation?.next()
-    },
-    [navigation, setForm],
-  )
-
-  React.useEffect(() => {
-    if (!totalDepositAmount) {
-      setValue('releaseAmount', '')
-    }
-  }, [totalDepositAmount, setValue])
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
-        <Flex
-          flexDirection='column'
-          justifyContent='flex-start'
-          variant='layout-content'
-          alignItems='center'
-        >
-          <Box width='100%' mb={[spacer.xxxl, spacer.xxxl, 0]}>
-            <Title
-              title={t('content.title.settlor')}
-              subtitle={t('content.subtitle.settlor-new-trust')}
-            />
-            <Spacer size='xl' />
-            <Box as='p' fontSize='md'>
-              {t('content.description.settlor-steps')}
-            </Box>
-            <Spacer size='xl' />
-            <WizardHeader headers={headers} />
-          </Box>
-
-          <Spacer size='xxxl' />
-
-          <Box width='100%' mb='auto'>
-            <Flex flexDirection='row' justifyContent='space-between'>
-              <Box flex={1}>
-                <Flex
-                  variant='outlined-box'
-                  flexDirection='column'
-                  alignItems='center'
-                  sx={{ borderBottomColor: 'transparent' }}
-                >
-                  <Text fontWeight={fontWeight.medium}>
-                    {t('create-new-trust.label.new-trust')}
-                  </Text>
-                </Flex>
-                <Input
-                  {...register('fundName', {
-                    required: {
-                      value: true,
-                      message: tc('error.field-is-required'),
-                    },
-                  })}
-                />
-                {errors?.fundName?.message && (
-                  <ErrorMessage>
-                    {tc(`${errors?.fundName?.message}`)}
-                  </ErrorMessage>
-                )}
-              </Box>
-
-              <Spacer size='xl' />
-
-              <Box flex={1}>
-                <Flex
-                  variant='outlined-box'
-                  flexDirection='column'
-                  alignItems='center'
-                  sx={{ borderBottomColor: 'transparent' }}
-                >
-                  <Text fontWeight={fontWeight.medium}>
-                    {t('create-new-trust.label.beneficiary-address')}
-                  </Text>
-                </Flex>
-                <Input
-                  {...register('beneficiaryAddress', {
-                    required: {
-                      value: true,
-                      message: tc('error.field-is-required'),
-                    },
-                    pattern: {
-                      value: /^0x[a-fA-F0-9]{40}$/,
-                      message: tc('error.field-is-not-eth-address'),
-                    },
-                  })}
-                />
-                {errors?.beneficiaryAddress?.message && (
-                  <ErrorMessage>
-                    {tc(`${errors?.beneficiaryAddress?.message}`)}
-                  </ErrorMessage>
-                )}
-              </Box>
-            </Flex>
-
-            <Spacer size='xxxxl' />
-
-            {isTablet ? (
-              <Flex flexDirection='row' justifyContent='space-between'>
-                <Box flex={1}>
-                  <Flex
-                    variant='outlined-box'
-                    flexDirection='column'
-                    alignItems='center'
-                    sx={{ borderBottomColor: 'transparent' }}
-                  >
-                    <Text fontWeight={fontWeight.medium}>
-                      {t('create-new-trust.label.release-start')}
-                    </Text>
-                  </Flex>
-                  <Controller
-                    control={control}
-                    name='releaseStartTime'
-                    rules={{
-                      required: {
-                        value: true,
-                        message: tc('error.field-is-required'),
-                      },
-                    }}
-                    render={({ field: { onChange, value, ref } }) => (
-                      <DatePicker
-                        dateFormat='yyyy/MM/dd'
-                        minDate={new Date()}
-                        onChange={(date: Date) => onChange(date)}
-                        selected={value}
-                        ref={ref}
-                        endAdornment={
-                          <Box mr={16}>
-                            <CalendarIcon height={16} />
-                          </Box>
-                        }
-                      />
-                    )}
-                  />
-
-                  {errors?.releaseStartTime?.message && (
-                    <ErrorMessage>
-                      {tc(`${errors?.releaseStartTime?.message}`)}
-                    </ErrorMessage>
-                  )}
-                </Box>
-
-                <Spacer size='xl' />
-
-                <Box flex={1} ref={intervalInputBoxRef}>
-                  <Flex
-                    variant='outlined-box'
-                    flexDirection='column'
-                    alignItems='center'
-                    sx={{ borderBottomColor: 'transparent' }}
-                  >
-                    <Text fontWeight={fontWeight.medium}>
-                      {t('create-new-trust.label.release-interval')}
-                    </Text>
-                  </Flex>
-                  <DropDown
-                    buttonComponent={
-                      <Controller
-                        control={control}
-                        name='releaseInterval'
-                        rules={{
-                          required: {
-                            value: true,
-                            message: tc('error.field-is-required'),
-                          },
-                          min: {
-                            //value: 1,
-                            value: .00001,
-                            message: tc('error.field-min-days'),
-                          },
-                          pattern: {
-                            //value: /^[0-9]*$/,
-                            value: /^\d*\.?\d*$/,
-                            message: tc('error.field-must-be-number'),
-                          },
-                        }}
-                        render={({ field: { onChange, ref } }) => (
-                          <Input
-                            onChange={onChange}
-                            endAdornment={
-                              <Box mr={16}>
-                                {releaseInterval !== ''
-                                  ? releaseInterval > 1
-                                    ? tc('days')
-                                    : tc('day')
-                                  : null}
-                              </Box>
-                            }
-                            ref={ref}
-                          />
-                        )}
-                      />
-                    }
-                    menuComponent={
-                      <IntervalMenu
-                        fieldName='releaseInterval'
-                        setValue={setValue}
-                      />
-                    }
-                    menuStyle={{
-                      height: 60,
-                      width: intervalMenuWidth,
-                    }}
-                  />
-                  {errors?.releaseInterval?.message && (
-                    <ErrorMessage>
-                      {tc(`${errors?.releaseInterval?.message}`)}
-                    </ErrorMessage>
-                  )}
-                </Box>
-
-                <Spacer size='xl' />
-
-                <Box flex={1}>
-                  <Flex
-                    variant='outlined-box'
-                    flexDirection='column'
-                    alignItems='center'
-                    sx={{ borderBottomColor: 'transparent' }}
-                  >
-                    <Text fontWeight={fontWeight.medium}>
-                      {t('create-new-trust.label.total-amount')}
-                    </Text>
-                  </Flex>
-                  <Input
-                    {...register('totalDepositAmount', {
-                      required: {
-                        value: true,
-                        message: tc('error.field-is-required'),
-                      },
-                      pattern: {
-                        value: /^\d*\.?\d*$/,
-                        message: tc('error.field-must-be-number'),
-                      },
-                    })}
-                  />
-                  {errors?.totalDepositAmount?.message && (
-                    <ErrorMessage>
-                      {tc(`${errors?.totalDepositAmount?.message}`)}
-                    </ErrorMessage>
-                  )}
-                </Box>
-
-                <Spacer size='xl' />
-
-                <Box flex={1}>
-                  <Flex
-                    variant='outlined-box'
-                    flexDirection='column'
-                    alignItems='center'
-                    sx={{ borderBottomColor: 'transparent' }}
-                  >
-                    <Text fontWeight={fontWeight.medium}>
-                      {t('create-new-trust.label.release-amount')}
-                    </Text>
-                  </Flex>
-                  <Input
-                    {...register('releaseAmount', {
-                      required: {
-                        value: true,
-                        message: tc('error.field-is-required'),
-                      },
-                      min: {
-                        value: 0.00000001,
-                        message: tc('error.field-min-value-exceeded'),
-                      },
-                      max: {
-                        value: totalDepositAmount,
-                        message: tc('error.field-max-value-exceeded'),
-                      },
-                      pattern: {
-                        value: /^\d*\.?\d*$/,
-                        message: tc('error.field-must-be-number'),
-                      },
-                    })}
-                    disabled={!!!totalDepositAmount?.length}
-                  />
-                  {errors?.releaseAmount?.message && (
-                    <ErrorMessage>
-                      {tc(`${errors?.releaseAmount?.message}`)}
-                    </ErrorMessage>
-                  )}
-                </Box>
-              </Flex>
-            ) : (
-              <>
-                <Flex flexDirection='row' justifyContent='space-between'>
-                  <Box flex={1}>
-                    <Flex
-                      variant='outlined-box'
-                      flexDirection='column'
-                      alignItems='center'
-                      sx={{ borderBottomColor: 'transparent' }}
-                    >
-                      <Text fontWeight={fontWeight.medium}>
-                        {t('create-new-trust.label.release-start')}
-                      </Text>
-                    </Flex>
-                    <Controller
-                      control={control}
-                      name='releaseStartTime'
-                      rules={{
-                        required: {
-                          value: true,
-                          message: tc('error.field-is-required'),
-                        },
-                      }}
-                      render={({ field: { onChange, value, ref } }) => (
-                        <DatePicker
-                          dateFormat='yyyy/MM/dd'
-                          minDate={new Date()}
-                          onChange={(date: Date) => onChange(date)}
-                          selected={value}
-                          ref={ref}
-                          endAdornment={
-                            <Box mr={16}>
-                              <CalendarIcon height={16} />
-                            </Box>
-                          }
-                        />
-                      )}
-                    />
-
-                    {errors?.releaseStartTime?.message && (
-                      <ErrorMessage>
-                        {tc(`${errors?.releaseStartTime?.message}`)}
-                      </ErrorMessage>
-                    )}
-                  </Box>
-
-                  <Spacer size='xl' />
-
-                  <Box flex={1} ref={intervalInputBoxRef}>
-                    <Flex
-                      variant='outlined-box'
-                      flexDirection='column'
-                      alignItems='center'
-                      sx={{ borderBottomColor: 'transparent' }}
-                    >
-                      <Text fontWeight={fontWeight.medium}>
-                        {t('create-new-trust.label.release-interval')}
-                      </Text>
-                    </Flex>
-                    <DropDown
-                      buttonComponent={
-                        <Controller
-                          control={control}
-                          name='releaseInterval'
-                          rules={{
-                            required: {
-                              value: true,
-                              message: tc('error.field-is-required'),
-                            },
-                            min: {
-                              //value: 1,
-                              value: .00001,
-                              message: tc('error.field-min-days'),
-                            },
-                            pattern: {
-                              //value: /^[0-9]*$/,
-                              value: /^\d*\.?\d*$/,
-                              message: tc('error.field-must-be-number'),
-                            },
-                          }}
-                          render={({ field: { onChange, ref } }) => (
-                            <Input
-                              onChange={onChange}
-                              endAdornment={
-                                <Box mr={16}>
-                                  {releaseInterval !== ''
-                                    ? releaseInterval > 1
-                                      ? tc('days')
-                                      : tc('day')
-                                    : null}
-                                </Box>
-                              }
-                              ref={ref}
-                            />
-                          )}
-                        />
-                      }
-                      menuComponent={
-                        <IntervalMenu
-                          fieldName='releaseInterval'
-                          setValue={setValue}
-                        />
-                      }
-                      menuStyle={{
-                        height: 60,
-                        width: intervalMenuWidth,
-                      }}
-                    />
-                    {errors?.releaseInterval?.message && (
-                      <ErrorMessage>
-                        {tc(`${errors?.releaseInterval?.message}`)}
-                      </ErrorMessage>
-                    )}
-                  </Box>
-                </Flex>
-
-                <Spacer size='xxxxl' />
-
-                <Flex flexDirection='row' justifyContent='space-between'>
-                  <Box flex={1}>
-                    <Flex
-                      variant='outlined-box'
-                      flexDirection='column'
-                      alignItems='center'
-                      sx={{ borderBottomColor: 'transparent' }}
-                    >
-                      <Text fontWeight={fontWeight.medium}>
-                        {t('create-new-trust.label.total-amount')}
-                      </Text>
-                    </Flex>
-                    <Input
-                      {...register('totalDepositAmount', {
-                        required: {
-                          value: true,
-                          message: tc('error.field-is-required'),
-                        },
-                        pattern: {
-                          value: /^\d*\.?\d*$/,
-                          message: tc('error.field-must-be-number'),
-                        },
-                      })}
-                    />
-                    {errors?.totalDepositAmount?.message && (
-                      <ErrorMessage>
-                        {tc(`${errors?.totalDepositAmount?.message}`)}
-                      </ErrorMessage>
-                    )}
-                  </Box>
-
-                  <Spacer size='xl' />
-
-                  <Box flex={1}>
-                    <Flex
-                      variant='outlined-box'
-                      flexDirection='column'
-                      alignItems='center'
-                      sx={{ borderBottomColor: 'transparent' }}
-                    >
-                      <Text fontWeight={fontWeight.medium}>
-                        {t('create-new-trust.label.release-amount')}
-                      </Text>
-                    </Flex>
-                    <Input
-                      {...register('releaseAmount', {
-                        required: {
-                          value: true,
-                          message: tc('error.field-is-required'),
-                        },
-                        min: {
-                          value: 0.00000001,
-                          message: tc('error.field-min-value-exceeded'),
-                        },
-                        max: {
-                          value: totalDepositAmount,
-                          message: tc('error.field-max-value-exceeded'),
-                        },
-                        pattern: {
-                          value: /^\d*\.?\d*$/,
-                          message: tc('error.field-must-be-number'),
-                        },
-                      })}
-                      disabled={!!!totalDepositAmount?.length}
-                    />
-                    {errors?.releaseAmount?.message && (
-                      <ErrorMessage>
-                        {tc(`${errors?.releaseAmount?.message}`)}
-                      </ErrorMessage>
-                    )}
-                  </Box>
-                </Flex>
-              </>
-            )}
-          </Box>
-
-          <WizardButtons buttons={buttons} />
-        </Flex>
-      </DashboardLayout>
-    </form>
-  )
-}
-
-interface IntervalMenuProps {
-  show?: boolean
-  handleToggle?: React.EffectCallback
-  handleOpen?: React.EffectCallback
-  handleClose?: React.EffectCallback
-  fieldName: string
-  setValue: UseFormSetValue<any>
-}
-interface IOption {
-  label: string
-  value: number
-}
-
-const IntervalMenu: React.FC<IntervalMenuProps> = ({
-  handleClose,
-  fieldName,
-  setValue,
-}) => {
-  const { t } = useTranslation('common')
-  const { colors, fontSizes } = useTheme()
-  const options = React.useMemo(
-    (): IOption[] => [
-      {
-        label: t('label.10days'),
-        value: 10,
-      },
-      {
-        label: t('label.15days'),
-        value: 15,
-      },
-      {
-        label: t('label.30days'),
-        value: 30,
-      },
-      {
-        label: t('label.90days'),
-        value: 90,
-      },
-      {
-        label: t('label.180days'),
-        value: 180,
-      },
-      {
-        label: t('label.360days'),
-        value: 360,
-      },
-    ],
-    [t],
-  )
-
-  const handleClick = React.useCallback(
-    (value: number) => {
-      if (!handleClose) return
-      setValue(fieldName, value)
-      handleClose()
-    },
-    [fieldName, handleClose, setValue],
+    [isTablet, navigation?.next, navigation?.previous, t],
   )
 
   return (
-    <Box
-      sx={{
-        py: '2px',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: colors.black,
-        borderTopWidth: 0,
-        color: colors.black,
-        bg: colors.white,
-      }}
-    >
-      <Box
-        sx={{
-          py: '8px',
-          mx: 10,
-          color: colors.grey[200],
-          borderBottomStyle: 'solid',
-          borderBottomWidth: 1,
-          borderBottomColor: colors.grey[200],
-        }}
+    <DashboardLayout layoutBackgroundImage='/images/bg-settlor.svg'>
+      <Flex
+        flexDirection='column'
+        justifyContent='flex-start'
+        variant='layout-content'
+        alignItems='center'
       >
-        {t('label.suggestions')}
-      </Box>
-      <SimpleBar style={{ maxHeight: 80 }}>
-        <Flex flexDirection='column' px={10}>
-          {options.map((option: IOption, index: number) => (
-            <Box
-              key={option.value}
-              onClick={() => handleClick(option.value)}
-              sx={{
-                cursor: 'pointer',
-                py: '8px',
-                px: 10,
-                borderBottomStyle: 'solid',
-                borderBottomWidth: index < options.length - 1 ? 1 : 0,
-                borderBottomColor: colors.grey[200],
-                fontSize: fontSizes.lg,
-              }}
-            >
-              {option.label}
-            </Box>
-          ))}
-        </Flex>
-      </SimpleBar>
-    </Box>
+        <Box width='100%'>
+          <Title
+            title={t('content.title.settlor')}
+            subtitle={t('content.subtitle.settlor-new-trust')}
+          />
+          <Spacer size='xl' />
+          <Box as='p' fontSize='md' color='dolphin' opacity={0.4}>
+            {t('content.description.settlor-steps')}
+          </Box>
+          <Spacer size='xl' />
+
+          <WizardHeader headers={headers} />
+        </Box>
+
+        <Spacer size='xxl' />
+
+        <Box width='100%' mb='30px'>
+          <Box variant='outlined-box-full' px={spacer.xl}>
+            <Flex justifyContent='space-between'>
+              <Text fontWeight={fontWeight.medium}>
+                {t('create-new-trust.label.fundname')}{' '}
+              </Text>
+              <Box variant='dots' />
+              <Text>{`${formData?.fundName}`}</Text>
+            </Flex>
+            <Spacer size='xxl' />
+            <Flex justifyContent='space-between'>
+              <Text fontWeight={fontWeight.medium}>
+                {t('create-new-trust.label.beneficiary-address')}{' '}
+              </Text>
+              <Box variant='dots' />
+              <Text>{`${
+                isTablet
+                  ? formData?.beneficiaryAddress
+                  : shortenAddress(formData?.beneficiaryAddress)
+              }`}</Text>
+            </Flex>
+            {/* <Spacer size='xxl' />
+            <Flex justifyContent='space-between'>
+              <Text fontWeight={fontWeight.medium}>
+                {t('create-new-trust.label.fund-source')}
+              </Text>
+              <Box variant='dots' />
+              <Text>{`${formData?.fundSource}`}</Text>
+            </Flex> */}
+            <Spacer size='xxl' />
+            <Flex justifyContent='space-between'>
+              <Text fontWeight={fontWeight.medium}>
+                {t('create-new-trust.label.depost-amount')}
+              </Text>
+              <Box variant='dots' />
+              <Text>
+                {`${formData?.totalDepositAmount}`} {formData?.asset}
+              </Text>
+            </Flex>
+            <Spacer size='xxl' />
+            <Flex justifyContent='space-between'>
+              <Text fontWeight={fontWeight.medium}>
+                {t('create-new-trust.label.release-start')}
+              </Text>
+              <Box variant='dots' />
+              <Text>
+                {moment(formData?.releaseStartTime).format(DATE_FORMAT_NO_TIME)}
+              </Text>
+            </Flex>
+            <Spacer size='xxl' />
+            <Flex justifyContent='space-between'>
+              <Text fontWeight={fontWeight.medium}>
+                {t('create-new-trust.label.release-interval')}
+              </Text>
+              <Box variant='dots' />
+              <Text>
+                {formData?.releaseInterval}{' '}
+                {formData?.releaseInterval?.length > 1 ? tc('days') : tc('day')}
+              </Text>
+            </Flex>
+            <Spacer size='xxl' />
+            <Flex justifyContent='space-between'>
+              <Text fontWeight={fontWeight.medium}>
+                {t('create-new-trust.label.release-amount')}
+              </Text>
+              <Box variant='dots' />
+              <Text>
+                {`${formData?.releaseAmount}`} {formData?.asset}
+              </Text>
+            </Flex>
+            <Spacer size='xxl' />
+            <Flex justifyContent='space-between'>
+              <Text fontWeight={fontWeight.medium}>
+                {t('create-new-trust.label.revocable')}
+              </Text>
+              <Box variant='dots' />
+              <Text>
+                {formData?.revocable ? 'true' : 'false'}
+              </Text>
+            </Flex>
+          </Box>
+        </Box>
+
+        <WizardButtons buttons={buttons} />
+      </Flex>
+    </DashboardLayout>
   )
 }
 

@@ -13,6 +13,8 @@ export {
   useSendBalanceTo,
   useTopUp,
   useTopUpFromBalance,
+  useRevoke,
+  useSetIrrevocable,
   useReleaseAll,
   useRelease,
   useReleaseAllTo,

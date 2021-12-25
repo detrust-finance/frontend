@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Flex, Box, Text } from 'rebass/styled-components'
-import SimpleBar from 'simplebar-react'
+//import SimpleBar from 'simplebar-react'
 import _ from 'lodash'
 // Components
-import { Spacer } from '../../'
+//import { Spacer } from '../../'
 import { ChevronDown, ChevronUp } from 'react-feather'
 // iterfaces
 import { TableProps, TableColumnProps } from './interfaces'
@@ -21,7 +21,7 @@ const Table: React.FC<TableProps> = ({
   subRowComponent,
   dataSource,
   loading,
-  scrollbarsStyle,
+  //scrollbarsStyle,
   tableHeaderStyle,
   tableHeaderVariant,
   sortable,
@@ -64,11 +64,7 @@ const Table: React.FC<TableProps> = ({
         variant={tableHeaderVariant ? tableHeaderVariant : 'table-header'}
         {...tableHeaderStyle}
       >
-        {subRowComponent && (
-          <Box width={30} textAlign='center'>
-            +
-          </Box>
-        )}
+        <Box width={30} textAlign='center' />
         {columns &&
           columns.map((col: TableColumnProps) => (
             <Box
@@ -156,16 +152,19 @@ const Table: React.FC<TableProps> = ({
           Loading...
         </Flex>
       )}
-      <Box {...restprops}>
-        <SimpleBar
+      {/* <Box {...restprops}> */}
+        {/* <SimpleBar
           style={
             !scrollbarsStyle
               ? { minHeight: 290, maxHeight: 290 }
               : { ...scrollbarsStyle }
           }
-        >
-          <Spacer size='sm' />
-          <Flex flexDirection='column' sx={{ position: 'relative' }}>
+        > */}
+          {/* <Spacer size='sm' /> */}
+          <Flex
+            flexDirection='column'
+            sx={{ position: 'relative' }}
+          >
             {dataSource?.length > 0 &&
               _.orderBy(dataSource, [sortHeader], [sortDirection])?.map(
                 (source: any, i: number) =>
@@ -251,8 +250,8 @@ const Table: React.FC<TableProps> = ({
                       ),
               )}
           </Flex>
-        </SimpleBar>
-      </Box>
+        {/* </SimpleBar> */}
+      {/* </Box> */}
     </Flex>
   )
 }
