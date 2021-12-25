@@ -1199,21 +1199,21 @@ function Home({device}: HomeProps) {
       <SmallText id='links-to' {...c.links.title}>{t('home.links.title')}</SmallText>
       <BigText {...c.links.desc}>{t('home.links.desc')}</BigText>
       {/*   link 1 */}
-      <a href="https://twitter.com" target="_blank" rel="noreferrer">
+      <a href='https://twitter.com' target='_blank' rel='noreferrer'>
         <ExternalLinkGroup src='/images/twitter-logo.svg' {...c.links.link1.group}>
           <ExternalLinkLabel>Twitter</ExternalLinkLabel>
           <ExternalLinkDesc {...c.links.link1.desc}>{t('home.twitter.desc')}</ExternalLinkDesc>
         </ExternalLinkGroup>
       </a>
       {/*   link 2 */}
-      <a href="https://github.com/detrust-finance" target="_blank" rel="noreferrer">
+      <a href='https://github.com/detrust-finance' target='_blank' rel='noreferrer'>
         <ExternalLinkGroup src='/images/github-logo.svg' {...c.links.link2.group}>
           <ExternalLinkLabel>Github</ExternalLinkLabel>
           <ExternalLinkDesc {...c.links.link2.desc}>{t('home.github.desc')}</ExternalLinkDesc>
         </ExternalLinkGroup>
       </a>
        {/*   link 3 */}
-       <a href="https://telegram.org" target="_blank" rel="noreferrer">
+       <a href='https://telegram.org' target='_blank' rel='noreferrer'>
         <ExternalLinkGroup src='/images/telegram-logo.svg' {...c.links.link3.group}>
           <ExternalLinkLabel>Telegram</ExternalLinkLabel>
           <ExternalLinkDesc {...c.links.link3.desc}>{t('home.telegram.desc')}</ExternalLinkDesc>
@@ -1249,13 +1249,13 @@ function Home({device}: HomeProps) {
           <SmallNavItem {...c.footer.item4}>{t('home.nav.links-to')}</SmallNavItem>
         </ScrollWindowButton>
       </>}
-      <a href="https://twitter.com" target="_blank" rel="noreferrer">
+      <a href='https://twitter.com' target='_blank' rel='noreferrer'>
         <HoverImage src='/images/twitter-logo-round.svg' {...c.footer.link1} />
       </a>
-      <a href="https://github.com" target="_blank" rel="noreferrer">
+      <a href='https://github.com' target='_blank' rel='noreferrer'>
         <HoverImage src='/images/github-logo-round.svg' {...c.footer.link2} />
       </a>
-      <a href="https://telegram.org" target="_blank" rel="noreferrer">
+      <a href='https://telegram.org' target='_blank' rel='noreferrer'>
         <HoverImage src='/images/telegram-logo-round.svg' {...c.footer.link3} />
       </a>
       <Rectangle {...c.footer.splitter} />
@@ -1274,7 +1274,7 @@ interface Props {
 }
 
 const HorizontalCenterPage = ({children, width, height}: Props) => (
-  <div className="container-center-horizontal">
+  <div className='container-center-horizontal'>
     <Screen width={width} height={height}>{children}</Screen>
   </div>
 )
