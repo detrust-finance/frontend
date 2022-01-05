@@ -4,7 +4,7 @@ import { IMenu, ISidebarMenu } from './interfaces'
 export const defaultLanguage = 'en'
 
 //export const API_URL = 'https://api.studio.thegraph.com/query/2808/detrust-subgraph/v0.0.9' // testnet
-export const API_URL = 'https://api.studio.thegraph.com/query/9482/detrust/v2.0.1' // mainnet
+export const API_URL = 'https://api.studio.thegraph.com/query/9482/detrust/v3.0.0' // mainnet
 // export const API_URL =
 //   process.env.NODE_ENV === 'development'
 //     ? 'https://api-dev.detrust.finance/graphql' :
