@@ -2,7 +2,7 @@ export default {
   title: 'DeTrust',
   description: 'Decentralized Trust',
   'lang.label.en': 'English',
-  'lang.label.cn': 'Chinese',
+  'lang.label.cn': '中文',
   'nav.label.home': 'Home',
   'nav.label.dashboard': 'My Trusts',
   'error.field-is-required': 'This field is required.',
